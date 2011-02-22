@@ -1,0 +1,1 @@
+/home/sigwyg/.vim/bundle/vim-pathogen/autoload/pathogen.vim
