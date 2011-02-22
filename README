@@ -1,0 +1,22 @@
+
+##################
+#
+# dotfiles
+#
+##################
+
+.vimrc, .vim, vim/bundles and others
+
+1. cd ~/
+2. git clone git://github.com/sigwyg/dotfiles.git 
+3. ln -s dotfiles/.vimrc .vimrc
+   ln -s dotfiles/.vim .vim
+
+4. cd dotfiles
+5. git submodule init
+6. git submodule update
+
+7. ln -s /Users/sigwyg/dotfiles/.vim/bundle/vim-pathogen/autoload/pathogen.vim /Users/sigwyg/dotfiles/.vim/autoload/pathogen.vim
+8. mkdir .vim/swap
+   mkdir .vim/backup
+
