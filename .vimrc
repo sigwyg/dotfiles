@@ -568,4 +568,9 @@ inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<
 "endif
 "let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
+"
+" gundo.vim
+"  - https://github.com/sjl/gundo.vim
+"
+nnoremap <F5> :GundoToggle<CR>
 

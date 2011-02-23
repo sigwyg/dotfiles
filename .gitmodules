@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/htmlform"]
 	path = .vim/bundle/htmlform
 	url = git://github.com/sigwyg/htmlform.vim.git
+[submodule ".vim/bundle/gundo"]
+	path = .vim/bundle/gundo
+	url = git://github.com/sjl/gundo.vim.git
