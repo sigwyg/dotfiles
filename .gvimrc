@@ -1,6 +1,6 @@
 if has('gui_macvim')
-    set imdisable       " IMを無効化
-    set iminsert=0      " 日本語入力を抑制
+"    set imdisable       " IMを無効化
+"    set iminsert=0      " 日本語入力を抑制
     set guioptions-=T   " 上部のアイコンを消す
     set showtabline=2   " タブを常に表示
     set transparency=12 " 透明度を指定

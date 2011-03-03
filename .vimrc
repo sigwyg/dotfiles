@@ -34,6 +34,7 @@ highlight LineNr ctermfg=0
 "colorscheme ron
 "highlight LineNr ctermfg=grey
 
+
 " search
 " ----------------------
 set ignorecase
