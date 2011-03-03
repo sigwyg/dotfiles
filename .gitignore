@@ -1,4 +1,5 @@
 
-.vim/swap/*
-.vim/backup/*
+/.vim/swap/*
+/.vim/backup/*
+/.vim/autoload/pathogen.vim
 
