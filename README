@@ -16,7 +16,8 @@
 5. git submodule init
 6. git submodule update
 
-7. ln -s /Users/sigwyg/dotfiles/.vim/bundle/vim-pathogen/autoload/pathogen.vim /Users/sigwyg/dotfiles/.vim/autoload/pathogen.vim
-8. mkdir .vim/swap
+7. mkdir .vim/swap
    mkdir .vim/backup
+   mkdir .vim/autoload
+8. ln -s /Users/sigwyg/dotfiles/.vim/bundle/vim-pathogen/autoload/pathogen.vim /Users/sigwyg/dotfiles/.vim/autoload/pathogen.vim
 
