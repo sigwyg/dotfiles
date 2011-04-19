@@ -12,6 +12,10 @@
 3. ln -s dotfiles/.vimrc .vimrc
    ln -s dotfiles/.vim .vim
 
+   [Optional]
+   ln -s dotfiles/.bashrc .bashrc
+   ln -s dotfiles/.bash_profile .bash_profile
+
 4. cd dotfiles
 5. git submodule init
 6. git submodule update
