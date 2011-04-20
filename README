@@ -25,3 +25,24 @@
    mkdir .vim/autoload
 8. ln -s /Users/sigwyg/dotfiles/.vim/bundle/vim-pathogen/autoload/pathogen.vim /Users/sigwyg/dotfiles/.vim/autoload/pathogen.vim
 
+
+Add modules
+-----------------
+
+git submodule add git://github.com/hail2u/vim-css3-syntax.git .vim/bundle/vim-css3-syntax
+
+
+Remove modules
+-----------------
+
+1. .gitmodules
+-[submodule ".vim/bundle/vim-css3-syntax.git"]
+-       path = .vim/bundle/vim-css3-syntax.git
+-       url = git://github.com/hail2u/vim-css3-syntax.git
+
+2. .git/config
+-[submodule ".vim/bundle/vim-css3-syntax.git"]
+-       url = git://github.com/hail2u/vim-css3-syntax.git
+
+3. git rm --cached .vim/bundle/vim-css3-syntax.git
+
