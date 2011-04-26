@@ -38,3 +38,6 @@
 	path = .vim/bundle/vim-css3-syntax
 	url = git://github.com/hail2u/vim-css3-syntax.git
 	ignore = untracked
+[submodule ".vim/vundle.git"]
+	path = .vim/vundle.git
+	url = https://github.com/gmarik/vundle.git
