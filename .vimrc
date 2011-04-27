@@ -2,9 +2,11 @@ set nocompatible
 filetype plugin indent on
 set tags=~/.tags
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
 
+set rtp+=~/.vim/vundle.git/ 
+call vundle#rc()
 
 " display
 " ----------------------
