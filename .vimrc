@@ -1,12 +1,28 @@
 set nocompatible
-filetype plugin indent on
 set tags=~/.tags
 
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
 
+" set Bundles
+filetype off
+
 set rtp+=~/.vim/vundle.git/ 
 call vundle#rc()
+
+Bundle 'neocomplcache'
+Bundle 'pathogen.vim'
+Bundle 'QuickBuf'
+Bundle 'surround.vim'
+Bundle 'The-NERD-tree'
+Bundle 'snipMate'
+Bundle 'Gundo'
+
+Bundle 'git://github.com/h1mesuke/vim-alignta.git'
+Bundle 'git://github.com/sigwyg/htmlform.vim.git'
+Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+
+filetype plugin indent on
 
 " display
 " ----------------------
