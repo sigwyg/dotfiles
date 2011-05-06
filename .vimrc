@@ -17,6 +17,7 @@ Bundle 'surround.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'Gundo'
+Bundle 'quickrun.vim'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
@@ -593,3 +594,21 @@ inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<
 "
 nnoremap <F5> :GundoToggle<CR>
 
+
+"
+" quickrun
+"  - https://github.com/thinca/vim-quickrun/
+"
+let g:quickrun_config = {}
+let g:quickrun_config.haskell = {'command' : 'runhugs'}
+
+" Set shortcut keys.
+for [key, com] in items({
+\   '<Leader>x' : '>:',
+\   '<Leader>p' : '>!',
+\   '<Leader>w' : '>',
+\   '<Leader>q' : '>>',
+\ })
+    execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
+    execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
+endfor
