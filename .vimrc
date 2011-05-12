@@ -11,13 +11,13 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 Bundle 'neocomplcache'
-Bundle 'pathogen.vim'
 Bundle 'QuickBuf'
 Bundle 'surround.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'Gundo'
 Bundle 'quickrun.vim'
+Bundle 'fugitive.vim'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
