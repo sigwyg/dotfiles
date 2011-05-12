@@ -2,3 +2,4 @@
 /.vim/swap/*
 /.vim/backup/*
 /.vim/bundle/*
+/.vim/vundle.git/*
