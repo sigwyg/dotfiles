@@ -17,32 +17,20 @@
    ln -s dotfiles/.bash_profile .bash_profile
 
 4. cd dotfiles
-5. git submodule init
-6. git submodule update
-
-7. mkdir .vim/swap
+5. mkdir .vim/swap
    mkdir .vim/backup
    mkdir .vim/autoload
-8. ln -s /Users/sigwyg/dotfiles/.vim/bundle/vim-pathogen/autoload/pathogen.vim /Users/sigwyg/dotfiles/.vim/autoload/pathogen.vim
+6. git clone http://github.com/gmarik/vundle.git ~/dotfiles/.vim/vundle.git
 
 
-Add modules
------------------
+Managed Vim-Plugins
+--------------------------
 
-git submodule add git://github.com/hail2u/vim-css3-syntax.git .vim/bundle/vim-css3-syntax
+See [README.md](https://github.com/vim-scripts/vundle)
 
+Search | :BundleSearch, :Bundles
+Add    | :BundleInstall
+Update | :BundleInstall!
+Remove | :BundleClean
 
-Remove modules
------------------
-
-1. .gitmodules
--[submodule ".vim/bundle/vim-css3-syntax.git"]
--       path = .vim/bundle/vim-css3-syntax.git
--       url = git://github.com/hail2u/vim-css3-syntax.git
-
-2. .git/config
--[submodule ".vim/bundle/vim-css3-syntax.git"]
--       url = git://github.com/hail2u/vim-css3-syntax.git
-
-3. git rm --cached .vim/bundle/vim-css3-syntax.git
 
