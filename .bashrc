@@ -8,6 +8,7 @@ umask 022
 alias ls='ls -G'
 alias la='ls -la -G'
 alias gis='git status'
+alias gid='git diff'
 alias grep='grep --color=auto'
 
 # history
