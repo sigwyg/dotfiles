@@ -16,6 +16,7 @@ Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'Gundo'
 Bundle 'quickrun.vim'
+Bundle 'smartchr'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
@@ -623,3 +624,26 @@ for [key, com] in items({
     execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
     execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
 endfor
+
+
+"
+" smartchr
+"  - http://www.vim.org/scripts/script.php?script_id=2290
+"
+inoremap <buffer><expr> = smartchr#one_of(' = ', ' == ', '=')
+inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
+inoremap <buffer><expr> - smartchr#one_of(' - ', '--', '-')
+inoremap <buffer><expr> / smartchr#one_of(' / ', '// ', '/')
+inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
+inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
+
+inoremap <buffer><expr> , smartchr#one_of(', ', ',')
+inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
+inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+
+inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
+inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+
+inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
+
+
