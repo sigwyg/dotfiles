@@ -124,7 +124,6 @@ inoremap ,df <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
                 
 " text-edit
 noremap <CR> i<CR><ESC>
-inoremap <C-l> <Del>
 command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
 
 
@@ -159,7 +158,6 @@ nnoremap <silent> bb :b#<CR>
 nnoremap <silent> bp :bp<CR>
 nnoremap <silent> bn :bn<CR>
 nnoremap <silent> bd :bd<CR>
-nnoremap ls :ls<CR>:b
 
 " re-select
 nnoremap gc `[v`]
