@@ -147,9 +147,9 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " window
-nnoremap <silent> <C-x>1 :only<CR>
-nnoremap <silent> <C-x>2 :sp<CR>
-nnoremap <silent> <C-x>3 :vsp<CR>
+" nnoremap <silent> <C-x>1 :only<CR>
+" nnoremap <silent> <C-x>2 :sp<CR>
+" nnoremap <silent> <C-x>3 :vsp<CR>
 set splitbelow
 set splitright
 set visualbell
@@ -184,9 +184,9 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
-inoremap <C-x><C-s> <Esc>:w<CR>i
-nnoremap <C-x><C-s> <Esc>:w<CR>
-nnoremap <Space>w <Esc>:w<CR>
+" inoremap <C-x><C-s> <Esc>:w<CR>i
+" nnoremap <C-x><C-s> <Esc>:w<CR>
+" nnoremap <Space>w <Esc>:w<CR>
 
 " <C-k>: delete till line-end.
 inoremap <C-k>  <C-o>D
