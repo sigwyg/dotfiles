@@ -68,6 +68,7 @@ set smartcase
 set wrapscan
 set hlsearch
 set incsearch
+set grepprg=grep\ -nH
 
 " edit
 " ---------------------
