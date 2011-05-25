@@ -10,7 +10,7 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 Bundle 'neocomplcache'
-Bundle 'QuickBuf'
+"Bundle 'QuickBuf'
 Bundle 'surround.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
@@ -18,9 +18,14 @@ Bundle 'Gundo'
 Bundle 'quickrun.vim'
 Bundle 'smartchr'
 
+Bundle 'unite.vim'
+Bundle 'git://github.com/Shougo/vimfiler.git'
+Bundle 'git://github.com/Shougo/vimproc.git'
+
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
 Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+Bundle 'git://github.com/thinca/vim-qfreplace.git'
 
 " ----------------------
 
@@ -491,7 +496,7 @@ endfunction
 " QuickBuf
 "  - http://www.vim.org/scripts/script.php?script_id=1910
 "
-let g:qb_hotkey = "<F3>"
+"let g:qb_hotkey = "<F3>"
 
 
 "
@@ -630,10 +635,11 @@ endfor
 "
 inoremap <buffer><expr> = smartchr#one_of(' = ', ' == ', '=')
 inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
-inoremap <buffer><expr> - smartchr#one_of(' - ', '--', '-')
-inoremap <buffer><expr> / smartchr#one_of(' / ', '// ', '/')
 inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
 inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
+
+inoremap <buffer><expr> - smartchr#one_of('-'' - ', '--')
+inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
 
 inoremap <buffer><expr> , smartchr#one_of(', ', ',')
 inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
