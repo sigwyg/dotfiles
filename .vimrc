@@ -652,3 +652,11 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 
 
+"
+" VimFiler
+"  - https: //github.com/Shougo/vimfiler
+" 
+nnoremap ff :VimFiler<CR>
+nnoremap fs :VimFilerSplit<CR>
+
+
