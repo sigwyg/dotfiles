@@ -134,12 +134,12 @@ command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delet
 
 
 " brackets"
-inoremap {} {}<LEFT>
-inoremap [] []<LEFT>
-inoremap () ()<LEFT>
-inoremap "" ""<LEFT>
-inoremap '' ''<LEFT>
-inoremap <> <><LEFT>
+"inoremap {} {}<LEFT>
+"inoremap [] []<LEFT>
+"inoremap () ()<LEFT>
+"inoremap "" ""<LEFT>
+"inoremap '' ''<LEFT>
+"inoremap <> <><LEFT>
 inoremap []5 [%  %]<LEFT><LEFT><LEFT>
 inoremap {}5 {%  %}<LEFT><LEFT><LEFT>
 
