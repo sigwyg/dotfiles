@@ -18,7 +18,7 @@ Bundle 'Gundo'
 Bundle 'quickrun.vim'
 Bundle 'smartchr'
 
-Bundle 'unite.vim'
+"Bundle 'unite.vim'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 
