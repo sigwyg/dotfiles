@@ -1,8 +1,5 @@
-# Tell applications  who this is.   The ``screen-256color'' terminfo is  in the
-# ncurses-term package for debian.
+# Basis
 term screen-256color;
-
-# Start
 startup_message off
 
 # Keys
