@@ -10,14 +10,13 @@ set rtp+=~/.vim/vundle.git/
 call vundle#rc()
 
 Bundle 'neocomplcache'
-"Bundle 'QuickBuf'
 Bundle 'surround.vim'
 Bundle 'The-NERD-tree'
 Bundle 'snipMate'
 Bundle 'Gundo'
 Bundle 'quickrun.vim'
 Bundle 'smartchr'
-
+"Bundle 'QuickBuf'
 "Bundle 'unite.vim'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
@@ -111,37 +110,20 @@ noremap! <Left> <Nop>
 noremap! <Right> <Nop>
 
 " move
-nnoremap \h <Home>
-nnoremap \l <End>
 nnoremap zl zL
 nnoremap zh zH
 
-inoremap \h <Home>
-inoremap \l <End>
-inoremap \j <C-End>
-inoremap \k <C-Home>
-"inoremap <C-h> <Left>
-"inoremap <C-j> <Down>
-"inoremap <C-k> <Up>
-"inoremap <C-l> <Right>
-
-" date/time
-inoremap ,dd <C-R>=strftime('%Y/%m/%d (%a)')<CR>
-inoremap ,dt <C-R>=strftime('%H:%M')<CR>
-inoremap ,df <C-R>=strftime('%Y-%m-%dT%H:%M:%S+09:00')<CR>
-                
 " text-edit
 noremap <CR> i<CR><ESC>
 command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
 
-
 " brackets"
-"inoremap {} {}<LEFT>
-"inoremap [] []<LEFT>
-"inoremap () ()<LEFT>
-"inoremap "" ""<LEFT>
-"inoremap '' ''<LEFT>
-"inoremap <> <><LEFT>
+inoremap {} {}<LEFT>
+inoremap [] []<LEFT>
+inoremap () ()<LEFT>
+inoremap "" ""<LEFT>
+inoremap '' ''<LEFT>
+inoremap <> <><LEFT>
 inoremap []5 [%  %]<LEFT><LEFT><LEFT>
 inoremap {}5 {%  %}<LEFT><LEFT><LEFT>
 
@@ -154,20 +136,18 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 
 " window
-" nnoremap <silent> <C-x>1 :only<CR>
-" nnoremap <silent> <C-x>2 :sp<CR>
-" nnoremap <silent> <C-x>3 :vsp<CR>
 set splitbelow
 set splitright
 set visualbell
+nnoremap cl :close<CR>
 
 " buffer
-nnoremap <silent> bb :b#<CR>
-nnoremap <silent> bp :bp<CR>
-nnoremap <silent> bn :bn<CR>
-nnoremap <silent> bd :bd<CR>
+nnoremap bb :b#<CR>
+nnoremap bp :bp<CR>
+nnoremap bn :bn<CR>
+nnoremap bd :bd<CR>
 
-" re-select
+" re-select 'last edited text'
 nnoremap gc `[v`]
 vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
@@ -190,19 +170,11 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
-" inoremap <C-x><C-s> <Esc>:w<CR>i
-" nnoremap <C-x><C-s> <Esc>:w<CR>
-" nnoremap <Space>w <Esc>:w<CR>
 
-" <C-k>: delete till line-end.
-inoremap <C-k>  <C-o>D
-
+" For noexpandtab
 augroup MyAutoCmd
     autocmd!
-    " For noexpandtab
     autocmd BufNewFile,BufRead * set expandtab
-    " For netrw
-    "autocmd BufWrite,BufRead * set ft=perl
 augroup END
 
 " closetag
@@ -215,7 +187,7 @@ augroup END
 " markdown
 nnoremap \m :call DisplayMarkdown()<CR>
 function! DisplayMarkdown()
-    !perl ~/Sites/Git/Markdown/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
+    !perl ~/dotfiles/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
     vert diffsplit /tmp/__markdown.html
     highlight DiffChange guibg=grey0
     highlight DiffAdd    guibg=grey0
@@ -391,15 +363,6 @@ endfunction
 
 
 "
-" ----------------------------------------------------------------
-" NERD_tree.vim
-"  - http://vim.sourceforge.net/scripts/script.php?script_id=1658
-" ----------------------------------------------------------------
-"
-nnoremap nt :NERDTreeToggle<CR>
-
-
-"
 " -------------------------------------------------------------------
 " HTML Key Mappings for Typing Character Codes
 " 
@@ -456,43 +419,19 @@ endfunction " MapHTMLKeys()
 
 "
 " htmlform.vim
-"  - from test of mine
+"  - https: //github.com/sigwyg/htmlform.vim
 "
 vnoremap \u :call ChangeUL()<CR>
 vnoremap \t :call ChangeTable()<CR>
 
-" ChangeUL
-function! ChangeUL() range
-    let l:count = a:firstline
 
-    while l:count <= a:lastline
-        let l:str = getline(l:count)
-        let l:out = substitute(l:str, '^\s\+', '', '') 
-        let l:out = substitute(l:str, '^\(.\+\)$', '<li>\1<\/li>', '') 
-        call setline(l:count, l:out)
-let l:count = l:count + 1 
-    endwhile
-
-    call append(a:lastline, '</ul>')
-    call append(a:firstline - 1, '<ul>')
-endfunction
-
-
-" ChangeTable
-function! ChangeTable() range
-    let l:count = a:firstline
-
-    while l:count <= a:lastline
-        let l:str = getline(l:count)
-        let l:out = substitute(l:str, '\s\{2,}', '</td><td>', '') 
-        let l:out = '<tr><td>' . l:out . '</td></tr>'
-        call setline(l:count, l:out)
-        let l:count = l:count + 1 
-    endwhile
-
-    call append(a:lastline, '</table>')
-    call append(a:firstline - 1, '<table>')
-endfunction
+"
+" ----------------------------------------------------------------
+" NERD_tree.vim
+"  - http://vim.sourceforge.net/scripts/script.php?script_id=1658
+" ----------------------------------------------------------------
+"
+nnoremap nt :NERDTreeToggle<CR>
 
 
 " 
@@ -636,22 +575,20 @@ endfor
 " smartchr
 "  - http://www.vim.org/scripts/script.php?script_id=2290
 "
-inoremap <buffer><expr> = smartchr#one_of(' = ', ' == ', '=')
 inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
 inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
 inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
 
-inoremap <buffer><expr> - smartchr#one_of('-'' - ', '--')
+inoremap <buffer><expr> = smartchr#one_of('=', ' = ', ' == ')
+inoremap <buffer><expr> - smartchr#one_of('-', ' - ', '--')
 inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
 
-inoremap <buffer><expr> , smartchr#one_of(', ', ',')
 inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
 inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 
 inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
 inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-
-inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 
 
 "
@@ -660,5 +597,6 @@ inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 " 
 nnoremap ff :VimFiler<CR>
 nnoremap fs :VimFilerSplit<CR>
+nnoremap fd :VimFilerDouble<CR>
 
 
