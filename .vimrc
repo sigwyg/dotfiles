@@ -160,9 +160,9 @@ nnoremap <Space>, :<C-u>edit $MYVIMRC<CR>
 nnoremap <Space>. :<C-u>edit $MYGVIMRC<CR>
 
 " Encode
-command! Utf8 edit ++enc=utf-8
-command! Sjis edit ++enc=sjis
-command! Euc edit ++enc=euc-jp
+command! -bang -nargs=? Utf8 edit<bang> ++enc=utf-8 <args>
+command! -bang -nargs=? Sjis edit<bang> ++enc=sjis <args>
+command! -bang -nargs=? Euc edit<bang> ++enc=euc-jp <args>
 
 " Other Hacks
 noremap ; :
