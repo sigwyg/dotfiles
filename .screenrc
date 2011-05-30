@@ -1,0 +1,38 @@
+# Tell applications  who this is.   The ``screen-256color'' terminfo is  in the
+# ncurses-term package for debian.
+term screen-256color;
+
+# Start
+startup_message off
+
+# Keys
+escape ^l^l
+
+# IF window is DEAD, Screen hold display. (Untill push <ESC>)
+zombie ^c
+
+# Key-bind
+bind w windowlist -b
+bind ^] paste [.]
+bind u eval "encoding UTF-8"
+bind e eval "encoding eucJP"
+bind s eval "encoding SJIS"
+bind j eval "encoding jis"
+setenv LANG ja_JP.UTF-8
+
+# default shell to invoke with ^T-c
+#shell /bin/zsh
+
+# The scroll buffer
+defscrollback 5509
+markkeys h=^B:l=^F:$=^E:^U=^Z:^D=^V
+
+# Messages
+msgwait 3
+msgminwait 2
+
+hardstatus string "%?%h%:%t (screen #%n on %H)%?"
+caption always "%{=r dd}%-Lw%40L>%?%F%{+b WK}%:[%? %n%f %t %?%F%{-}%:]%?%+Lw %?%F%-018=GNU Screen%:%=%? [%02c]"
+sorendition "+rb .G"
+
+
