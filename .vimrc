@@ -134,6 +134,7 @@ nnoremap * *zz
 nnoremap # #zz
 nnoremap g* g*zz
 nnoremap g# g#zz
+cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 
 " window
 set splitbelow
