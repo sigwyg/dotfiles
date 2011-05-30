@@ -21,6 +21,8 @@ Bundle 'smartchr'
 "Bundle 'unite.vim'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
+Bundle 'git://github.com/Shougo/unite.vim.git'
+Bundle 'git://github.com/Sixeight/unite-grep.git'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
