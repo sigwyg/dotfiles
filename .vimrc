@@ -176,6 +176,7 @@ cnoremap <Leader><Leader> ~/
 " For noexpandtab
 augroup MyAutoCmd
     autocmd!
+    " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
 augroup END
 
