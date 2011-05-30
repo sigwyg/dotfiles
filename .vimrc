@@ -16,6 +16,7 @@ Bundle 'snipMate'
 Bundle 'Gundo'
 Bundle 'quickrun.vim'
 Bundle 'smartchr'
+Bundle 'Markdown'
 "Bundle 'QuickBuf'
 "Bundle 'unite.vim'
 Bundle 'git://github.com/Shougo/vimfiler.git'
@@ -104,10 +105,10 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
-noremap! <Up> <Nop>
-noremap! <Down> <Nop>
-noremap! <Left> <Nop>
-noremap! <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
 
 " move
 nnoremap zl zL
