@@ -143,9 +143,9 @@ nnoremap cl :close<CR>
 
 " buffer
 nnoremap bb :b#<CR>
-nnoremap bp :bp<CR>
-nnoremap bn :bn<CR>
-nnoremap bd :bd<CR>
+nnoremap bp :bprevious<CR>
+nnoremap bn :bnext<CR>
+nnoremap bd :bdelete<CR>
 
 " re-select 'last edited text'
 nnoremap gc `[v`]
@@ -155,13 +155,13 @@ onoremap gc :<C-u>normal gc<CR>
 " vim(rc)
 nnoremap <Space>r :<C-u>execute "source " expand("%:p")<CR>
 nnoremap <Space>v :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-nnoremap <Space>, :<C-u>e $MYVIMRC<CR>
-nnoremap <Space>. :<C-u>e $MYGVIMRC<CR>
+nnoremap <Space>, :<C-u>edit $MYVIMRC<CR>
+nnoremap <Space>. :<C-u>edit $MYGVIMRC<CR>
 
 " Encode
-command! Utf8 e ++enc=utf-8
-command! Sjis e ++enc=sjis
-command! Euc e ++enc=euc-jp
+command! Utf8 edit ++enc=utf-8
+command! Sjis edit ++enc=sjis
+command! Euc edit ++enc=euc-jp
 
 " Other Hacks
 noremap ; :
