@@ -1,41 +1,44 @@
 set nocompatible
-set tags=~/.tags
 
-" Vundle
+" -----------------------------------------------------------------------
+" Vundle:{{{
 "  - https://github.com/vim-scripts/vundle
-" ----------------------
+" 
 filetype off
 
 set rtp+=~/.vim/vundle.git/ 
 call vundle#rc()
 
-Bundle 'neocomplcache'
-Bundle 'surround.vim'
-Bundle 'The-NERD-tree'
-Bundle 'snipMate'
-Bundle 'Gundo'
-Bundle 'quickrun.vim'
-Bundle 'smartchr'
+Bundle 'git://github.com/tpope/vim-surround.git'
+Bundle 'git://github.com/msanders/snipmate.vim.git'
+Bundle 'git://github.com/sjl/gundo.vim.git'
 Bundle 'Markdown'
+"Bundle 'The-NERD-tree'
 "Bundle 'QuickBuf'
-"Bundle 'unite.vim'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
+Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
 Bundle 'git://github.com/Sixeight/unite-grep.git'
+
+Bundle 'git://github.com/thinca/vim-qfreplace.git'
+Bundle 'git://github.com/thinca/vim-quickrun.git'
+Bundle 'git://github.com/kana/vim-smartchr.git'
+Bundle 'git://github.com/tsukkee/lingr-vim.git'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
 Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
-Bundle 'git://github.com/thinca/vim-qfreplace.git'
-
-" ----------------------
+"}}}
 
 filetype plugin indent on
 
 
+" -----------------------------------------------------------------------
+" Basis:{{{
+"
+
 " display
-" ----------------------
 set number
 set ruler
 set cmdheight=1
@@ -46,11 +49,8 @@ set linespace=0
 set showcmd
 set wildmenu
 set wildmode=list:longest,full
-"set textwidth=78
 
 " syntax color
-" ---------------------
-"set t_Co=256
 syntax on
 colorscheme ir_black
 highlight LineNr ctermfg=0
@@ -64,7 +64,6 @@ highlight LineNr ctermfg=0
 
 
 " search
-" ----------------------
 set ignorecase
 set smartcase
 set wrapscan
@@ -73,7 +72,6 @@ set incsearch
 set grepprg=grep\ -nH
 
 " edit
-" ---------------------
 set autoindent
 set cindent
 set showmatch
@@ -81,9 +79,9 @@ set backspace=indent,eol,start
 set clipboard=unnamed
 set pastetoggle=<F12>
 set guioptions+=a
+command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
 
 " tab
-" --------------------
 set tabstop=4
 set expandtab
 set smarttab
@@ -94,11 +92,22 @@ set nowrap
 set listchars=tab:>-
 set list
 
-" keymap
+" Enable folding.
+set foldenable
+set foldmethod=marker
+
+" backup
+set backup
+set swapfile
+set backupdir=~/.vim/backup
+set directory=~/.vim/swap
+
+"}}}
+
+
+" -----------------------------------------------------------------------
+" Keymap:{{{
 " --------------------
-"set bioskey
-"set timeout
-"set timeoutlen=300
 
 " practice
 noremap <Up> <Nop>
@@ -107,7 +116,7 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
-inoremap <Left> <Nop>
+"inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " move
@@ -116,7 +125,6 @@ nnoremap zh zH
 
 " text-edit
 noremap <CR> i<CR><ESC>
-command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
 
 " brackets"
 inoremap {} {}<LEFT>
@@ -172,6 +180,12 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
+"}}}
+
+
+" -----------------------------------------------------------------------
+" augroups: {{{
+" 
 
 " For noexpandtab
 augroup MyAutoCmd
@@ -187,51 +201,13 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-" markdown
-nnoremap \m :call DisplayMarkdown()<CR>
-function! DisplayMarkdown()
-    !perl ~/dotfiles/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
-    vert diffsplit /tmp/__markdown.html
-    highlight DiffChange guibg=grey0
-    highlight DiffAdd    guibg=grey0
-    highlight DiffText   gui=NONE, guibg=grey0
-    highlight DiffDelete guibg=grey0
- 
-    call cursor(1,1)
-"    %diffput
-"    wincmd c
-"    set ft=html
-"    diffoff<CR>
-endfunction
-
-" custom :cd to :CD
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
-endfunction
-
-" backup
-" --------------------
-set backup
-set swapfile
-set backupdir=~/.vim/backup
-set directory=~/.vim/swap
+"}}}
 
 
 
-"
-" ------------------------------------------------
-" encoding
-" > http://www.kawaz.jp/pukiwiki/?vim
-" ------------------------------------------------
+" -----------------------------------------------------------------------
+" encoding: {{{
+"  - http://www.kawaz.jp/pukiwiki/?vim
 "
 
 if !has('gui_macvim') && !has('kaoriya')
@@ -285,25 +261,23 @@ if !has('gui_macvim') && !has('kaoriya')
     set ambiwidth=double
     endif
 endif
+"}}}
 
 
-"
-" http://nanasi.jp/articles/vim/bufonly_vim.html#id4
-"
 " -----------------------------------------------------------------------
-" BufOnly.vim  -  Delete all the buffers except the current/named buffer.
+" BufOnly.vim: {{{
+"  - Delete all the buffers except the current/named buffer.
+"  - http://nanasi.jp/articles/vim/bufonly_vim.html#id4
 "
 " Copyright November 2003 by Christian J. Robinson <infynity@onewest.net>
 "
 " Distributed under the terms of the Vim license.  See ":help license".
 "
 " Usage:
-"
-" :Bonly / :BOnly / :Bufonly / :BufOnly [buffer] 
+"   :Bonly / :BOnly / :Bufonly / :BufOnly [buffer] 
 "
 " Without any arguments the current buffer is kept.  With an argument the
 " buffer name/number supplied is kept.
-" -----------------------------------------------------------------------
 "
 
 command! -nargs=? -complete=buffer -bang Bonly
@@ -362,12 +336,11 @@ function! BufOnly(buffer, bang)
     endif
 
 endfunction
+"}}}
 
 
-
-"
-" -------------------------------------------------------------------
-" HTML Key Mappings for Typing Character Codes
+" -----------------------------------------------------------------------
+" HTML Key Mappings for Typing Character Codes: {{{
 " 
 " |--------------------------------------------------------------------
 " |Keys     |Insert   |For  |Comment
@@ -418,34 +391,10 @@ function! MapHTMLKeys(...)
     autocmd! BufLeave *
   endif " test for mapping/unmapping
 endfunction " MapHTMLKeys()
+"}}}
 
-
-"
-" htmlform.vim
-"  - https: //github.com/sigwyg/htmlform.vim
-"
-vnoremap \u :call ChangeUL()<CR>
-vnoremap \t :call ChangeTable()<CR>
-
-
-"
-" ----------------------------------------------------------------
-" NERD_tree.vim
-"  - http://vim.sourceforge.net/scripts/script.php?script_id=1658
-" ----------------------------------------------------------------
-"
-nnoremap nt :NERDTreeToggle<CR>
-
-
-" 
-" QuickBuf
-"  - http://www.vim.org/scripts/script.php?script_id=1910
-"
-"let g:qb_hotkey = "<F3>"
-
-
-"
-" snipMate.vim
+" -----------------------------------------------------------------------
+" snipMate.vim: {{{
 "  - http://www.vim.org/scripts/script.php?script_id=2540
 "
 " below, Reload xxx.snippet. :call SnipMateReload()
@@ -460,10 +409,11 @@ function! SnipMateReload()
         silent! call GetSnippets(g:snippets_dir, ft)
     endif
 endfunction
+"}}}
 
-
-"
-" origine -> zoom.vim@hokaccha
+" -----------------------------------------------------------------------
+" FonstToggle: {{{
+"  - inspired zoom.vim@hokaccha
 "  - http://gist.github.com/200505
 "
 function! FontToggle(trigger)
@@ -490,12 +440,14 @@ function! FontToggle(trigger)
 endfunction
 nnoremap <C-f> :<C-u>call FontToggle('f')<CR>
 nnoremap <C-b> :<C-u>call FontToggle('b')<CR>
+"}}}
 
-"
-" neocomplcache
+
+" -----------------------------------------------------------------------
+" neocomplcache: {{{
 "  - https://github.com/Shougo/neocomplcache
 "  - https://github.com/Shougo/neocomplcache/blob/998764e1072fa5b183c3da4705b8187658fa0b41/presen/neocomplcache.txt
-
+"
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
@@ -547,16 +499,12 @@ inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<
 "    let g:neocomplcache_keyword_patterns = {}
 "endif
 "let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-"
-" gundo.vim
-"  - https://github.com/sjl/gundo.vim
-"
-nnoremap <F5> :GundoToggle<CR>
+"}}}
 
 
-"
-" quickrun
+
+" -----------------------------------------------------------------------
+" quickrun: {{{
 "  - https://github.com/thinca/vim-quickrun/
 "
 let g:quickrun_config = {}
@@ -572,10 +520,11 @@ for [key, com] in items({
     execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
     execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
 endfor
+"}}}
 
 
-"
-" smartchr
+" -----------------------------------------------------------------------
+" smartchr: {{{
 "  - http://www.vim.org/scripts/script.php?script_id=2290
 "
 inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
@@ -587,11 +536,12 @@ inoremap <buffer><expr> - smartchr#one_of('-', ' - ', '--')
 inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
 
 inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+inoremap <buffer><expr> : smartchr#one_of(': ', ':')
 inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 
 inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
 inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+"}}}
 
 
 "
@@ -601,5 +551,53 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 nnoremap ff :VimFiler<CR>
 nnoremap fs :VimFilerSplit<CR>
 nnoremap fd :VimFilerDouble<CR>
+
+
+"
+" htmlform.vim
+"  - https: //github.com/sigwyg/htmlform.vim
+"
+vnoremap \u :call ChangeUL()<CR>
+vnoremap \t :call ChangeTable()<CR>
+
+
+"
+" gundo.vim
+"  - https://github.com/sjl/gundo.vim
+"
+nnoremap <F5> :GundoToggle<CR>
+
+
+" markdown
+nnoremap \m :call DisplayMarkdown()<CR>
+function! DisplayMarkdown()
+    !perl ~/dotfiles/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
+    vert diffsplit /tmp/__markdown.html
+    highlight DiffChange guibg=grey0
+    highlight DiffAdd    guibg=grey0
+    highlight DiffText   gui=NONE, guibg=grey0
+    highlight DiffDelete guibg=grey0
+ 
+    call cursor(1,1)
+"    %diffput
+"    wincmd c
+"    set ft=html
+"    diffoff<CR>
+endfunction
+
+
+" custom :cd to :CD
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
 
 
