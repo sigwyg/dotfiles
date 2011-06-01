@@ -4,12 +4,21 @@ umask 022
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# aliases
-alias ls='ls -G'
-alias la='ls -la -G'
+# alias
 alias gis='git status'
 alias gid='git diff'
 alias grep='grep --color=auto'
+
+if [ "$OSTYPE" > "darwin" ]; then
+    alias vi='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
+    alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
+    alias ls='ls -G'
+    alias la='ls -la -G'
+else
+    alias ls='ls --color'
+    alias la='ls -la --color'
+fi
+
 
 # history
 HISTSIZE=50000
