@@ -9,12 +9,12 @@ alias gis='git status'
 alias gid='git diff'
 alias grep='grep --color=auto'
 
-if [ "$OSTYPE" == "darwin10.0" ]; then
+if [[ "$OSTYPE" == "darwin10.0" ]]; then
     alias vi='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
     alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
     alias ls='ls -G'
     alias la='ls -la -G'
-elif [ "$OSTYPE" == "linux-gnu"]; then
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
     alias ls='ls --color'
     alias la='ls -la --color'
 else
