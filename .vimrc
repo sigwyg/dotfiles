@@ -1,7 +1,7 @@
 set nocompatible
 
 " -----------------------------------------------------------------------
-" Vundle:{{{
+" Vundle
 "  - https://github.com/vim-scripts/vundle
 " 
 filetype off
@@ -13,26 +13,28 @@ Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/sjl/gundo.vim.git'
 Bundle 'Markdown'
-"Bundle 'The-NERD-tree'
-"Bundle 'QuickBuf'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/Sixeight/unite-grep.git'
+Bundle 'git://github.com/Shougo/unite-grep.git'
+Bundle 'https://github.com/Shougo/unite-help.git'
+"Bundle 'git://github.com/soh335/unite-qflist.git'
+Bundle 'git://github.com/sgur/unite-qf.git'
 
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
 Bundle 'git://github.com/kana/vim-smartchr.git'
-Bundle 'git://github.com/tsukkee/lingr-vim.git'
+"Bundle 'git://github.com/tsukkee/lingr-vim.git'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sigwyg/htmlform.vim.git'
 Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
-"}}}
+
+" -----------------------------------------------------------------------
+
 
 filetype plugin indent on
-
 
 " -----------------------------------------------------------------------
 " Basis:{{{
@@ -51,6 +53,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " syntax color
+"set t_Co=8
 syntax on
 colorscheme ir_black
 highlight LineNr ctermfg=0
@@ -393,6 +396,7 @@ function! MapHTMLKeys(...)
 endfunction " MapHTMLKeys()
 "}}}
 
+
 " -----------------------------------------------------------------------
 " snipMate.vim: {{{
 "  - http://www.vim.org/scripts/script.php?script_id=2540
@@ -410,6 +414,7 @@ function! SnipMateReload()
     endif
 endfunction
 "}}}
+
 
 " -----------------------------------------------------------------------
 " FonstToggle: {{{
@@ -541,6 +546,34 @@ inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
 
 inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
 inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+"}}}
+
+
+" -----------------------------------------------------------------------
+"  unite.vim: {{{
+"call unite#custom_default_action('grep', 'my_replace')
+"
+let my_replace = {
+      \ 'description' : 'replace quickfix',
+      \ 'is_selectable' : 1,
+      \ }
+function! my_replace.func(candidates)
+  let l:qflist = []
+  for candidate in a:candidates
+    if bufnr(candidate.action__path) >= 0
+      call add(l:qflist, {
+            \ 'filename' : candidate.action__path,
+            \ 'lnum' : candidate.action__line,
+            \ 'text' : candidate.source__pattern,
+            \ })
+    endif
+  endfor
+
+  call setqflist(l:qflist)
+  call qfreplace#start('')
+endfunction
+call unite#custom_action('source/grep/jump_list', 'replace', my_replace)
+unlet my_replace
 "}}}
 
 
