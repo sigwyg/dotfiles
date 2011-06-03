@@ -18,9 +18,9 @@ Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
 Bundle 'git://github.com/Shougo/unite-grep.git'
-Bundle 'https://github.com/Shougo/unite-help.git'
+"Bundle 'https://github.com/Shougo/unite-help.git'
 "Bundle 'git://github.com/soh335/unite-qflist.git'
-Bundle 'git://github.com/sgur/unite-qf.git'
+"Bundle 'git://github.com/sgur/unite-qf.git'
 
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
@@ -507,7 +507,6 @@ inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<
 "}}}
 
 
-
 " -----------------------------------------------------------------------
 " quickrun: {{{
 "  - https://github.com/thinca/vim-quickrun/
@@ -550,31 +549,19 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 
 
 " -----------------------------------------------------------------------
-"  unite.vim: {{{
-"call unite#custom_default_action('grep', 'my_replace')
+" unite.vim: {{{
+"  - https://github.com/Shougo/unite.vim
 "
-let my_replace = {
-      \ 'description' : 'replace quickfix',
-      \ 'is_selectable' : 1,
-      \ }
-function! my_replace.func(candidates)
-  let l:qflist = []
-  for candidate in a:candidates
-    if bufnr(candidate.action__path) >= 0
-      call add(l:qflist, {
-            \ 'filename' : candidate.action__path,
-            \ 'lnum' : candidate.action__line,
-            \ 'text' : candidate.source__pattern,
-            \ })
-    endif
-  endfor
+autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()"
+    " Overwrite settings.
+    imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
+    imap <buffer> '     <Plug>(unite_quick_match_default_action)
+    nmap <buffer> '     <Plug>(unite_quick_match_default_action)
+    imap <buffer> <C-g>     <Plug>(unite_input_directory)
 
-  call setqflist(l:qflist)
-  call qfreplace#start('')
-endfunction
-call unite#custom_action('source/grep/jump_list', 'replace', my_replace)
-unlet my_replace
-"}}}
+    nmap <buffer><expr> r unite#do_action('replace')
+endfunction"
 
 
 "
