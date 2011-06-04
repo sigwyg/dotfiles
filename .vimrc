@@ -555,12 +555,8 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
-    imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-    imap <buffer> '     <Plug>(unite_quick_match_default_action)
-    nmap <buffer> '     <Plug>(unite_quick_match_default_action)
     imap <buffer> <C-g>     <Plug>(unite_input_directory)
-
-    nmap <buffer><expr> r unite#do_action('replace')
+    nmap <buffer> l <Nop>
 endfunction"
 
 
