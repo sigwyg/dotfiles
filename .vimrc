@@ -560,18 +560,47 @@ function! s:unite_my_settings()"
     imap <buffer> <C-g>     <Plug>(unite_input_directory)
     nmap <buffer> l <Nop>
 endfunction"
+"}}}
 
 
-"
-" VimFiler
+" -----------------------------------------------------------------------
+" VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
 " 
 nnoremap ff :VimFiler<CR>
 nnoremap fs :VimFilerSplit<CR>
 nnoremap fd :VimFilerDouble<CR>
+"}}}
 
 
+" -----------------------------------------------------------------------
+" gundo.vim: {{{
+"  - https://github.com/sjl/gundo.vim
 "
+nnoremap <F5> :GundoToggle<CR>
+"}}}
+
+
+" -----------------------------------------------------------------------
+" Like :CdCurrent {{{
+"  - :CD
+"
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+"}}}
+
+
+" -----------------------------------------------------------------------
 " htmlform.vim
 "  - https: //github.com/sigwyg/htmlform.vim
 "
@@ -611,13 +640,6 @@ function! ChangeTable() range
 endfunction
 
 
-"
-" gundo.vim
-"  - https://github.com/sjl/gundo.vim
-"
-nnoremap <F5> :GundoToggle<CR>
-
-
 " markdown
 nnoremap \m :call DisplayMarkdown()<CR>
 function! DisplayMarkdown()
@@ -633,21 +655,6 @@ function! DisplayMarkdown()
 "    wincmd c
 "    set ft=html
 "    diffoff<CR>
-endfunction
-
-
-" custom :cd to :CD
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
 endfunction
 
 
