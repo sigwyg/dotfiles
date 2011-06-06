@@ -200,8 +200,8 @@ augroup END
 " closetag
 augroup MyXML
   autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+"  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+"  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
 "}}}
@@ -552,6 +552,8 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 " unite.vim: {{{
 "  - https://github.com/Shougo/unite.vim
 "
+nnoremap fu :Unite buffer file_mru file -no-quit<CR>
+
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
@@ -575,6 +577,38 @@ nnoremap fd :VimFilerDouble<CR>
 "
 vnoremap \u :call ChangeUL()<CR>
 vnoremap \t :call ChangeTable()<CR>
+" ChangeUL
+function! ChangeUL() range
+    let l:count = a:firstline
+
+    while l:count <= a:lastline
+        let l:str = getline(l:count)
+        let l:out = substitute(l:str, '^\s\+', '', '')
+        let l:out = substitute(l:str, '^\(.\+\)$', '<li>\1<\/li>', '')
+        call setline(l:count, l:out)
+        let l:count = l:count + 1
+    endwhile
+
+    call append(a:lastline, '</ul>')
+    call append(a:firstline - 1, '<ul>')
+endfunction
+
+
+" ChangeTable
+function! ChangeTable() range
+    let l:count = a:firstline
+
+    while l:count <= a:lastline
+        let l:str = getline(l:count)
+        let l:out = substitute(l:str, '\s\{2,}', '</td><td>', '')
+        let l:out = '<tr><td>' . l:out . '</td></tr>'
+        call setline(l:count, l:out)
+        let l:count = l:count + 1
+    endwhile
+
+    call append(a:lastline, '</table>')
+    call append(a:firstline - 1, '<table>')
+endfunction
 
 
 "
