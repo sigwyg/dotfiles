@@ -73,8 +73,8 @@ set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-set grepprg=ack\ -a
-"set grepprg=grep\ -nH
+"set grepprg=ack\ -a
+set grepprg=grep\ -nH
 
 " edit
 set autoindent
@@ -582,7 +582,7 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 "
 nnoremap fu :Unite buffer file_mru file -no-quit<CR>
 nnoremap fg :Unite grep -verbose -no-quit<CR>
-nnoremap fb :Unite bookmark -no-quit<CR>
+nnoremap fb :Unite bookmark<CR>
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
