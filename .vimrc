@@ -72,7 +72,8 @@ set smartcase
 set wrapscan
 set hlsearch
 set incsearch
-set grepprg=grep\ -nH
+set grepprg=ack\ -a
+"set grepprg=grep\ -nH
 
 " edit
 set autoindent
@@ -553,6 +554,8 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 "  - https://github.com/Shougo/unite.vim
 "
 nnoremap fu :Unite buffer file_mru file -no-quit<CR>
+nnoremap fg :Unite grep -verbose -no-quit<CR>
+nnoremap fb :Unite bookmark -no-quit<CR>
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
@@ -560,6 +563,14 @@ function! s:unite_my_settings()"
     imap <buffer> <C-g>     <Plug>(unite_input_directory)
     nmap <buffer> l <Nop>
 endfunction"
+"}}}
+
+
+" -----------------------------------------------------------------------
+" unite-grep: {{{
+"  - https://github.com/Shougo/vimproc/tree/master
+let g:unite_source_grep_command = "grep"
+let g:unite_source_grep_default_opts = "-Hnr"
 "}}}
 
 
