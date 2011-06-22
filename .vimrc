@@ -210,7 +210,7 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead * set expandtab
 
     " cursor-line highlight
-    autocmd WinEnter * setlocal cursorline
+    autocmd WinEnter,BufEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline
     
     " closetag
