@@ -55,6 +55,7 @@ set wildmode=list:longest,full
 " syntax color
 "set t_Co=8
 syntax on
+
 colorscheme ir_black
 highlight LineNr ctermfg=0
 
@@ -201,11 +202,11 @@ cnoremap <Leader><Leader> ~/
 " augroups: {{{
 " 
 
-" reset autocmd-list
-autocmd!
-
 " For noexpandtab
 augroup MyAutoCmd
+    " reset autocmd-list
+    autocmd!
+    
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
 
@@ -233,7 +234,6 @@ augroup END
 "\'
 
 "}}}
-
 
 
 " -----------------------------------------------------------------------
