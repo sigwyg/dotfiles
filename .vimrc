@@ -120,12 +120,22 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
-"inoremap <Left> <Nop>
 inoremap <Right> <Nop>
+
+" below, cause error on MacVim-KaoriYa 
+"inoremap <Left> <Nop>
+
+" help
+nnoremap <C-h> :<C-u>help<Space>
+nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 " move
 nnoremap zl zL
 nnoremap zh zH
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 
 " text-edit
 noremap <CR> i<CR><ESC>
@@ -191,19 +201,36 @@ cnoremap <Leader><Leader> ~/
 " augroups: {{{
 " 
 
+" reset autocmd-list
+autocmd!
+
 " For noexpandtab
 augroup MyAutoCmd
-    autocmd!
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
+
+    " cursor-line highlight
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+    
+    " closetag
+    autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
+    autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
+    "autocmd Filetype html inoremap <buffer> <LT>? <LT>/<C-x><C-o>
+
 augroup END
 
-" closetag
-augroup MyXML
-  autocmd!
-"  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-augroup END
+"inoremap <buffer> <LT>? <LT>/
+"inoremap <buffer> ?> />
+
+" if type 'set filetype=xxxxx', reset key-binding
+"if !exists('b:undo_ftplugin')
+"    let b:undo_ftplugin = ''
+"endif
+"let b:undo_ftplugin .= '
+"\   | execute "iunmap <buffer> <LT>?"
+"\   | execute "iunmap <buffer> ?>"
+"\'
 
 "}}}
 
