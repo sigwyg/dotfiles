@@ -219,6 +219,8 @@ augroup MyAutoCmd
     autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
     "autocmd Filetype html inoremap <buffer> <LT>? <LT>/<C-x><C-o>
 
+    " format
+    autocmd BufRead *.mkd setlocal wrap
 augroup END
 
 "inoremap <buffer> <LT>? <LT>/
