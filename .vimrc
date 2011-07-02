@@ -17,7 +17,9 @@ Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/Shougo/unite-grep.git'
+Bundle 'git://github.com/Shougo/vimshell.git'
+Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
+"Bundle 'git://github.com/Shougo/unite-grep.git'
 "Bundle 'https://github.com/Shougo/unite-help.git'
 "Bundle 'git://github.com/soh335/unite-qflist.git'
 "Bundle 'git://github.com/sgur/unite-qf.git'
@@ -581,6 +583,7 @@ inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 " unite.vim: {{{
 "  - https://github.com/Shougo/unite.vim
 "
+let g:unite_winheight = 10
 nnoremap fu :Unite buffer file_mru file -no-quit<CR>
 nnoremap fg :Unite grep -verbose -no-quit<CR>
 nnoremap fb :Unite bookmark<CR>
@@ -588,7 +591,7 @@ nnoremap fb :Unite bookmark<CR>
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
-    imap <buffer> <C-g>     <Plug>(unite_input_directory)
+    imap <buffer> <C-g> <Plug>(unite_input_directory)
     nmap <buffer> l <Nop>
 endfunction"
 "}}}
