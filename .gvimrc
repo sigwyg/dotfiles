@@ -17,6 +17,7 @@ if has('gui_macvim')
     set antialias
     set guifont=Courier\ New:h14
     colorscheme ir_black
+    "highlight Normal guibg=#0000ff
     
 endif
 
