@@ -103,6 +103,9 @@ set list
 set foldenable
 set foldmethod=marker
 
+" diff
+set diffopt=filler,vertical
+
 " backup
 set backup
 set swapfile
