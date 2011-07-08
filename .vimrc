@@ -132,8 +132,8 @@ inoremap <Right> <Nop>
 "inoremap <Left> <Nop>
 
 " help
-nnoremap <C-h> :<C-u>help<Space>
-nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
+"nnoremap <C-h> :<C-u>help<Space>
+"nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 " move
 nnoremap zl zL
