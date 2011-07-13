@@ -26,7 +26,7 @@ Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
 
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
-Bundle 'git://github.com/kana/vim-smartchr.git'
+"Bundle 'git://github.com/kana/vim-smartchr.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
@@ -567,19 +567,19 @@ endfor
 " smartchr: {{{
 "  - http://www.vim.org/scripts/script.php?script_id=2290
 "
-inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
-inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
-
-inoremap <buffer><expr> = smartchr#one_of('=', ' = ', ' == ')
-inoremap <buffer><expr> - smartchr#one_of('-', ' - ', '--')
-inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
-"inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
-"inoremap <buffer><expr> : smartchr#one_of(': ', ':')
-inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
-
-inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
-inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+"inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
+"inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
+"
+"inoremap <buffer><expr> = smartchr#one_of('=', ' = ', ' == ')
+"inoremap <buffer><expr> - smartchr#one_of('-', ' - ', '--')
+"inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
+""inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
+""inoremap <buffer><expr> : smartchr#one_of(': ', ':')
+"inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
+"inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
+"
+"inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
+"inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
 "}}}
 
 
