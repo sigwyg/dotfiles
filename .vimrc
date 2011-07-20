@@ -121,6 +121,12 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Right> <Nop>
 
+" practice <Esc>
+inoremap <C-c> <Nop>
+noremap <C-c> <Nop>
+noremap <C-j> <Esc>
+inoremap <C-j> <Esc>
+
 " below, cause error on MacVim-KaoriYa 
 "inoremap <Left> <Nop>
 
@@ -194,7 +200,6 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
-inoremap <C-c> <Esc>
 "}}}
 
 
@@ -501,8 +506,8 @@ inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " <CR> : delete popup and hold indent
-" <C-h>: close popup and delete backword char.
 " <BS> : close popup and delete backword char.
+" <C-h>: close popup and delete backword char.
 " <C-n>: manual-start neocomplcache.
 " <C-p>: Vim native-keyword complement.
 " <C-j>: Vim native-Omni completion.
@@ -513,7 +518,7 @@ inoremap <expr><C-y> neocomplcache#smart_close_popup()."\<C-y>"
 inoremap <expr><C-e> neocomplcache#smart_close_popup()."\<C-e>"
 inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
-inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
+"inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 
 " <TAB>: TAB completion.(Can't work...!)
 "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
