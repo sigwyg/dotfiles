@@ -9,28 +9,21 @@ filetype off
 set rtp+=~/.vim/vundle.git/ 
 call vundle#rc()
 
+Bundle 'Markdown'
 Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
 Bundle 'git://github.com/sjl/gundo.vim.git'
-Bundle 'Markdown'
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
 Bundle 'git://github.com/Shougo/unite.vim.git'
 Bundle 'git://github.com/Shougo/vimshell.git'
 Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
-"Bundle 'git://github.com/Shougo/unite-grep.git'
-"Bundle 'https://github.com/Shougo/unite-help.git'
-"Bundle 'git://github.com/soh335/unite-qflist.git'
-"Bundle 'git://github.com/sgur/unite-qf.git'
-
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
-"Bundle 'git://github.com/kana/vim-smartchr.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
 
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/sigwyg/htmlform.vim.git'
 Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
 
 " -----------------------------------------------------------------------
@@ -201,6 +194,7 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
+inoremap <C-c> <Esc>
 "}}}
 
 
@@ -596,7 +590,6 @@ autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
     imap <buffer> <C-g> <Plug>(unite_input_directory)
-    nmap <buffer> l <Nop>
 endfunction"
 "}}}
 
@@ -647,8 +640,9 @@ endfunction
 
 
 " -----------------------------------------------------------------------
-" htmlform.vim
+" htmlform.vim: {{{
 "  - https: //github.com/sigwyg/htmlform.vim
+"  - http://archiva.jp/web/sugamo_css/sugamo_vim_01.html
 "
 vnoremap \u :call ChangeUL()<CR>
 vnoremap \t :call ChangeTable()<CR>
@@ -684,9 +678,11 @@ function! ChangeTable() range
     call append(a:lastline, '</table>')
     call append(a:firstline - 1, '<table>')
 endfunction
+" }}}
 
 
-" markdown
+" for markdown: {{{
+"  - http://archiva.jp/web/tool/vim2mkd.html
 nnoremap \m :call DisplayMarkdown()<CR>
 function! DisplayMarkdown()
     !perl ~/dotfiles/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
@@ -702,5 +698,4 @@ function! DisplayMarkdown()
 "    set ft=html
 "    diffoff<CR>
 endfunction
-
-
+" }}}
