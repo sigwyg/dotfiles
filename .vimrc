@@ -22,7 +22,7 @@ Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
-
+Bundle 'git://github.com/t9md/vim-textmanip.git'
 Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
 
@@ -661,6 +661,20 @@ endfunction
 autocmd FileType int-* call s:interactive_settings()
 function! s:interactive_settings()
 endfunction
+"}}}
+
+
+" -----------------------------------------------------------------------
+" textmanip.vim: {{{
+"  - https://github.com/t9md/vim-textmanip
+"
+vmap <C-j> <Plug>(Textmanip.move_selection_down)
+vmap <C-k> <Plug>(Textmanip.move_selection_up)
+vmap <C-h> <Plug>(Textmanip.move_selection_left)
+vmap <C-l> <Plug>(Textmanip.move_selection_right)
+
+vmap <D-d> <Plug>(Textmanip.duplicate_selection_v)
+nmap <D-d> <Plug>(Textmanip.duplicate_selection_n)
 "}}}
 
 
