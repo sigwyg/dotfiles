@@ -124,8 +124,7 @@ inoremap <Right> <Nop>
 " practice <Esc>
 inoremap <C-c> <Nop>
 noremap <C-c> <Nop>
-noremap <C-j> <Esc>
-inoremap <C-j> <Esc>
+inoremap jj <Esc>
 
 " below, cause error on MacVim-KaoriYa 
 "inoremap <Left> <Nop>
@@ -651,7 +650,7 @@ autocmd FileType vimshell
 \ call vimshell#altercmd#define('g', 'git')
 \| call vimshell#altercmd#define('i', 'iexe')
 \| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('la', 'ls -la')
+\| call vimshell#altercmd#define('ll', 'ls -l')
 \| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
 
 function! g:my_chpwd(args, context)
