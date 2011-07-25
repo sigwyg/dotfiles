@@ -12,7 +12,11 @@ call vundle#rc()
 Bundle 'Markdown'
 Bundle 'git://github.com/tpope/vim-surround.git'
 Bundle 'git://github.com/msanders/snipmate.vim.git'
+Bundle 'git://github.com/h1mesuke/vim-alignta.git'
 Bundle 'git://github.com/sjl/gundo.vim.git'
+Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
+
 Bundle 'git://github.com/Shougo/vimfiler.git'
 Bundle 'git://github.com/Shougo/vimproc.git'
 Bundle 'git://github.com/Shougo/neocomplcache.git'
@@ -23,8 +27,7 @@ Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
+
 
 " -----------------------------------------------------------------------
 
@@ -549,10 +552,10 @@ let g:quickrun_config = {}
 let g:quickrun_config.haskell = {'command' : 'runhugs'}
 
 " Set shortcut keys.
+" \   '<Leader>w' : '>',
 for [key, com] in items({
 \   '<Leader>x' : '>:',
 \   '<Leader>p' : '>!',
-\   '<Leader>w' : '>',
 \   '<Leader>q' : '>>',
 \ })
     execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
@@ -764,3 +767,6 @@ function! DisplayMarkdown()
 "    diffoff<CR>
 endfunction
 " }}}
+
+
+
