@@ -56,6 +56,8 @@ syntax on
 
 colorscheme ir_black
 highlight LineNr ctermfg=0
+highlight CursorLine   cterm=bold
+highlight CursorColumn ctermbg=0
 
 "colorscheme slate
 "highlight Normal guibg=grey5
@@ -109,7 +111,6 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
 "}}}
-
 
 " -----------------------------------------------------------------------
 " Keymap:{{{
