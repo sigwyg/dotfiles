@@ -219,7 +219,9 @@ augroup MyAutoCmd
 
     " cursor-line highlight
     autocmd WinEnter,BufEnter * setlocal cursorline
+    autocmd WinEnter,BufEnter * setlocal cursorcolumn
     autocmd WinLeave * setlocal nocursorline
+    autocmd WinLeave * setlocal nocursorcolumn
     
     " closetag
     autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
