@@ -600,9 +600,10 @@ endfor
 "
 let g:unite_winheight = 10
 nnoremap ff :Unite file -no-quit<CR>
+nnoremap fg :Unite -input=/Users/sigwyg/Dropbox/memo/ -buffer-name=files file<CR>
 nnoremap fu :Unite buffer file_mru -no-quit<CR>
-nnoremap fg :Unite grep -verbose -no-quit<CR>
 nnoremap fb :Unite bookmark<CR>
+nnoremap fl :Unite line<CR>
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
@@ -724,6 +725,7 @@ endfunction
 "}}}
 
 
+" -----------------------------------------------------------------------
 " fontzoom.vim: {{{
 nmap + <Plug>(fontzoom-larger)
 nmap _ <Plug>(fontzoom-smaller)
