@@ -25,6 +25,7 @@ Bundle 'git://github.com/Shougo/vimshell.git'
 Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
 Bundle 'git://github.com/thinca/vim-qfreplace.git'
 Bundle 'git://github.com/thinca/vim-quickrun.git'
+Bundle 'git://github.com/thinca/vim-fontzoom.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
 
@@ -150,7 +151,6 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
-noremap + j$
 
 " text-edit
 noremap <CR> i<CR><ESC>
@@ -721,6 +721,12 @@ function! s:ChangeCurrentDir(directory, bang)
         pwd
     endif
 endfunction
+"}}}
+
+
+" fontzoom.vim: {{{
+nmap + <Plug>(fontzoom-larger)
+nmap _ <Plug>(fontzoom-smaller)
 "}}}
 
 
