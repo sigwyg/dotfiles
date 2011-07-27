@@ -104,6 +104,11 @@ set foldmethod=marker
 " diff
 set diffopt=filler,vertical
 
+" window
+set splitbelow
+set splitright
+set visualbell
+
 " backup
 set backup
 set swapfile
@@ -111,6 +116,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
 "}}}
+
 
 " -----------------------------------------------------------------------
 " Keymap:{{{
@@ -168,10 +174,11 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 
-" window
-set splitbelow
-set splitright
-set visualbell
+" fix window-size
+nnoremap <silent> <S-Left>  :5wincmd <<CR>
+nnoremap <silent> <S-Right> :5wincmd ><CR>
+nnoremap <silent> <S-Up>    :5wincmd -<CR>
+nnoremap <silent> <S-Down>  :5wincmd +<CR>
 nnoremap cl :close<CR>
 
 " buffer
@@ -592,7 +599,8 @@ endfor
 "  - https://github.com/Shougo/unite.vim
 "
 let g:unite_winheight = 10
-nnoremap fu :Unite buffer file_mru file -no-quit<CR>
+nnoremap ff :Unite file -no-quit<CR>
+nnoremap fu :Unite buffer file_mru -no-quit<CR>
 nnoremap fg :Unite grep -verbose -no-quit<CR>
 nnoremap fb :Unite bookmark<CR>
 
@@ -616,9 +624,16 @@ let g:unite_source_grep_default_opts = "-Hnr"
 " VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
 " 
-nnoremap ff :VimFiler<CR>
-nnoremap fs :VimFilerSplit<CR>
-nnoremap fd :VimFilerDouble<CR>
+nnoremap <F3> :VimFilerSimple<CR>
+let g:vimfiler_split_command = 'vertical rightbelow vsplit'
+let g:vimfiler_min_filename_width = 20
+let g:vimfiler_max_filename_width = 50
+let g:vimfiler_as_default_explorer = 1
+
+autocmd MyAutoCmd FileType unite call s:vimfiler_my_settings()
+function! s:vimfiler_my_settings()"
+    " Overwrite settings.
+endfunction"
 "}}}
 
 
@@ -673,13 +688,12 @@ endfunction
 " textmanip.vim: {{{
 "  - https://github.com/t9md/vim-textmanip
 "
-vmap <C-j> <Plug>(Textmanip.move_selection_down)
-vmap <C-k> <Plug>(Textmanip.move_selection_up)
-vmap <C-h> <Plug>(Textmanip.move_selection_left)
-vmap <C-l> <Plug>(Textmanip.move_selection_right)
+xmap <C-j> <Plug>(Textmanip.move_selection_down)
+xmap <C-k> <Plug>(Textmanip.move_selection_up)
+xmap <C-h> <Plug>(Textmanip.move_selection_left)
+xmap <C-l> <Plug>(Textmanip.move_selection_right)
 
-vmap <D-d> <Plug>(Textmanip.duplicate_selection_v)
-nmap <D-d> <Plug>(Textmanip.duplicate_selection_n)
+xmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 "}}}
 
 
