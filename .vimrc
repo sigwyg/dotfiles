@@ -136,8 +136,8 @@ inoremap <Right> <Nop>
 inoremap <C-c> <Nop>
 noremap <C-c> <Nop>
 "inoremap jj <Esc>
-inoremap <C-;> <Esc>
-noremap <C-;> <Esc>
+inoremap <C-j> <Esc>
+nnoremap <C-j> <Esc>
 
 " below, cause error on MacVim-KaoriYa 
 "inoremap <Left> <Nop>
