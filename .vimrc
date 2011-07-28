@@ -135,7 +135,9 @@ inoremap <Right> <Nop>
 " practice <Esc>
 inoremap <C-c> <Nop>
 noremap <C-c> <Nop>
-inoremap jj <Esc>
+"inoremap jj <Esc>
+inoremap <C-;> <Esc>
+noremap <C-;> <Esc>
 
 " below, cause error on MacVim-KaoriYa 
 "inoremap <Left> <Nop>
