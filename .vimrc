@@ -54,6 +54,8 @@ set wildmode=list:longest,full
 " syntax color
 "set t_Co=8
 syntax on
+set cursorline
+set cursorcolumn
 
 colorscheme ir_black
 highlight LineNr ctermfg=0
@@ -227,10 +229,11 @@ augroup MyAutoCmd
     autocmd BufNewFile,BufRead * set expandtab
 
     " cursor-line highlight
-    autocmd WinEnter,BufEnter * setlocal cursorline
-    autocmd WinEnter,BufEnter * setlocal cursorcolumn
-    autocmd WinLeave * setlocal nocursorline
-    autocmd WinLeave * setlocal nocursorcolumn
+    "  - when .vimrc reloaded, VimShell-ssh corrupting
+    "autocmd WinEnter,BufEnter * setlocal cursorline
+    "autocmd WinEnter,BufEnter * setlocal cursorcolumn
+    "autocmd WinLeave * setlocal nocursorline
+    "autocmd WinLeave * setlocal nocursorcolumn
     
     " closetag
     autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
