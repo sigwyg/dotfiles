@@ -181,7 +181,6 @@ nnoremap <silent> <S-Left>  :5wincmd <<CR>
 nnoremap <silent> <S-Right> :5wincmd ><CR>
 nnoremap <silent> <S-Up>    :5wincmd -<CR>
 nnoremap <silent> <S-Down>  :5wincmd +<CR>
-nnoremap cl :close<CR>
 
 " buffer
 nnoremap bb :b#<CR>
@@ -691,10 +690,10 @@ endfunction
 " textmanip.vim: {{{
 "  - https://github.com/t9md/vim-textmanip
 "
-xmap <C-j> <Plug>(Textmanip.move_selection_down)
-xmap <C-k> <Plug>(Textmanip.move_selection_up)
-xmap <C-h> <Plug>(Textmanip.move_selection_left)
-xmap <C-l> <Plug>(Textmanip.move_selection_right)
+xmap <S-j> <Plug>(Textmanip.move_selection_down)
+xmap <S-k> <Plug>(Textmanip.move_selection_up)
+xmap <S-h> <Plug>(Textmanip.move_selection_left)
+xmap <S-l> <Plug>(Textmanip.move_selection_right)
 
 xmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 "}}}
@@ -729,8 +728,8 @@ endfunction
 
 " -----------------------------------------------------------------------
 " fontzoom.vim: {{{
-nmap + <Plug>(fontzoom-larger)
-nmap _ <Plug>(fontzoom-smaller)
+nmap <C-Up> <Plug>(fontzoom-larger)
+nmap <C-Down> <Plug>(fontzoom-smaller)
 "}}}
 
 
