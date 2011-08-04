@@ -603,11 +603,18 @@ endfor
 "  - https://github.com/Shougo/unite.vim
 "
 let g:unite_winheight = 10
-nnoremap ff :Unite file -no-quit<CR>
-nnoremap fg :Unite -input=/Users/sigwyg/Dropbox/memo/ -buffer-name=files file<CR>
-nnoremap fu :Unite buffer file_mru -no-quit<CR>
-nnoremap fb :Unite bookmark<CR>
-nnoremap fl :Unite line<CR>
+
+" The prefix key.
+nnoremap [unite] <Nop>
+xnoremap [unite] <Nop>
+nmap   f [unite]
+xmap   f [unite]
+nnoremap [unite]f :<C-u>Unite file            -buffer-name=files -no-quit<CR>
+nnoremap [unite]u :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
+nnoremap [unite]b :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
+nnoremap [unite]l :<C-u>Unite line            -buffer-name=line<CR>
+nnoremap [unite]g :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
+nnoremap [unite]1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
