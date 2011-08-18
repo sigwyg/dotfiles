@@ -10,6 +10,8 @@ alias gid='git diff'
 alias grep='grep --color=auto'
 
 if [[ "$OSTYPE" == "darwin10.0" ]]; then
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+    
     alias vi='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
     alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
     alias ls='ls -G'
