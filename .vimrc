@@ -155,6 +155,8 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+noremap 1 ^
+noremap 2 $
 
 " text-edit
 noremap <CR> i<CR><ESC>
