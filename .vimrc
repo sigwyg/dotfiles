@@ -213,6 +213,11 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 cnoremap <C-p> <Up> 
 cnoremap <C-n> <Down> 
 cnoremap <Leader><Leader> ~/
+
+" consecutive numbers - 0,1,2,3,4...
+nnoremap <silent> co :ContinuousNumber <C-a><CR>
+vnoremap <silent> co :ContinuousNumber <C-a><CR>
+command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
 "}}}
 
 
@@ -637,6 +642,7 @@ let g:unite_source_grep_default_opts = "-Hnr"
 "  - https: //github.com/Shougo/vimfiler
 " 
 nnoremap <F3> :VimFilerSimple<CR>
+nnoremap <F4> :VimFiler<CR>
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
 let g:vimfiler_max_filename_width = 50
