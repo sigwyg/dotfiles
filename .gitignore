@@ -1,5 +1,6 @@
 
 /.vim/swap/*
 /.vim/backup/*
+/.vim/undo/*
 /.vim/bundle/*
 /.vim/vundle.git/*
