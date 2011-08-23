@@ -118,6 +118,17 @@ set swapfile
 set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 
+if has('persistent_undo')
+    set undofile
+    set undodir=./.vimundo,~/.vim/undo
+    " Below, If only file under the home-directory
+    "
+    " augroup vimrc-undofile
+    "     autocmd!
+    "     autocmd BufReadPre ~/* setlocal undofile
+    " augroup END
+endif
+
 "}}}
 
 
@@ -218,6 +229,7 @@ cnoremap <Leader><Leader> ~/
 nnoremap <silent> co :ContinuousNumber <C-a><CR>
 vnoremap <silent> co :ContinuousNumber <C-a><CR>
 command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
+
 "}}}
 
 
