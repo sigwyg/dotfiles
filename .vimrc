@@ -651,7 +651,7 @@ endfunction"
 " unite-grep: {{{
 "  - https://github.com/Shougo/vimproc/tree/master
 let g:unite_source_grep_command = "grep"
-let g:unite_source_grep_default_opts = "-Hnr"
+let g:unite_source_grep_default_opts = "-Hn"
 "}}}
 
 
