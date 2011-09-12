@@ -28,6 +28,8 @@ Bundle 'git://github.com/thinca/vim-quickrun.git'
 Bundle 'git://github.com/thinca/vim-fontzoom.git'
 "Bundle 'git://github.com/tsukkee/lingr-vim.git'
 Bundle 'git://github.com/t9md/vim-textmanip.git'
+Bundle 'git://github.com/t9md/vim-unite-ack.git'
+Bundle 'git://github.com/h1mesuke/unite-outline.git'
 
 
 " -----------------------------------------------------------------------
@@ -620,6 +622,7 @@ endfor
 "  - https://github.com/Shougo/unite.vim
 "
 let g:unite_winheight = 10
+"let g:unite_source_bookmark_directory = '/bookmark'
 
 " The prefix key.
 nnoremap [unite] <Nop>
@@ -637,6 +640,9 @@ autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
     imap <buffer> <C-g> <Plug>(unite_input_directory)
+
+    " for Insert action on VimShell-history
+    call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 endfunction"
 "}}}
 
