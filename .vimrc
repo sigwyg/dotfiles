@@ -663,7 +663,7 @@ nnoremap <F3> :VimFilerSimple<CR>
 nnoremap <F4> :VimFiler<CR>
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
-let g:vimfiler_max_filename_width = 50
+"let g:vimfiler_max_filename_width = 50
 let g:vimfiler_as_default_explorer = 1
 
 autocmd MyAutoCmd FileType unite call s:vimfiler_my_settings()
