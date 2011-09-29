@@ -659,8 +659,8 @@ let g:unite_source_grep_default_opts = "-Hn"
 " VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
 " 
-nnoremap <F3> :VimFilerSimple<CR>
-nnoremap <F4> :VimFiler<CR>
+nnoremap <F3> :VimFiler<CR>
+nnoremap <F4> :VimFilerSimple<CR>
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
 "let g:vimfiler_max_filename_width = 50
