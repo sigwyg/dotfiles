@@ -59,7 +59,7 @@ syntax on
 set cursorline
 set cursorcolumn
 
-colorscheme ir_black
+colorscheme h2u_black
 highlight LineNr ctermfg=0
 highlight CursorLine   cterm=bold
 highlight CursorColumn ctermbg=0

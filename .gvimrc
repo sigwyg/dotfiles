@@ -16,7 +16,7 @@ if has('gui_macvim')
  
     set antialias
     set guifont=Courier\ New:h14
-    colorscheme ir_black
+    colorscheme h2u_black
     "highlight Normal guibg=#0000ff
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
     highlight CursorColumn guibg=#222233
