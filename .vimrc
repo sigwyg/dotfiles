@@ -4,36 +4,40 @@ set nocompatible
 " Vundle
 "  - https://github.com/vim-scripts/vundle
 " 
-filetype off
 
-set rtp+=~/.vim/vundle.git/ 
-call vundle#rc()
+if has('vim_starting')
+    "
+    "set rtp+=~/.vim/vundle.git/ 
+    "call vundle#rc()
 
-Bundle 'Markdown'
-Bundle 'git://github.com/tpope/vim-surround.git'
-Bundle 'git://github.com/msanders/snipmate.vim.git'
-Bundle 'git://github.com/h1mesuke/vim-alignta.git'
-Bundle 'git://github.com/sjl/gundo.vim.git'
-Bundle 'git://github.com/hail2u/vim-css3-syntax.git'
-Bundle 'git://github.com/Lokaltog/vim-easymotion.git'
+    set runtimepath+=~/.vim/neobundle.vim.git
+    call neobundle#rc(expand('~/.vim/bundle'))
+endif
 
-Bundle 'git://github.com/Shougo/vimfiler.git'
-Bundle 'git://github.com/Shougo/vimproc.git'
-Bundle 'git://github.com/Shougo/neocomplcache.git'
-Bundle 'git://github.com/Shougo/unite.vim.git'
-Bundle 'git://github.com/Shougo/vimshell.git'
-Bundle 'git://github.com/ujihisa/vimshell-ssh.git'
-Bundle 'git://github.com/thinca/vim-qfreplace.git'
-Bundle 'git://github.com/thinca/vim-quickrun.git'
-Bundle 'git://github.com/thinca/vim-fontzoom.git'
-"Bundle 'git://github.com/tsukkee/lingr-vim.git'
-Bundle 'git://github.com/t9md/vim-textmanip.git'
-Bundle 'git://github.com/t9md/vim-unite-ack.git'
-Bundle 'git://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'git://github.com/vim-scripts/Markdown.git'
+NeoBundle 'git://github.com/tpope/vim-surround.git'
+NeoBundle 'git://github.com/msanders/snipmate.vim.git'
+NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
+NeoBundle 'git://github.com/sjl/gundo.vim.git'
+NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
+NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
+
+NeoBundle 'git://github.com/Shougo/vimfiler.git'
+NeoBundle 'git://github.com/Shougo/vimproc.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
+NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
+NeoBundle 'git://github.com/thinca/vim-quickrun.git'
+NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
+"NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
+NeoBundle 'git://github.com/t9md/vim-textmanip.git'
+NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
+NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 
 
 " -----------------------------------------------------------------------
-
 
 filetype plugin indent on
 
@@ -59,7 +63,7 @@ syntax on
 set cursorline
 set cursorcolumn
 
-colorscheme h2u_black
+colorscheme ir_black
 highlight LineNr ctermfg=0
 highlight CursorLine   cterm=bold
 highlight CursorColumn ctermbg=0
@@ -168,6 +172,7 @@ noremap j gj
 noremap k gk
 noremap gj j
 noremap gk k
+noremap gh gT
 
 " text-edit
 noremap <CR> i<CR><ESC>
