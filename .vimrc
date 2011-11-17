@@ -109,7 +109,8 @@ set list
 " Enable folding.
 set foldenable
 set foldmethod=marker
-set foldcolumn=3
+set foldcolumn=5
+
 
 " diff
 set diffopt=filler,vertical
@@ -267,6 +268,9 @@ augroup MyAutoCmd
 
     " format
     autocmd BufRead *.mkd setlocal wrap
+    
+    " Custom folding
+    autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
 augroup END
 
 "inoremap <buffer> <LT>? <LT>/
