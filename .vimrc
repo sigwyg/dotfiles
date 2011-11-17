@@ -60,13 +60,9 @@ set wildmode=list:longest,full
 " syntax color
 "set t_Co=8
 syntax on
-set cursorline
-set cursorcolumn
 
 colorscheme ir_black
 highlight LineNr ctermfg=0
-highlight CursorLine   cterm=bold
-highlight CursorColumn ctermbg=0
 
 "colorscheme slate
 "highlight Normal guibg=grey5
@@ -75,6 +71,10 @@ highlight CursorColumn ctermbg=0
 "colorscheme ron
 "highlight LineNr ctermfg=grey
 
+set cursorline
+highlight CursorLine   cterm=bold
+"set cursorcolumn
+"highlight CursorColumn ctermbg=0
 
 " search
 set ignorecase
@@ -109,6 +109,7 @@ set list
 " Enable folding.
 set foldenable
 set foldmethod=marker
+set foldcolumn=3
 
 " diff
 set diffopt=filler,vertical
@@ -832,6 +833,5 @@ function! DisplayMarkdown()
 "    diffoff<CR>
 endfunction
 " }}}
-
 
 
