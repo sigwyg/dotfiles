@@ -30,7 +30,7 @@ NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
-NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
+"NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 "NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
 NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
@@ -524,6 +524,13 @@ nnoremap <C-b> :<C-u>call FontToggle('b')<CR>
 
 
 " -----------------------------------------------------------------------
+" fontzoom.vim: {{{
+"nmap <C-Up> <Plug>(fontzoom-larger)
+"nmap <C-Down> <Plug>(fontzoom-smaller)
+"}}}
+
+
+" -----------------------------------------------------------------------
 " neocomplcache: {{{
 "  - https://github.com/Shougo/neocomplcache
 "  - https://github.com/Shougo/neocomplcache/blob/998764e1072fa5b183c3da4705b8187658fa0b41/presen/neocomplcache.txt
@@ -762,13 +769,6 @@ function! s:ChangeCurrentDir(directory, bang)
         pwd
     endif
 endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" fontzoom.vim: {{{
-nmap <C-Up> <Plug>(fontzoom-larger)
-nmap <C-Down> <Plug>(fontzoom-smaller)
 "}}}
 
 
