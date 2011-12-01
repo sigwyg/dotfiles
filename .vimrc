@@ -6,10 +6,6 @@ set nocompatible
 " 
 
 if has('vim_starting')
-    "
-    "set rtp+=~/.vim/vundle.git/ 
-    "call vundle#rc()
-
     set runtimepath+=~/.vim/bundle/neobundle.vim
     call neobundle#rc(expand('~/.vim/bundle'))
 endif
