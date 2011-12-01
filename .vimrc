@@ -657,9 +657,6 @@ autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
     " Overwrite settings.
     imap <buffer> <C-g> <Plug>(unite_input_directory)
-
-    " for Insert action on VimShell-history
-    call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
 endfunction"
 "}}}
 
@@ -692,47 +689,26 @@ endfunction"
 
 " -----------------------------------------------------------------------
 " VimShell: {{{
-"  - https: //github.com/Shougo/vimfiler
-" 
-" Initialize execute file list.
-let g:vimshell_execute_file_list = {}
-call vimshell#set_execute_file('txt,vim,c,h,cpp,d,xml,java', 'vim')
-let g:vimshell_execute_file_list['rb'] = 'ruby'
-let g:vimshell_execute_file_list['pl'] = 'perl'
-let g:vimshell_execute_file_list['py'] = 'python'
-call vimshell#set_execute_file('html,xhtml', 'gexe firefox')
-
+"  - https: //github.com/Shougo/vimshell
+"
+let g:vimshell_prompt = $USER."% "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'vimshell#vcs#info("(%s)-[%b]", "(%s)-[%b|%a]")'
-let g:vimshell_enable_smart_case = 1
+let g:vimshell_split_command = 'tabnew'
 
-if has('win32') || has('win64') 
-    " Display user name on Windows.
-    let g:vimshell_prompt = $USERNAME."% "
-else
-    " Display user name on Linux.
-    let g:vimshell_prompt = $USER."% "
+autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
+function! s:vimshell_settings()
+    "imap <buffer><BS>  <Plug>(vimshell_another_delete_backward_char)
+    "imap <buffer><C-h>  <Plug>(vimshell_another_delete_backward_char)
 
-    call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
-    call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
-    let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-    call vimshell#set_execute_file('tgz,gz', 'gzcat')
-    call vimshell#set_execute_file('tbz,bz2', 'bzcat')
-endif
+    call vimshell#altercmd#define('g', 'git')
+    call vimshell#altercmd#define('i', 'iexe')
+    call vimshell#altercmd#define('is', 'iexe ssh')
+    call vimshell#altercmd#define('t', 'texe')
+    call vimshell#set_alias('la', 'ls -la')
 
-autocmd FileType vimshell
-\ call vimshell#altercmd#define('g', 'git')
-\| call vimshell#altercmd#define('i', 'iexe')
-\| call vimshell#altercmd#define('l', 'll')
-\| call vimshell#altercmd#define('ll', 'ls -l')
-\| call vimshell#hook#add('chpwd', 'my_chpwd', 'g:my_chpwd')
-
-function! g:my_chpwd(args, context)
-    call vimshell#execute('ls')
-endfunction
-
-autocmd FileType int-* call s:interactive_settings()
-function! s:interactive_settings()
+    " for Insert action on VimShell-history
+    "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
+    call unite#custom_default_action('vimshell/history' , 'insert')
 endfunction
 "}}}
 
