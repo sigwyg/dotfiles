@@ -23,6 +23,7 @@ NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'git://github.com/Shougo/unite-ssh.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
@@ -31,6 +32,8 @@ NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'git://github.com/basyura/jslint.vim.git'
+NeoBundle 'git://github.com/tyru/merryxmas.vim.git'
 
 
 " -----------------------------------------------------------------------
@@ -171,6 +174,7 @@ noremap k gk
 noremap gj j
 noremap gk k
 noremap gh gT
+noremap gl gt
 
 " text-edit
 noremap <CR> i<CR><ESC>
@@ -261,6 +265,9 @@ augroup MyAutoCmd
     autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
     autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
     "autocmd Filetype html inoremap <buffer> <LT>? <LT>/<C-x><C-o>
+
+    " go to file!
+    autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
 
     " format
     autocmd BufRead *.mkd setlocal wrap
@@ -689,18 +696,19 @@ endfunction"
 "
 let g:vimshell_prompt = $USER."% "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_split_command = 'tabnew'
+let g:vimshell_split_command = 'split'
 
 autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
 function! s:vimshell_settings()
     "imap <buffer><BS>  <Plug>(vimshell_another_delete_backward_char)
     "imap <buffer><C-h>  <Plug>(vimshell_another_delete_backward_char)
 
-    call vimshell#altercmd#define('g', 'git')
     call vimshell#altercmd#define('i', 'iexe')
     call vimshell#altercmd#define('is', 'iexe ssh')
-    call vimshell#altercmd#define('t', 'texe')
+    call vimshell#altercmd#define('gic', 'git commit -m')
     call vimshell#set_alias('la', 'ls -la')
+    call vimshell#set_alias('gis', 'git status')
+    call vimshell#set_alias('gid', 'git diff')
 
     " for Insert action on VimShell-history
     "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
