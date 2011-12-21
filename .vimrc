@@ -34,6 +34,7 @@ NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/basyura/jslint.vim.git'
 NeoBundle 'git://github.com/tyru/merryxmas.vim.git'
+NeoBundle 'git://github.com/vim-scripts/BlockDiff.git'
 
 
 " -----------------------------------------------------------------------
@@ -642,7 +643,8 @@ endfor
 "  - https://github.com/Shougo/unite.vim
 "
 let g:unite_winheight = 10
-"let g:unite_source_bookmark_directory = '/bookmark'
+let g:unite_source_history_yank_enable = 1
+let g:unite_source_history_yank_limit = 100
 
 " The prefix key.
 nnoremap [unite] <Nop>
