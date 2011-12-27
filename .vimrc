@@ -140,6 +140,18 @@ endif
 
 "}}}
 
+" -----------------------------------------------------------------------
+" QuickStart: {{{
+"  - gundo.vim (https://github.com/sjl/gundo.vim)
+"  - jslint.vim(https://github.com/basyura/jslint.vim)
+"  - VimFiler  (https: //github.com/Shougo/vimfiler)
+"
+nnoremap <F2> :VimFilerSimple<CR>
+nnoremap <F3> :VimFiler<CR>
+nnoremap <F4> :JSLint<CR> 
+nnoremap <F5> :GundoToggle<CR>
+"}}}
+
 
 " -----------------------------------------------------------------------
 " Keymap:{{{
@@ -679,8 +691,6 @@ let g:unite_source_grep_default_opts = "-Hn"
 " VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
 " 
-nnoremap <F3> :VimFiler<CR>
-nnoremap <F4> :VimFilerSimple<CR>
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
 "let g:vimfiler_max_filename_width = 50
@@ -737,8 +747,25 @@ xmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 " gundo.vim: {{{
 "  - https://github.com/sjl/gundo.vim
 "
-nnoremap <F5> :GundoToggle<CR>
 "}}}
+
+
+" -----------------------------------------------------------------------
+" jslint.vim: {{{
+"  - https://github.com/basyura/jslint.vim
+"  - :copen -> :cnext ...
+augroup jslint
+    autocmd! jslint
+    autocmd FileType javascript call s:javascript_filetype_settings()
+augroup END
+
+function! s:javascript_filetype_settings()
+  autocmd BufLeave     <buffer> call jslint#clear()
+  autocmd BufWritePost <buffer> call jslint#check()
+  autocmd CursorMoved  <buffer> call jslint#message()
+endfunction
+
+"}}}   
 
 
 " -----------------------------------------------------------------------
@@ -820,5 +847,4 @@ function! DisplayMarkdown()
 "    diffoff<CR>
 endfunction
 " }}}
-
 
