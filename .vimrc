@@ -35,6 +35,8 @@ NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/basyura/jslint.vim.git'
 NeoBundle 'git://github.com/tyru/merryxmas.vim.git'
+NeoBundle 'git://github.com/othree/html5.vim.git'
+NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
 "NeoBundle 'git://github.com/vim-scripts/BlockDiff.git'
 
 
@@ -169,9 +171,9 @@ inoremap <Right> <Nop>
 " practice <Esc>
 inoremap <C-c> <Nop>
 noremap <C-c> <Nop>
-"inoremap jj <Esc>
-inoremap <C-j> <Esc>
-nnoremap <C-j> <Esc>
+inoremap jj <Esc>
+"inoremap <C-j> <Esc>
+"nnoremap <C-j> <Esc>
 
 " below, cause error on MacVim-KaoriYa 
 "inoremap <Left> <Nop>
@@ -288,6 +290,9 @@ augroup MyAutoCmd
     
     " Custom folding
     autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
+    
+    " set less-sybtax
+    autocmd BufEnter *.less set filetype=scss
 augroup END
 
 "inoremap <buffer> <LT>? <LT>/
@@ -583,11 +588,9 @@ inoremap <expr><C-l> neocomplcache#complete_common_string()
 inoremap <expr><CR> pumvisible() ? "\<C-y>\<CR>X\<BS>" : "\<CR>X\<BS>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#smart_close_popup()."\<C-y>"
-inoremap <expr><C-e> neocomplcache#smart_close_popup()."\<C-e>"
 inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
-"inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
+inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 
 " <TAB>: TAB completion.(Can't work...!)
 "inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -744,9 +747,12 @@ xmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
 
 
 " -----------------------------------------------------------------------
-" gundo.vim: {{{
-"  - https://github.com/sjl/gundo.vim
-"
+" html5.vim: {{{
+"  - https://github.com/othree/html5.vim
+let g:html5_event_handler_attributes_complete = 1
+let g:html5_rdfa_attributes_complete = 1
+let g:html5_microdata_attributes_complete = 1
+let g:html5_aria_attributes_complete = 1
 "}}}
 
 
