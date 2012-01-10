@@ -26,17 +26,16 @@ NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/Shougo/unite-ssh.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
-"NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
-"NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/basyura/jslint.vim.git'
-NeoBundle 'git://github.com/tyru/merryxmas.vim.git'
 NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
+"NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
+"NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 "NeoBundle 'git://github.com/vim-scripts/BlockDiff.git'
 
 
@@ -287,6 +286,7 @@ augroup MyAutoCmd
 
     " format
     autocmd BufRead *.mkd setlocal wrap
+    autocmd BufRead *.txt setlocal textwidth=0
     
     " Custom folding
     autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
