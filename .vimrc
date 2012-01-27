@@ -7,8 +7,8 @@ set nocompatible
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle'))
 endif
+call neobundle#rc(expand('~/.vim/bundle'))
 
 NeoBundle 'git://github.com/vim-scripts/Markdown.git'
 NeoBundle 'git://github.com/tpope/vim-surround.git'
