@@ -107,7 +107,8 @@ set shiftwidth=4
 set shiftround
 set nowrap
 
-set listchars=tab:>-
+"set listchars=tab:>-,eol:↲,trail:_
+set listchars=tab:»»,eol:¦,trail:_
 set list
 
 " Enable folding.
