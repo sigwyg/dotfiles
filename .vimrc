@@ -106,8 +106,7 @@ set smarttab
 set shiftwidth=4
 set shiftround
 set nowrap
-
-"set listchars=tab:>-,eol:↲,trail:_
+"set listchars=eol:↲
 set listchars=tab:»»,eol:¦,trail:_
 set list
 
