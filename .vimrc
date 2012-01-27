@@ -113,8 +113,7 @@ set list
 " Enable folding.
 set foldenable
 set foldmethod=marker
-set foldcolumn=5
-
+set foldcolumn=3
 
 " diff
 set diffopt=filler,vertical
@@ -149,7 +148,7 @@ endif
 "  - jslint.vim(https://github.com/basyura/jslint.vim)
 "  - VimFiler  (https: //github.com/Shougo/vimfiler)
 "
-nnoremap <F2> :VimFilerSimple<CR>
+nnoremap <F2> :IndentGuidesToggle<CR>
 nnoremap <F3> :VimFiler<CR>
 nnoremap <F4> :JSLint<CR> 
 nnoremap <F5> :GundoToggle<CR>
@@ -291,7 +290,7 @@ augroup MyAutoCmd
     autocmd BufRead *.txt setlocal textwidth=0
     
     " Custom folding
-    autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
+    "autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
     
     " set less-sybtax
     autocmd BufEnter *.less set filetype=scss
@@ -772,6 +771,28 @@ function! s:javascript_filetype_settings()
   autocmd BufWritePost <buffer> call jslint#check()
   autocmd CursorMoved  <buffer> call jslint#message()
 endfunction
+
+"}}}   
+
+
+" -----------------------------------------------------------------------
+" indent-guides: {{{
+"  - https://github.com/nathanaelkane/vim-indent-guides
+"  - :IndentGuidesToggle
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_indent_levels = 30
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_space_guides = 1
+
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_color_change_percent = 20
+  
+augroup indentGuide
+    autocmd! indentGuide
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=SeaGreen ctermbg=6
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue ctermbg=0*
+augroup END
 
 "}}}   
 
