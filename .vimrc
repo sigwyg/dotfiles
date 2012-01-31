@@ -113,6 +113,7 @@ set list
 " Enable folding.
 set foldenable
 set foldmethod=marker
+set foldmarker={{{,}}}
 set foldcolumn=3
 
 " diff
