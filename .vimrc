@@ -15,7 +15,7 @@ NeoBundle 'git://github.com/tpope/vim-surround.git'
 NeoBundle 'git://github.com/msanders/snipmate.vim.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
-"NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
 
 NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
