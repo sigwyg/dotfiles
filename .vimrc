@@ -715,7 +715,6 @@ endfunction"
 let g:vimshell_prompt = $USER."% "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_split_command = 'split'
-let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim -g --servername=VIM2 --remote-wait-silent'
 
 autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
 function! s:vimshell_settings()
