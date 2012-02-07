@@ -20,7 +20,6 @@ if has('gui_macvim')
     "highlight Normal guibg=#0000ff
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
     highlight CursorColumn guibg=#222233
-    
 endif
 
 

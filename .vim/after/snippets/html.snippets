@@ -44,7 +44,7 @@ snippet xhtmls
 	<head>
 	<title>${1}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="${2}" media="screen, tv" />
+	<link rel="stylesheet" type="text/css" href="${2:base.css}" media="screen, tv" />
 	<link rel="start" href="http://archiva.jp/" title="Home" />
 	<link rel="shortcut icon" href="/favicon.ico" />
 	<link rel="alternate" type="application/rss+xml" title="" href="/entries.rss" />
@@ -67,5 +67,3 @@ snippet hgroup
 	    <h1>${1}</h1>
 	    <h2>${2}</h2>
 	</hgroup>
-#snippet metas
-#	<meta name="${1:name}" content="${2:content}"`Close()`>${3}
