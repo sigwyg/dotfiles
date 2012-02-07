@@ -9,6 +9,10 @@ alias gis='git status'
 alias gid='git diff'
 alias grep='grep --color=auto'
 
+# EDITOR
+export EDITOR=/usr/bin/vim
+
+# IF Mac OSX
 if [[ "$OSTYPE" == "darwin10.0" ]]; then
     export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
     
