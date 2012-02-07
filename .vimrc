@@ -15,7 +15,7 @@ NeoBundle 'git://github.com/tpope/vim-surround.git'
 NeoBundle 'git://github.com/msanders/snipmate.vim.git'
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
-"NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
 
 NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
@@ -715,7 +715,7 @@ endfunction"
 let g:vimshell_prompt = $USER."% "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 let g:vimshell_split_command = 'split'
-let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim --servername=VIM2 --remote-wait-silent'
+let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim  --servername=VIM --remote-tab-wait-silent'
 
 autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
 function! s:vimshell_settings()
