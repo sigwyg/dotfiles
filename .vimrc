@@ -60,6 +60,7 @@ set linespace=0
 set showcmd
 set wildmenu
 set wildmode=list:longest,full
+set updatetime = 1000
 
 " syntax color
 "set t_Co=8
@@ -724,10 +725,11 @@ function! s:vimshell_settings()
 
     call vimshell#altercmd#define('i', 'iexe')
     call vimshell#altercmd#define('is', 'iexe ssh')
-    call vimshell#altercmd#define('gic', 'git commit -m')
+    call vimshell#altercmd#define('gim', 'git commit -m')
     call vimshell#set_alias('la', 'ls -la')
     call vimshell#set_alias('gis', 'git status')
     call vimshell#set_alias('gid', 'git diff')
+    call vimshell#set_alias('gic', 'git commit')
 
     " for Insert action on VimShell-history
     "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
