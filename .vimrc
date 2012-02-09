@@ -184,8 +184,8 @@ inoremap jj <Esc>
 "nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 " move
-nnoremap zl zL
-nnoremap zh zH
+"nnoremap zl zL
+"nnoremap zh zH
 noremap j gj
 noremap k gk
 noremap gj j
