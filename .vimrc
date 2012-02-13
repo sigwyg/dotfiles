@@ -60,7 +60,6 @@ set linespace=0
 set showcmd
 set wildmenu
 set wildmode=list:longest,full
-set updatetime = 1000
 
 " syntax color
 "set t_Co=8
@@ -171,8 +170,8 @@ inoremap <Down> <Nop>
 inoremap <Right> <Nop>
 
 " practice <Esc>
-inoremap <C-c> <Nop>
 noremap <C-c> <Nop>
+inoremap <C-c> <Nop>
 inoremap jj <Esc>
 "inoremap <C-j> <Esc>
 "nnoremap <C-j> <Esc>
@@ -185,14 +184,14 @@ inoremap jj <Esc>
 "nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><Enter>
 
 " move
-"nnoremap zl zL
-"nnoremap zh zH
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
-noremap gh gT
-noremap gl gt
+nnoremap zl zL
+nnoremap zh zH
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+nnoremap gh gT
+nnoremap gl gt
 
 " text-edit
 noremap <CR> i<CR><ESC>
