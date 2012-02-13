@@ -801,6 +801,13 @@ augroup END
 
 
 " -----------------------------------------------------------------------
+" vim-powerline: {{{
+"  - https://github.com/Lokaltog/vim-powerline
+let g:Powerline_symbols = 'fancy'
+"}}}   
+
+
+" -----------------------------------------------------------------------
 " Like :CdCurrent {{{
 "  - :CD
 "

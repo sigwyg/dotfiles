@@ -15,7 +15,8 @@ if has('gui_macvim')
     set visualbell
  
     set antialias
-    set guifont=Courier\ New:h14
+    "set guifont=Courier\ New:h14
+    set guifont=Courier\ New\ for\ Powerline:h14
     colorscheme h2u_black
     "highlight Normal guibg=#0000ff
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
