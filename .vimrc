@@ -161,9 +161,9 @@ nnoremap <F5> :GundoToggle<CR>
 " --------------------
 
 " timeout
-set timeout
-set timeoutlen=3000
-set ttimeoutlen=100
+"set timeout
+"set timeoutlen=3000
+"set ttimeoutlen=100
 
 " practice
 noremap <Up> <Nop>
