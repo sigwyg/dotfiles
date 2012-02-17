@@ -100,11 +100,11 @@ set guioptions+=a
 command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
 
 " tab
-set tabstop=4
-set expandtab
-set smarttab
-set shiftwidth=4
-set shiftround
+set tabstop=4    " 画面上でタブ文字が占める幅
+set expandtab    " <Tab>の代わりに空白を使う
+set smarttab     " <Tab>押すとshiftwidthの数だけ空白を挿入する
+set shiftwidth=4 " インデントに使われる空白の数
+set shiftround   " インデントをshiftwidthの倍数にする
 set nowrap
 "set listchars=eol:↲
 set listchars=tab:»»,eol:¦,trail:_
@@ -159,6 +159,11 @@ nnoremap <F5> :GundoToggle<CR>
 " -----------------------------------------------------------------------
 " Keymap:{{{
 " --------------------
+
+" timeout
+set timeout
+set timeoutlen=3000
+set ttimeoutlen=100
 
 " practice
 noremap <Up> <Nop>
