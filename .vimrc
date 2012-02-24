@@ -892,3 +892,25 @@ function! DisplayMarkdown()
 endfunction
 " }}}
 
+
+" -----------------------------------------------------------------------
+" CSS3PropertyDuplicate(): {{{
+"  - Origin: https://gist.github.com/972806
+"  - Forked: https://gist.github.com/1901182
+"
+function! CSS3PropertyDuplicate()
+    let l:css3   = getline(".")
+    let l:line   = line(".")
+    let l:ind    = matchlist(css3, '\v(\s*)(.*)')
+    let l:webkit = ind[1] . "-webkit-" . ind[2]
+    let l:moz    = ind[1] . "-moz-"    . ind[2]
+    let l:ms     = ind[1] . "-ms-"     . ind[2]
+    let l:o      = ind[1] . "-o-"      . ind[2]
+    call append(line -1, [webkit, moz, ms, o])
+    call cursor(line, 1)
+endfunction
+nnoremap <silent> ,3 :<C-u>call CSS3PropertyDuplicate()<CR>
+" }}}
+
+
+
