@@ -3,6 +3,8 @@ set nocompatible
 " -----------------------------------------------------------------------
 " Vundle
 "  - https://github.com/vim-scripts/vundle
+" NeoBundle.vim
+"  - https://github.com/Shougo/neobundle.vim
 " 
 
 if has('vim_starting')
@@ -36,6 +38,7 @@ NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'git://github.com/basyura/jslint.vim.git'
 NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
+NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
 "NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
 "NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 "NeoBundle 'git://github.com/vim-scripts/BlockDiff.git'
@@ -809,6 +812,16 @@ augroup END
 " vim-powerline: {{{
 "  - https://github.com/Lokaltog/vim-powerline
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_stl_path_style = 'full'
+"}}}   
+
+
+" -----------------------------------------------------------------------
+" w3m.vim: {{{
+"  - https://github.com/yuratomo/w3m.vim
+"let g:w3m#homepage = "http://www.google.co.jp/"
+"let g:w3m#search_engine = 'http://www.google.co.jp/search?hl=ja&ie=' . &encoding . '&q='
+"    \ 'http://search.yahoo.co.jp/search?search.x=1&fr=top_ga1_sa_124&tid=top_ga1_sa_124&ei=' . &encoding . '&aq=&oq=&p='
 "}}}   
 
 
