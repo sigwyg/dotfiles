@@ -4,7 +4,7 @@ if has('gui_macvim')
     set guioptions-=T   " 上部のアイコンを消す
     set showtabline=2   " タブを常に表示
     set transparency=12 " 透明度を指定
-    
+
     set sessionoptions+=resize " 行・列を設定する
     set lines=40               " 行数
     set columns=140            " 横幅
@@ -13,7 +13,7 @@ if has('gui_macvim')
     set splitbelow             " 横分割したら新しいウィンドウは下に
     set splitright             " 縦分割したら新しいウィンドウは右に
     set visualbell
- 
+
     set antialias
     "set guifont=Courier\ New:h14
     set guifont=Courier\ New\ for\ Powerline:h14
