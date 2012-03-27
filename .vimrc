@@ -20,7 +20,6 @@ NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
 
-NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
@@ -28,6 +27,7 @@ NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/Shougo/unite-ssh.git'
+NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
 NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
@@ -673,16 +673,12 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_source_history_yank_limit = 100
 
 " The prefix key.
-nnoremap [unite] <Nop>
-xnoremap [unite] <Nop>
-nmap   f [unite]
-xmap   f [unite]
-nnoremap [unite]f :<C-u>Unite file            -buffer-name=files -no-quit<CR>
-nnoremap [unite]u :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
-nnoremap [unite]b :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
-nnoremap [unite]l :<C-u>Unite line            -buffer-name=line<CR>
-nnoremap [unite]g :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
-nnoremap [unite]1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
+nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
+nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
+nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
+nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
+nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
+nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
 
 autocmd MyAutoCmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"
