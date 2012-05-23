@@ -32,6 +32,7 @@ NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/t9md/vim-textmanip.git'
+NeoBundle 'git://github.com/t9md/vim-quickhl.git'
 NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
@@ -750,7 +751,22 @@ xmap <S-k> <Plug>(Textmanip.move_selection_up)
 xmap <S-h> <Plug>(Textmanip.move_selection_left)
 xmap <S-l> <Plug>(Textmanip.move_selection_right)
 
-xmap <C-d> <Plug>(Textmanip.duplicate_selection_v)
+" -----------------------------------------------------------------------
+" quickhl.vim: {{{
+"  - https://github.com/t9md/vim-textmanip
+"
+nmap <Space>m <Plug>(quickhl-toggle)
+xmap <Space>m <Plug>(quickhl-toggle)
+nmap <Space>M <Plug>(quickhl-reset)
+xmap <Space>M <Plug>(quickhl-reset)
+
+nmap <Space>j <Plug>(quickhl-match)
+let g:quickhl_keywords = [
+        \ {"pattern": '\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}', "regexp": 1 },
+        \ {"pattern": "NOTE"},
+        \ {"pattern": "MEMO"},
+        \ {"pattern": "aside"},
+        \ ]
 "}}}
 
 
