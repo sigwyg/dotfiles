@@ -746,10 +746,17 @@ endfunction
 " textmanip.vim: {{{
 "  - https://github.com/t9md/vim-textmanip
 "
-xmap <S-j> <Plug>(Textmanip.move_selection_down)
-xmap <S-k> <Plug>(Textmanip.move_selection_up)
-xmap <S-h> <Plug>(Textmanip.move_selection_left)
-xmap <S-l> <Plug>(Textmanip.move_selection_right)
+xmap <D-d> <Plug>(textmanip-duplicate-down)
+nmap <D-d> <Plug>(textmanip-duplicate-down)
+xmap <D-D> <Plug>(textmanip-duplicate-up)
+nmap <D-D> <Plug>(textmanip-duplicate-up)
+
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
+"}}}
+
 
 " -----------------------------------------------------------------------
 " quickhl.vim: {{{
