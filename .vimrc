@@ -69,6 +69,13 @@ filetype plugin indent on
 " Basis:{{{
 "
 
+" Add $PATH for node (jslint/csslint)
+if has('vim_starting')
+    if isdirectory(expand('~/.nvm/v0.6.18/bin/'))
+        execute 'let $PATH="' . $PATH . ':' . $HOME .'/.nvm/v0.6.18/bin/"'
+    endif
+endif
+
 " display
 set number
 set ruler
@@ -292,7 +299,7 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 augroup MyAutoCmd
     " reset autocmd-list
     autocmd!
-    
+
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
 
