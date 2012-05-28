@@ -24,6 +24,7 @@ NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/Shougo/unite-ssh.git'
@@ -582,7 +583,7 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
-
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 "Quick Type, ignore neocomplcache.
 let g:NeoComplCache_SkipCompletionTime = '0.3'
 let g:NeoComplCache_SkipInputTime = '0.1'
