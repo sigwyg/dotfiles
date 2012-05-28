@@ -14,7 +14,7 @@ export EDITOR=/usr/bin/vim
 
 # IF Mac OSX
 if [[ "$OSTYPE" == "darwin10.0" ]]; then
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$PATH0
     
     alias vi=/usr/bin/vim
     alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
