@@ -92,26 +92,25 @@ snippet font_grids
 	    content: "※";
 	}
 snippet border-radius
-	    -webkit-border-radius: ${1:};
-	       -moz-border-radius: $1;
-	            border-radius: $1;
+	-webkit-border-radius: ${1:};
+	        border-radius: $1;
 snippet box-shadow
-	    -webkit-box-shadow: ${1:2px 3px 10px #ccc};
-	       -moz-box-shadow: $1;
-	            box-shadow: $1;
+	-webkit-box-shadow: ${1:2px 3px 10px #ccc};
+	   -moz-box-shadow: $1;
+	        box-shadow: $1;
 snippet transition
-	    -webkit-transition: ${1:all 0.7s ease 1s};
-	       -moz-transition: $1;
-	        -ms-transition: $1;
-	         -o-transition: $1;
-	            transition: $1;
+	-webkit-transition: ${1:all 0.7s ease 1s};
+	   -moz-transition: $1;
+	    -ms-transition: $1;
+	     -o-transition: $1;
+	        transition: $1;
 snippet transform
-	    -webkit-transform: rotate(${1:40deg}) scale(${2:0.75}) skew(${3:-20deg}) translate(${4:0.56em});
-	       -moz-transform: rotate($1) scale($2) skew($3) translate($4);
-	        -ms-transform: rotate($1) scale($2) skew($3) translate($4);
-	         -o-transform: rotate($1) scale($2) skew($3) translate($4);
-	            transform: rotate($1) scale($2) skew($3) translate($4);
+	-webkit-transform: rotate(${1:40deg}) scale(${2:0.75}) skew(${3:-20deg}) translate(${4:0.56em});
+	   -moz-transform: rotate($1) scale($2) skew($3) translate($4);
+	    -ms-transform: rotate($1) scale($2) skew($3) translate($4);
+	     -o-transform: rotate($1) scale($2) skew($3) translate($4);
+	        transform: rotate($1) scale($2) skew($3) translate($4);
 snippet gradient-linear
-	    background: -webkit-gradient(linear, left top, left bottom, from(${1:#990}), to(${2:#066}));
-	    background: -moz-linear-gradient(top, $1, $2);
-	    background: -o-linear-gradient(top, $1, $2);
+	background: -webkit-gradient(linear, left top, left bottom, from(${1:#990}), to(${2:#066}));
+	background: -moz-linear-gradient(top, $1, $2);
+	background: -o-linear-gradient(top, $1, $2);

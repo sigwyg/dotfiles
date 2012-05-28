@@ -1,0 +1,128 @@
+#
+# css.snip
+#	- snippet: string
+#	- abbr: description
+#	- prev_word: primary display position
+#
+snippet    border-radius
+abbr       border-radius with vender-prefix
+prev_word  '^'
+	-webkit-border-radius: ${1:};
+	        border-radius: $1;
+
+#snippet media_iphone
+#	@media screen and (max-width: 640px),
+#	       screen and (-webkit-min-device-pixel-ratio: 2),
+#	       screen and (-webkit-min-device-pixel-ratio: 1.5){
+#	
+#	    ${1}
+#	
+#	}
+#snippet comment
+#	/* ${1}
+#	-------------------------------------------------------------- */
+#snippet clearfix
+#	.clearfix:after {
+#	    /* neotag ni moratta */
+#	    content: "";
+#	    display: block;
+#	    clear: both;
+#	    height: 0;
+#	}
+#snippet font_grids
+#	/* vertical grids
+#	-------------------------------------------------------------- 
+#	 * 
+#	 * Basic 14px Rule
+#	 *  - 14px * 1.5  = 21px
+#	 *  - 12px * 1.75 = 21px
+#	 *  - 21px * 1.0  = 31px
+#	 *  - 24px * 1.75 = 42px
+#	 *  - 1.75 = 0.25 + 1.5em
+#	 *  - 12px, 14px, 18px, 21px, 24px, 36px, 48px, 60px, 72px
+#	 *  
+#	 *  font-size: 14px; line-height: 1.5;  margin-bottom: 1.5em;
+#	 *  font-size: 12px; line-height: 1.75; margin-bottom: 1.75em;
+#	 *  font-size: 21px; line-height: 1.0;  margin-bottom: 0.0em;  margin-top: 1em;
+#	 *  font-size: 24px; line-height: 1.75; margin-bottom: 0.25em; margin-top: 1.5em;
+#	 *  
+#	-------------------------------------------------------------- */
+#	
+#	article h1, section h1 {
+#	    font-family: "Big Caslon","Cochin","ＭＳ Ｐ明朝","Georgia", serif;
+#	    font-size: 21px;
+#	    line-height: 1.0;
+#	    margin-top: 0em;
+#	    padding-top: 0.75em;
+#	    margin-bottom: 0.25em;
+#	
+#	}
+#	#contents p,
+#	#contents ul,
+#	#contents ol,
+#	#contents dl,
+#	#contents table,
+#	#contents pre {
+#	    margin-bottom: 1.75em;
+#	}
+#	#contents ul,
+#	#contents ol {
+#	    margin-left: 2em;
+#	}
+#	
+#	/* blockquote */
+#	#contents blockquote,
+#	#contents aside {
+#	    border: 1px dotted #0c0c0c;
+#	    border-width: 1px 0;
+#	    margin-top: -2px;
+#	    margin-bottom: 1.75em;
+#	    padding: 0.875em 2em;
+#	    
+#	    font-size: 12px;
+#	    line-height: 1.75;
+#	    background: #eee;
+#	    background: #fcfaf2;
+#	}
+#	#contents blockquote cite {
+#	    display: block;
+#	    text-align: right;
+#	    margin-top: -1.75em;
+#	}
+#	#contents blockquote cite:before {
+#	    content: "\2014";
+#	}
+#	
+#	/* aside */
+#	#contents aside {
+#	    background: #0c0c0c;
+#	    color: #fffffb;
+#	    border-color: #fffffb;
+#	    border-style: solid;
+#	}
+#	aside:before {
+#	    content: "※";
+#	}
+#snippet border-radius
+#	-webkit-border-radius: ${1:};
+#	        border-radius: $1;
+#snippet box-shadow
+#	-webkit-box-shadow: ${1:2px 3px 10px #ccc};
+#	   -moz-box-shadow: $1;
+#	        box-shadow: $1;
+#snippet transition
+#	-webkit-transition: ${1:all 0.7s ease 1s};
+#	   -moz-transition: $1;
+#	    -ms-transition: $1;
+#	     -o-transition: $1;
+#	        transition: $1;
+#snippet transform
+#	-webkit-transform: rotate(${1:40deg}) scale(${2:0.75}) skew(${3:-20deg}) translate(${4:0.56em});
+#	   -moz-transform: rotate($1) scale($2) skew($3) translate($4);
+#	    -ms-transform: rotate($1) scale($2) skew($3) translate($4);
+#	     -o-transform: rotate($1) scale($2) skew($3) translate($4);
+#	        transform: rotate($1) scale($2) skew($3) translate($4);
+#snippet gradient-linear
+#	background: -webkit-gradient(linear, left top, left bottom, from(${1:#990}), to(${2:#066}));
+#	background: -moz-linear-gradient(top, $1, $2);
+#	background: -o-linear-gradient(top, $1, $2);
