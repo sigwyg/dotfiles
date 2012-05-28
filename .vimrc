@@ -876,7 +876,7 @@ let g:Powerline_stl_path_style = 'full'
 " syntastic: {{{
 "  - https://github.com/scrooloose/syntastic
 let g:syntastic_check_on_open=0
-"let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_javascript_checker = 'jshint'
 "}}}   
 
 
