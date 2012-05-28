@@ -598,12 +598,16 @@ inoremap <expr><C-l> neocomplcache#complete_common_string()
 " <CR> : delete popup and hold indent
 " <BS> : close popup and delete backword char.
 " <C-h>: close popup and delete backword char.
+" <C-y>: close popup and delete backword char.
+" <C-e>: close popup and delete backword char.
 " <C-n>: manual-start neocomplcache.
 " <C-p>: Vim native-keyword complement.
 " <C-j>: Vim native-Omni completion.
 inoremap <expr><CR> pumvisible() ? "\<C-y>\<CR>X\<BS>" : "\<CR>X\<BS>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplcache#smart_close_popup()."\<C-y>"
+inoremap <expr><C-e> neocomplcache#smart_close_popup()."\<C-e>"
 inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
