@@ -19,7 +19,8 @@ NeoBundle 'git://github.com/sjl/gundo.vim.git'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
-
+NeoBundle 'https://github.com/motemen/git-vim'
+NeoBundle 'git://github.com/scrooloose/syntastic.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
@@ -40,7 +41,7 @@ NeoBundle 'git://github.com/t9md/vim-quickhl.git'
 NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
-NeoBundle 'git://github.com/basyura/jslint.vim.git'
+"NeoBundle 'git://github.com/basyura/jslint.vim.git'
 NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
@@ -796,16 +797,16 @@ let g:html5_aria_attributes_complete = 1
 " jslint.vim: {{{
 "  - https://github.com/basyura/jslint.vim
 "  - :copen -> :cnext ...
-augroup jslint
-    autocmd! jslint
-    autocmd FileType javascript call s:javascript_filetype_settings()
-augroup END
-
-function! s:javascript_filetype_settings()
-  autocmd BufLeave     <buffer> call jslint#clear()
-  autocmd BufWritePost <buffer> call jslint#check()
-  autocmd CursorMoved  <buffer> call jslint#message()
-endfunction
+"augroup jslint
+"    autocmd! jslint
+"    autocmd FileType javascript call s:javascript_filetype_settings()
+"augroup END
+"
+"function! s:javascript_filetype_settings()
+"  autocmd BufLeave     <buffer> call jslint#clear()
+"  autocmd BufWritePost <buffer> call jslint#check()
+"  autocmd CursorMoved  <buffer> call jslint#message()
+"endfunction
 
 "}}}   
 
@@ -846,6 +847,16 @@ let g:Powerline_stl_path_style = 'full'
 "let g:w3m#homepage = "http://www.google.co.jp/"
 "let g:w3m#search_engine = 'http://www.google.co.jp/search?hl=ja&ie=' . &encoding . '&q='
 "    \ 'http://search.yahoo.co.jp/search?search.x=1&fr=top_ga1_sa_124&tid=top_ga1_sa_124&ei=' . &encoding . '&aq=&oq=&p='
+"}}}   
+
+
+" -----------------------------------------------------------------------
+" syntastic: {{{
+"  - https://github.com/scrooloose/syntastic
+let g:syntastic_check_on_open=0
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['html', 'css', 'javascript', 'perl', 'php'],
+                            \ 'passive_filetypes': [''] }
 "}}}   
 
 
