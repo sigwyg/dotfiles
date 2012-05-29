@@ -848,8 +848,8 @@ let g:indent_guides_color_change_percent = 20
   
 augroup indentGuide
     autocmd! indentGuide
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=SeaGreen ctermbg=6
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=SlateBlue ctermbg=0*
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
 augroup END
 
 "}}}   
