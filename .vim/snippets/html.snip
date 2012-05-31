@@ -1,7 +1,71 @@
 #
 # html.snip
-#	- snippet: string
-#	- abbr: description
-#	- prev_word: primary display position
+#   - snippet   : snippet_name
+#   - abbr      : description
+#   - prev_word '^' enabled only in line head
 #
+snippet html5
+	<!DOCTYPE html>
+	<title>${1}</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.1">
+	<link rel="stylesheet" href="${2}" />
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<body class="">
+	
+	<header>
+	    <h1>${3}</h1>
+	    <nav id="">
+	        <ul>
+	        <li><a href=""></a></li>
+	        </ul>
+	    </nav>
+	</header>
+	
+	
+	<!--: Start #contents -->
+	<section id="contents">
+	    <h1></h1>
+	    <p></p>
+	</section>
+	<!--: End #contents -->
+	
+	<footer></footer>
+	</body>
 
+snippet xhtmls
+	<!DOCTYPE html 
+	    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+	
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+	<head>
+	<title>${1}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="${2:base.css}" media="screen, tv" />
+	<link rel="start" href="http://archiva.jp/" title="Home" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="alternate" type="application/rss+xml" title="" href="/entries.rss" />
+	</head>
+	
+	<body id="" class="index"><div id="container">
+	
+	<!--: Start #contents -->
+	<div id="contents">
+	
+	${3}
+	
+	</div>
+	<!--: End #contents -->
+	
+	</div></body>
+	</html>
+
+snippet hgroup
+	<hgroup>
+	    <h1>${1}</h1>
+	    <h2>${2}</h2>
+	    <h3>${3}</h3>
+	</hgroup>

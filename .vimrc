@@ -602,16 +602,9 @@ let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_snippets_dir = '~/.vim/snippets'
 "Quick Type, ignore neocomplcache.
 let g:NeoComplCache_SkipCompletionTime = '0.3'
 let g:NeoComplCache_SkipInputTime = '0.1'
-
-" Plugin key-mappings.
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-inoremap <expr><C-g> neocomplcache#undo_completion()
-inoremap <expr><C-l> neocomplcache#complete_common_string()
 
 " <CR> : delete popup and hold indent
 " <BS> : close popup and delete backword char.
@@ -630,25 +623,23 @@ inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
 inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
 inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
 
-" <TAB>: TAB completion.(Can't work...!)
-"inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"}}}
 
-" Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
-"let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-"" Define dictionary.
-"let g:neocomplcache_dictionary_filetype_lists = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $HOME.'/.vimshell_hist',
-"    \ 'scheme' : $HOME.'/.gosh_completions'
-"        \ }
+" -----------------------------------------------------------------------
+" neocomplcache-snippets-complete: {{{
+"  - https://github.com/Shougo/neocomplcache-snippets-complete
+"
+let g:neocomplcache_snippets_dir = '~/.vim/snippets'
+smap <TAB> <Plug>(neocomplcache_snippets_expand)
+smap <TAB> <Plug>(neocomplcache_snippets_expand)
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+                        \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
-"" Define keyword.
-"if !exists('g:neocomplcache_keyword_patterns')
-"    let g:neocomplcache_keyword_patterns = {}
-"endif
-"let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" For snippet_complete marker.
+if has('conceal')
+    set conceallevel=2 concealcursor=i
+endif
 "}}}
 
 
