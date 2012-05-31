@@ -178,7 +178,7 @@ endif
 "
 nnoremap <F2> :IndentGuidesToggle<CR>
 nnoremap <F3> :VimFiler<CR>
-nnoremap <F4> :JSLint<CR> 
+nnoremap <F4> :SyntasticCheck<CR>
 nnoremap <F5> :GundoToggle<CR>
 "}}}
 
@@ -877,6 +877,9 @@ let g:Powerline_stl_path_style = 'full'
 "  - https://github.com/scrooloose/syntastic
 let g:syntastic_check_on_open=0
 let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': [''],
+                            \ 'passive_filetypes': ['css'] }
 "}}}   
 
 
