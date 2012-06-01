@@ -12,52 +12,68 @@ if has('vim_starting')
 endif
 call neobundle#rc(expand('~/.vim/bundle'))
 
-NeoBundle 'git://github.com/hallison/vim-markdown.git'
-"NeoBundle 'git://github.com/tpope/vim-markdown.git'
-NeoBundle 'git://github.com/tpope/vim-surround.git'
-NeoBundle 'git://github.com/tpope/vim-fugitive.git'
-NeoBundle 'git://github.com/tpope/vim-repeat.git'
-"NeoBundle 'git://github.com/msanders/snipmate.vim.git'
-NeoBundle 'git://github.com/sjl/gundo.vim.git'
-NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
-"NeoBundle 'https://github.com/motemen/git-vim'
-NeoBundle 'git://github.com/scrooloose/syntastic.git'
+"
+" Unite
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
+    NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+    NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
+    NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
+    NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
     NeoBundle 'git://github.com/Shougo/unite-ssh.git'
+    NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
+"
+" Git
+NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 NeoBundle 'git://github.com/Shougo/vim-vcs.git'
     NeoBundle 'git://github.com/thinca/vim-openbuf.git'
-NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
-NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
-NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
-NeoBundle 'git://github.com/thinca/vim-quickrun.git'
-NeoBundle 'git://github.com/thinca/vim-ref.git'
-NeoBundle 'git://github.com/thinca/vim-template.git'
-NeoBundle 'git://github.com/t9md/vim-textmanip.git'
-NeoBundle 'git://github.com/t9md/vim-quickhl.git'
-NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
-NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
+"NeoBundle 'https://github.com/motemen/git-vim'
+"
+" Text
 NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
-"NeoBundle 'git://github.com/basyura/jslint.vim.git'
+NeoBundle 'git://github.com/t9md/vim-textmanip.git'
+NeoBundle 'git://github.com/thinca/vim-template.git'
+NeoBundle 'git://github.com/tpope/vim-surround.git'
+    NeoBundle 'git://github.com/tpope/vim-repeat.git'
+"NeoBundle 'git://github.com/msanders/snipmate.vim.git'
+"
+" Display
+NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
+"
+" Syntax
+NeoBundle 'git://github.com/t9md/vim-quickhl.git'
 NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
+NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
+NeoBundle 'git://github.com/hallison/vim-markdown.git'
+"NeoBundle 'git://github.com/tpope/vim-markdown.git'
+"
+" Develop
+NeoBundle 'git://github.com/sjl/gundo.vim.git'
+NeoBundle 'git://github.com/thinca/vim-quickrun.git'
+NeoBundle 'git://github.com/thinca/vim-ref.git'
+NeoBundle 'git://github.com/scrooloose/syntastic.git'
+"NeoBundle 'git://github.com/basyura/jslint.vim.git'
+"
+" Browser
 NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
-"NeoBundle 'git://github.com/vim-scripts/TwitVim.git'
+NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
 NeoBundle 'git://github.com/basyura/TweetVim.git'
     NeoBundle 'git://github.com/basyura/twibill.vim.git'
     NeoBundle 'git://github.com/tyru/open-browser.vim.git'
     NeoBundle 'git://github.com/mattn/webapi-vim.git'
+"NeoBundle 'git://github.com/vim-scripts/TwitVim.git'
+"
+" Presen
 NeoBundle 'https://github.com/sorah/presen.vim'
 NeoBundle 'git://github.com/pocket7878/presen-vim.git'
     NeoBundle 'git://github.com/pocket7878/curses-vim.git'
-NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
 "NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 
 
