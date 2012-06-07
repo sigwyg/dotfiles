@@ -166,6 +166,7 @@ set diffopt=filler,vertical
 set splitbelow
 set splitright
 set visualbell
+set previewheight=20
 
 " backup
 set backup
