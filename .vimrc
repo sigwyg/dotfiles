@@ -109,7 +109,7 @@ set wildmode=list:longest,full
 "set t_Co=8
 syntax on
 
-colorscheme ir_black
+colorscheme h2u_black
 highlight LineNr ctermfg=0
 
 "colorscheme slate
