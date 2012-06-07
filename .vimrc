@@ -186,6 +186,7 @@ endif
 
 "}}}
 
+
 " -----------------------------------------------------------------------
 " QuickStart: {{{
 "  - gundo.vim (https://github.com/sjl/gundo.vim)
@@ -569,7 +570,7 @@ endfunction
 
 
 " -----------------------------------------------------------------------
-" FonstToggle: {{{
+" FontsToggle: {{{
 "  - inspired zoom.vim@hokaccha
 "  - http://gist.github.com/200505
 "
