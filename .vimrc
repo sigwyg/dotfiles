@@ -1,7 +1,7 @@
 set nocompatible
 
 " -----------------------------------------------------------------------
-" Vundle
+" Vundle: {{{
 "  - https://github.com/vim-scripts/vundle
 " NeoBundle.vim
 "  - https://github.com/Shougo/neobundle.vim
@@ -77,7 +77,8 @@ NeoBundle 'git://github.com/pocket7878/presen-vim.git'
 "NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 
 
-" -----------------------------------------------------------------------
+" }}}
+
 
 filetype plugin indent on
 
