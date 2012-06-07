@@ -9,18 +9,14 @@ if has('gui_macvim')
     set lines=40               " 行数
     set columns=140            " 横幅
     set cmdheight=1            " コマンドラインの高さ
-    set previewheight=5        " プレビューウィンドウの高さ
     set splitbelow             " 横分割したら新しいウィンドウは下に
     set splitright             " 縦分割したら新しいウィンドウは右に
     set visualbell
 
-    set antialias
-    "set guifont=Courier\ New:h14
-    set guifont=Courier\ New\ for\ Powerline:h14
     colorscheme h2u_black
-    "highlight Normal guibg=#0000ff
+    set antialias
+    set guifont=Courier\ New\ for\ Powerline:h14
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
     highlight CursorColumn guibg=#222233
 endif
-
 
