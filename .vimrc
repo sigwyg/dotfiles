@@ -819,6 +819,8 @@ let g:quickhl_keywords = [
         \ {"pattern": "NOTE"},
         \ {"pattern": "MEMO"},
         \ {"pattern": "aside"},
+        \ {"pattern": "　"},
+        \ {"pattern": '\(\S\)\@<=\s\+$', "regexp": 1 },
         \ ]
 "}}}
 
