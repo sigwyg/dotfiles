@@ -1,5 +1,6 @@
 set nocompatible
 
+
 " -----------------------------------------------------------------------
 " Vundle: {{{
 "  - https://github.com/vim-scripts/vundle
@@ -954,6 +955,7 @@ endfunction
 " }}}
 
 
+" -----------------------------------------------------------------------
 " for markdown: {{{
 "  - http://archiva.jp/web/tool/vim2mkd.html
 nnoremap \m :call DisplayMarkdown()<CR>
