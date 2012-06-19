@@ -78,7 +78,10 @@ NeoBundle 'https://github.com/sorah/presen.vim'
 NeoBundle 'git://github.com/pocket7878/presen-vim.git'
     NeoBundle 'git://github.com/pocket7878/curses-vim.git'
 "NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
-
+"
+" Colorscheme
+NeoBundle 'git://github.com/nanotech/jellybeans.vim.git'
+NeoBundle 'git://gist.github.com/187578.git' " <- h2u_black
 
 " }}}
 
@@ -112,8 +115,9 @@ set wildmode=list:longest,full
 "set t_Co=8
 syntax on
 
-colorscheme h2u_black
-highlight LineNr ctermfg=0
+"colorscheme h2u_black
+colorscheme jellybeans
+"highlight LineNr ctermfg=0
 
 "colorscheme slate
 "highlight Normal guibg=grey5

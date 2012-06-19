@@ -13,7 +13,8 @@ if has('gui_macvim')
     set splitright             " 縦分割したら新しいウィンドウは右に
     set visualbell
 
-    colorscheme h2u_black
+    "colorscheme h2u_black
+    colorscheme jellybeans
     set antialias
     set guifont=Courier\ New\ for\ Powerline:h14
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
