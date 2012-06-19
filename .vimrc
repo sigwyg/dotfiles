@@ -40,6 +40,8 @@ NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/thinca/vim-template.git'
 NeoBundle 'git://github.com/tpope/vim-surround.git'
     NeoBundle 'git://github.com/tpope/vim-repeat.git'
+NeoBundle 'git://github.com/kana/vim-textobj-user.git'
+    NeoBundle 'git://github.com/kana/vim-textobj-indent.git'
 "NeoBundle 'git://github.com/msanders/snipmate.vim.git'
 "
 " Display
