@@ -77,6 +77,7 @@ NeoBundle 'git://github.com/basyura/TweetVim.git'
 NeoBundle 'https://github.com/sorah/presen.vim'
 NeoBundle 'git://github.com/pocket7878/presen-vim.git'
     NeoBundle 'git://github.com/pocket7878/curses-vim.git'
+"NeoBundle 'git://github.com/thinca/vim-showtime.git'
 "NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
 "
 " Colorscheme
