@@ -2,40 +2,77 @@
 # css.snip
 #   - snippet   : snippet_name
 #   - abbr      : description
-#   - prev_word '^' enabled only in line head
+#   - prev_word : '^' enabled only in line head
 #
 # If you use hard tab for indentation in snippet file, neocomplcache will use
 # 'shiftwidth' instead of original Vim indent function.
 #
-snippet bradi
+snippet test
+abbr    this is test of snippet expand
+    p {
+        attribute: values;
+    }
+
+snippet test2
+abbr    this is test of snippet expand
+	p {
+	    attribute: values;
+	}
+
+snippet test3
+abbr    this is test of snippet expand
+        p {
+            attribute: values;
+        }
+
+snippet test4
+abbr    this is test of snippet expand
+        p {
+            p {
+                attribute: values;
+            }
+        }
+
+snippet content
+abbr    content for :before/:after
+	content: "${1}";${2}
+
+snippet border-radius
 abbr    border-radius with vender-prefix
 	/* border-radius */
 	-webkit-border-radius: ${1:5px};
 			border-radius: $1;
 
-snippet bshadow
+snippet box-shadow
 abbr    box-shadow with vender-prefix
 	/* box-shadow */
 	-webkit-box-shadow: ${1:2px 3px 10px #ccc};
 			box-shadow: $1;
 
+snippet box-sizing
+abbr    box-sizing with vender-prefix
+	/* box-sizing */
+	-webkit-box-sizing: ${1:border-box};
+	${2}-moz-box-sizing: $1;
+			box-sizing: $1;
+
 snippet transition
 abbr    CSS transitioon with vender-prefix
-    	/* transition */
-    	-webkit-transition: ${1:all 0.7s ease 1s};
-    	   -moz-transition: $1;
-    	    -ms-transition: $1;
-    	     -o-transition: $1;
-    	        transition: $1;
+	/* transition */
+	-webkit-transition: ${1:all 0.7s ease 1s};
+		${2}-moz-transition: $1;
+		-ms-transition: $1;
+		 -o-transition: $1;
+			transition: $1;
 
 snippet transform
 abbr    2D Transform with vender-prefix
-    	/* 2D Transform */
-    	-webkit-transform: rotate(${1:40deg}) scale(${2:0.75}) skew(${3:-20deg}) translate(${4:0.56em});
-    	   -moz-transform: rotate($1) scale($2) skew($3) translate($4);
-    	    -ms-transform: rotate($1) scale($2) skew($3) translate($4);
-    	     -o-transform: rotate($1) scale($2) skew($3) translate($4);
-    	        transform: rotate($1) scale($2) skew($3) translate($4);
+	/* 2D Transform */
+	-webkit-transform: rotate(${1:40deg}) scale(${2:0.75}) skew(${3:-20deg}) translate(${4:0.56em});
+	   ${5}-moz-transform: rotate($1) scale($2) skew($3) translate($4);
+		-ms-transform: rotate($1) scale($2) skew($3) translate($4);
+		 -o-transform: rotate($1) scale($2) skew($3) translate($4);
+			transform: rotate($1) scale($2) skew($3) translate($4);
 
 snippet linear-gradient
 abbr    CSS Gradient with vender-prefix
@@ -47,6 +84,13 @@ abbr    CSS Gradient with vender-prefix
 	background-image:     -ms-linear-gradient(top, $1 0%, $2 100%);
 	background-image:      -o-linear-gradient(top, $1 0%, $2 100%);
 	background-image:   linear-gradient(to buttom, $1 0%, $2 100%);
+
+snippet appearance
+abbr    CSS Appearance with vender-prefix
+	/* appearance */
+	-webkit-appearance: ${1:none};
+		${2}-moz-appearance: $1;
+			appearance: $1;
 
 snippet media_iphone
 	@media screen and (max-width: 640px),
