@@ -329,6 +329,15 @@ augroup MyAutoCmd
 
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
+    
+    " For Quickhl
+    "  - if "set nolist" (ex. :Unite file), delete highlight.
+    "  - BufNewFile/BufRead not work.
+    "  - BufEnter/WinEnter working only move window.
+    "
+    "autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
+    "autocmd Syntax unite call quickhl#lock()
+    autocmd Filetype unite call quickhl#lock()
 
     " cursor-line highlight
     "  - when .vimrc reloaded, VimShell-ssh corrupting
@@ -812,7 +821,6 @@ nmap <Space>m <Plug>(quickhl-toggle)
 xmap <Space>m <Plug>(quickhl-toggle)
 nmap <Space>M <Plug>(quickhl-reset)
 xmap <Space>M <Plug>(quickhl-reset)
-
 nmap <Space>j <Plug>(quickhl-match)
 let g:quickhl_keywords = [
         \ {"pattern": '\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}', "regexp": 1 },
