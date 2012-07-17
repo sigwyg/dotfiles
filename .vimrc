@@ -231,7 +231,8 @@ inoremap <Right> <Nop>
 " practice <Esc>
 noremap <C-c> <Nop>
 inoremap <C-c> <Nop>
-inoremap jj <Esc>
+inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
+"inoremap jj <Esc>
 "inoremap <C-j> <Esc>
 "nnoremap <C-j> <Esc>
 
