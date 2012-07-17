@@ -205,7 +205,7 @@ endif
 "
 nnoremap <F2> :IndentGuidesToggle<CR>
 nnoremap <F3> :VimFiler<CR>
-nnoremap <F4> :SyntasticCheck<CR>
+nnoremap <F4> :SyntasticToggleMode<CR>
 nnoremap <F5> :GundoToggle<CR>
 "}}}
 
