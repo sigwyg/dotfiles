@@ -6,7 +6,7 @@ set nocompatible
 "  - https://github.com/vim-scripts/vundle
 " NeoBundle.vim
 "  - https://github.com/Shougo/neobundle.vim
-" 
+"
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -236,7 +236,7 @@ inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 "inoremap <C-j> <Esc>
 "nnoremap <C-j> <Esc>
 
-" below, cause error on MacVim-KaoriYa 
+" below, cause error on MacVim-KaoriYa
 "inoremap <Left> <Nop>
 
 " help
@@ -309,8 +309,8 @@ command! -bang -nargs=? Euc edit<bang> ++enc=euc-jp <args>
 noremap ; :
 noremap : ;
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
-cnoremap <C-p> <Up> 
-cnoremap <C-n> <Down> 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 cnoremap <Leader><Leader> ~/
 
 " consecutive numbers - 0,1,2,3,4...
@@ -323,7 +323,7 @@ command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <co
 
 " -----------------------------------------------------------------------
 " augroups: {{{
-" 
+"
 
 " For noexpandtab
 augroup MyAutoCmd
@@ -350,8 +350,8 @@ augroup MyAutoCmd
     "autocmd WinLeave * setlocal nocursorcolumn
     
     " closetag
-    autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
-    autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
+    "autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
+    "autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
     "autocmd Filetype html inoremap <buffer> <LT>? <LT>/<C-x><C-o>
 
     " go to file!
@@ -452,7 +452,7 @@ endif
 " Distributed under the terms of the Vim license.  See ":help license".
 "
 " Usage:
-"   :Bonly / :BOnly / :Bufonly / :BufOnly [buffer] 
+"   :Bonly / :BOnly / :Bufonly / :BufOnly [buffer]
 "
 " Without any arguments the current buffer is kept.  With an argument the
 " buffer name/number supplied is kept.
@@ -519,7 +519,7 @@ endfunction
 
 " -----------------------------------------------------------------------
 " HTML Key Mappings for Typing Character Codes: {{{
-" 
+"
 " |--------------------------------------------------------------------
 " |Keys     |Insert   |For  |Comment
 " |---------|---------|-----|-------------------------------------------
@@ -757,7 +757,7 @@ let g:unite_source_grep_default_opts = "-Hn"
 " -----------------------------------------------------------------------
 " VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
-" 
+"
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
 "let g:vimfiler_max_filename_width = 50
@@ -861,7 +861,7 @@ let g:html5_aria_attributes_complete = 1
 "  autocmd CursorMoved  <buffer> call jslint#message()
 "endfunction
 
-"}}}   
+"}}}
 
 
 " -----------------------------------------------------------------------
@@ -883,7 +883,7 @@ augroup indentGuide
     autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
 augroup END
 
-"}}}   
+"}}}
 
 
 " -----------------------------------------------------------------------
@@ -891,7 +891,7 @@ augroup END
 "  - https://github.com/Lokaltog/vim-powerline
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_stl_path_style = 'short'
-"}}}   
+"}}}
 
 
 " -----------------------------------------------------------------------
@@ -900,7 +900,7 @@ let g:Powerline_stl_path_style = 'short'
 "let g:w3m#homepage = "http://www.google.co.jp/"
 "let g:w3m#search_engine = 'http://www.google.co.jp/search?hl=ja&ie=' . &encoding . '&q='
 "    \ 'http://search.yahoo.co.jp/search?search.x=1&fr=top_ga1_sa_124&tid=top_ga1_sa_124&ei=' . &encoding . '&aq=&oq=&p='
-"}}}   
+"}}}
 
 
 " -----------------------------------------------------------------------
@@ -911,14 +911,14 @@ let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [''],
                             \ 'passive_filetypes': ['css'] }
-"}}}   
+"}}}
 
 
 " -----------------------------------------------------------------------
 " Like :CdCurrent {{{
 "  - :CD
 "
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>') 
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
 function! s:ChangeCurrentDir(directory, bang)
     if a:directory == ''
         lcd %:p:h
