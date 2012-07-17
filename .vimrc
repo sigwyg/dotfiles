@@ -252,6 +252,8 @@ nnoremap gj j
 nnoremap gk k
 nnoremap gh gT
 nnoremap gl gt
+nnoremap fe $
+vnoremap fe $<LEFT>
 
 " text-edit
 noremap <CR> i<CR><ESC>
