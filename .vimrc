@@ -254,6 +254,8 @@ nnoremap gh gT
 nnoremap gl gt
 nnoremap fe $
 vnoremap fe $<LEFT>
+nnoremap <tab> %
+vnoremap <tab> %
 
 " text-edit
 noremap <CR> i<CR><ESC>
