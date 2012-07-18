@@ -341,6 +341,7 @@ augroup MyAutoCmd
     "autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
     "autocmd Syntax unite call quickhl#lock()
     autocmd Filetype unite call quickhl#lock()
+    autocmd Filetype vimfiler call quickhl#lock()
 
     " cursor-line highlight
     "  - when .vimrc reloaded, VimShell-ssh corrupting
