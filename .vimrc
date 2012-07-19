@@ -1018,4 +1018,22 @@ nnoremap <silent> ,3 :<C-u>call CSS3PropertyDuplicate()<CR>
 " }}}
 
 
+" -----------------------------------------------------------------------
+" Open junk file: {{{
+"  - Origin: http://vim-users.jp/2010/11/hack181/
+"  - Usage: ":JunkFile"
+"
+command! -nargs=0 JunkFile call s:open_junk_file()
+function! s:open_junk_file()
+  let junk_dir = $HOME . '/.vim_junk'
+  if !isdirectory(junk_dir)
+    call mkdir(junk_dir, 'p')
+  endif
+
+  let filename = input('Junk Code: ', junk_dir.strftime('/%Y-%m-%d-%H%M%S.'))
+  if filename != ''
+    execute 'edit ' . filename
+  endif
+endfunction
+" }}}
 
