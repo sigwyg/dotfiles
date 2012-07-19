@@ -756,9 +756,12 @@ let g:vimfiler_min_filename_width = 20
 "let g:vimfiler_max_filename_width = 50
 let g:vimfiler_as_default_explorer = 1
 
-autocmd MyAutoCmd FileType unite call s:vimfiler_my_settings()
+" Overwrite settings.
+autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
 function! s:vimfiler_my_settings()"
-    " Overwrite settings.
+    nmap <buffer> <C-l> <C-w>l
+    nmap <buffer> <C-j> <C-w>j
+    nmap <buffer> R <Plug>(vimfiler_redraw_screen)
 endfunction"
 "}}}
 
