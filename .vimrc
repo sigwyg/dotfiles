@@ -186,12 +186,6 @@ set directory=~/.vim/swap
 if has('persistent_undo')
     set undofile
     set undodir=./.vimundo,~/.vim/undo
-    " Below, If only file under the home-directory
-    "
-    " augroup vimrc-undofile
-    "     autocmd!
-    "     autocmd BufReadPre ~/* setlocal undofile
-    " augroup END
 endif
 
 "}}}
@@ -340,16 +334,6 @@ augroup MyAutoCmd
 
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
-    
-    " For Quickhl
-    "  - if "set nolist" (ex. :Unite file), delete highlight.
-    "  - BufNewFile/BufRead not work.
-    "  - BufEnter/WinEnter working only move window.
-    "
-    "autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
-    "autocmd Syntax unite call quickhl#lock()
-    autocmd Filetype unite call quickhl#lock()
-    autocmd Filetype vimfiler call quickhl#lock()
 
     " cursor-line highlight
     "  - when .vimrc reloaded, VimShell-ssh corrupting
@@ -373,7 +357,7 @@ augroup MyAutoCmd
     " Custom folding
     "autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
     
-    " set less-sybtax
+    " set less-syntax
     autocmd BufEnter *.less set filetype=scss
 augroup END
 
@@ -435,12 +419,12 @@ if !has('gui_macvim') && !has('kaoriya')
     endif
 
     if has('autocmd')
-    function! AU_ReCheck_FENC()
-        if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-        let &fileencoding=&encoding
-        endif
-    endfunction
-    autocmd BufReadPost * call AU_ReCheck_FENC()
+        function! AU_ReCheck_FENC()
+            if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
+            let &fileencoding=&encoding
+            endif
+        endfunction
+        autocmd! BufReadPost * call AU_ReCheck_FENC()
     endif
 
     set fileformats=unix,dos,mac
@@ -549,7 +533,7 @@ endfunction
 " > http://www.stripey.com/vim/html.html
 "
 "
-autocmd BufEnter * if &filetype == "html" | call MapHTMLKeys() | endif
+autocmd! BufEnter * if &filetype == "html" | call MapHTMLKeys() | endif
 function! MapHTMLKeys(...)
   if a:0 == 0 || a:1 != 0
     inoremap \\ \
@@ -842,6 +826,15 @@ let g:quickhl_keywords = [
         \ {"pattern": "　"},
         \ {"pattern": '\(\S\)\@<=\s\+$', "regexp": 1 },
         \ ]
+    
+"
+"  If "set nolist" (ex. :Unite file), delete highlight.
+"  - BufNewFile/BufRead not work.
+"  - BufEnter/WinEnter working only to return window.
+"
+"autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
+autocmd MyAutoCmd FileType unite call quickhl#lock()
+autocmd MyAutoCmd FileType vimfiler call quickhl#lock()
 "}}}
 
 
@@ -859,10 +852,7 @@ let g:html5_aria_attributes_complete = 1
 " jslint.vim: {{{
 "  - https://github.com/basyura/jslint.vim
 "  - :copen -> :cnext ...
-"augroup jslint
-"    autocmd! jslint
-"    autocmd FileType javascript call s:javascript_filetype_settings()
-"augroup END
+"autocmd MyAutoCmd FileType javascript call s:javascript_filetype_settings()
 "
 "function! s:javascript_filetype_settings()
 "  autocmd BufLeave     <buffer> call jslint#clear()
