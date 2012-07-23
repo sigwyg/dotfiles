@@ -36,7 +36,6 @@ NeoBundle 'git://github.com/Shougo/vim-vcs.git'
 "
 " Text
 NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
-NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 NeoBundle 'git://github.com/thinca/vim-template.git'
 NeoBundle 'git://github.com/tpope/vim-surround.git'
     NeoBundle 'git://github.com/tpope/vim-repeat.git'
@@ -876,7 +875,6 @@ function! ChangeUL() range
     call append(a:lastline, '</ul>')
     call append(a:firstline - 1, '<ul>')
 endfunction
-
 
 " ChangeTable
 function! ChangeTable() range
