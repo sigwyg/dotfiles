@@ -227,10 +227,11 @@ inoremap <Right> <Nop>
 " below, cause error on MacVim-KaoriYa
 "inoremap <Left> <Nop>
 
-" practice <Esc>
-noremap <C-c> <Nop>
-inoremap <C-c> <Nop>
-inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
+" alter <Esc>
+noremap <C-c> <Esc>
+inoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
+onoremap <C-c> <Esc>
 "inoremap jj <Esc>
 inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 
