@@ -235,8 +235,8 @@ onoremap <C-c> <Esc>
 "inoremap jj <Esc>
 inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 
-" below, cause error on MacVim-KaoriYa
-"inoremap <Left> <Nop>
+" killed
+nnoremap Q <Nop>
 
 " help
 "nnoremap <C-h> :<C-u>help<Space>
