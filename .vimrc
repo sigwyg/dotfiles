@@ -43,6 +43,7 @@ NeoBundle 'git://github.com/tpope/vim-surround.git'
 NeoBundle 'git://github.com/kana/vim-textobj-user.git'
     NeoBundle 'git://github.com/kana/vim-textobj-indent.git'
 "NeoBundle 'git://github.com/msanders/snipmate.vim.git'
+"NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 "
 " Display
 NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
@@ -795,22 +796,6 @@ function! s:vimshell_settings()
     "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
     call unite#custom_default_action('vimshell/history' , 'insert')
 endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" textmanip.vim: {{{
-"  - https://github.com/t9md/vim-textmanip
-"
-xmap <D-d> <Plug>(textmanip-duplicate-down)
-nmap <D-d> <Plug>(textmanip-duplicate-down)
-xmap <D-D> <Plug>(textmanip-duplicate-up)
-nmap <D-D> <Plug>(textmanip-duplicate-up)
-
-xmap <C-j> <Plug>(textmanip-move-down)
-xmap <C-k> <Plug>(textmanip-move-up)
-xmap <C-h> <Plug>(textmanip-move-left)
-xmap <C-l> <Plug>(textmanip-move-right)
 "}}}
 
 
