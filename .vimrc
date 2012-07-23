@@ -273,11 +273,11 @@ nnoremap g* g*zz
 nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 
-" fix window-size
-nnoremap <silent> <S-Left>  :5wincmd <<CR>
-nnoremap <silent> <S-Right> :5wincmd ><CR>
-nnoremap <silent> <S-Up>    :5wincmd -<CR>
-nnoremap <silent> <S-Down>  :5wincmd +<CR>
+" Change window-size
+nnoremap <silent> <S-Left>  :<C-u>5wincmd <<CR>
+nnoremap <silent> <S-Down>  :<C-u>5wincmd +<CR>
+nnoremap <silent> <S-Up>    :<C-u>5wincmd -<CR>
+nnoremap <silent> <S-Right> :<C-u>5wincmd ><CR>
 
 " move window
 nnoremap <C-h> <C-w>h
@@ -589,6 +589,8 @@ endfunction
 "  - inspired zoom.vim@hokaccha
 "  - http://gist.github.com/200505
 "
+nnoremap <Leader>f :<C-u>call FontToggle('f')<CR>
+"nnoremap <C-b> :<C-u>call FontToggle('b')<CR>
 function! FontToggle(trigger)
     if &guifont == "Courier\ New:h14"
         if a:trigger  == 'b'
