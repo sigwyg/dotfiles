@@ -253,8 +253,11 @@ nnoremap gh gT
 nnoremap gl gt
 nnoremap fe $
 vnoremap fe $<LEFT>
+" <Tab> or <C-i> is moving jumplist.
 nnoremap <tab> %
 vnoremap <tab> %
+nnoremap <C-i> <C-i>
+vnoremap <C-i> <C-i>
 
 " text-edit
 noremap <CR> i<CR><ESC>
