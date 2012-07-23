@@ -2,10 +2,10 @@ set nocompatible
 
 
 " -----------------------------------------------------------------------
-" Vundle: {{{
-"  - https://github.com/vim-scripts/vundle
-" NeoBundle.vim
+" NeoBundle.vim: {{{
 "  - https://github.com/Shougo/neobundle.vim
+" Vundle
+"  - https://github.com/vim-scripts/vundle
 "
 
 if has('vim_starting')
@@ -42,6 +42,7 @@ NeoBundle 'git://github.com/tpope/vim-surround.git'
     NeoBundle 'git://github.com/tpope/vim-repeat.git'
 NeoBundle 'git://github.com/kana/vim-textobj-user.git'
     NeoBundle 'git://github.com/kana/vim-textobj-indent.git'
+"NeoBundle 'git://github.com/sigwyg/htmlform.vim.git'
 "NeoBundle 'git://github.com/msanders/snipmate.vim.git'
 "NeoBundle 'git://github.com/t9md/vim-textmanip.git'
 "
@@ -198,10 +199,11 @@ endif
 "  - jslint.vim(https://github.com/basyura/jslint.vim)
 "  - VimFiler  (https: //github.com/Shougo/vimfiler)
 "
-nnoremap <F2> :IndentGuidesToggle<CR>
-nnoremap <F3> :VimFiler<CR>
-nnoremap <F4> :SyntasticToggleMode<CR>
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <F1> <Nop>
+nnoremap <F2> :<C-u>IndentGuidesToggle<CR>
+nnoremap <F3> :<C-u>VimFiler<CR>
+nnoremap <F4> :<C-u>SyntasticToggleMode<CR>
+nnoremap <F5> :<C-u>GundoToggle<CR>
 "}}}
 
 
@@ -222,14 +224,15 @@ noremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 inoremap <Right> <Nop>
+" below, cause error on MacVim-KaoriYa
+"inoremap <Left> <Nop>
 
 " practice <Esc>
 noremap <C-c> <Nop>
 inoremap <C-c> <Nop>
 inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 "inoremap jj <Esc>
-"inoremap <C-j> <Esc>
-"nnoremap <C-j> <Esc>
+inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 
 " below, cause error on MacVim-KaoriYa
 "inoremap <Left> <Nop>
@@ -352,8 +355,8 @@ augroup MyAutoCmd
     autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
 
     " format
-    autocmd BufRead *.mkd setlocal wrap
-    autocmd BufRead *.txt setlocal textwidth=0
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType text setlocal textwidth=0
     
     " Custom folding
     "autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
@@ -573,15 +576,15 @@ endfunction " MapHTMLKeys()
 " below, Reload xxx.snippet. :call SnipMateReload()
 "  -> http://webtech-walker.com/archive/2009/10/26021358.html
 "
-function! SnipMateReload()
-    if &ft == 'snippet'
-        let ft = substitute(expand('%'), '.snippets', '', '')
-        if has_key(g:did_ft, ft)
-            unlet g:did_ft[ft]
-        endif
-        silent! call GetSnippets(g:snippets_dir, ft)
-    endif
-endfunction
+"function! SnipMateReload()
+"    if &ft == 'snippet'
+"        let ft = substitute(expand('%'), '.snippets', '', '')
+"        if has_key(g:did_ft, ft)
+"            unlet g:did_ft[ft]
+"        endif
+"        silent! call GetSnippets(g:snippets_dir, ft)
+"    endif
+"endfunction
 "}}}
 
 
@@ -595,27 +598,25 @@ nnoremap <Leader>f :<C-u>call FontToggle('f')<CR>
 function! FontToggle(trigger)
     if &guifont == "Courier\ New:h14"
         if a:trigger  == 'b'
-            execute 'set guifont=Courier\ New:h36'
-            execute 'set columns=51'
-            execute 'set lines=16'
+            set guifont=Courier\ New:h36
+            set columns=51
+            set lines=16
         elseif a:trigger == 'f'
-            execute 'set guifont=nanahoshi-beta:h18'
-            execute 'set guifontwide=nanahoshi-beta:h18'
+            set guifont=nanahoshi-beta:h18
+            set guifontwide=nanahoshi-beta:h18
             "execute 'set guifont=Inconsolata:h15'
             "execute 'set guifontwide=Inconsolata:h15'
-            execute 'set columns=124'
-            execute 'set lines=36'
+            set columns=124
+            set lines=36
         endif
 
    else
-       execute 'set guifont=Courier\ New:h14'
-       execute 'set guifontwide='
-       execute 'set columns=140'
-       execute 'set lines=40'
+       set guifont=Courier\ New:h14
+       set guifontwide=
+       set columns=140
+       set lines=40
    endif
 endfunction
-nnoremap <C-f> :<C-u>call FontToggle('f')<CR>
-nnoremap <C-b> :<C-u>call FontToggle('b')<CR>
 "}}}
 
 
@@ -801,7 +802,7 @@ endfunction
 
 " -----------------------------------------------------------------------
 " quickhl.vim: {{{
-"  - https://github.com/t9md/vim-textmanip
+"  - https://github.com/t9md/vim-quickhl
 "
 nmap <Space>m <Plug>(quickhl-toggle)
 xmap <Space>m <Plug>(quickhl-toggle)
@@ -905,9 +906,10 @@ let g:syntastic_mode_map = { 'mode': 'active',
 
 " -----------------------------------------------------------------------
 " Like :CdCurrent {{{
-"  - :CD
+"  - :CdCurrent is KaoriYa-Command
+"  - Usage: ":Cd"
 "
-command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
+command! -nargs=? -complete=dir -bang Cd call s:ChangeCurrentDir(<q-args>, <q-bang>)
 function! s:ChangeCurrentDir(directory, bang)
     if a:directory == ''
         lcd %:p:h
@@ -924,11 +926,12 @@ endfunction
 
 " -----------------------------------------------------------------------
 " htmlform.vim: {{{
-"  - https: //github.com/sigwyg/htmlform.vim
+"  - https://github.com/sigwyg/htmlform.vim
 "  - http://archiva.jp/web/sugamo_css/sugamo_vim_01.html
 "
 vnoremap \u :call ChangeUL()<CR>
 vnoremap \t :call ChangeTable()<CR>
+
 " ChangeUL
 function! ChangeUL() range
     let l:count = a:firstline
@@ -973,7 +976,7 @@ function! DisplayMarkdown()
     vert diffsplit /tmp/__markdown.html
     highlight DiffChange guibg=grey0
     highlight DiffAdd    guibg=grey0
-    highlight DiffText   gui=NONE, guibg=grey0
+    highlight DiffText   gui=NONE guibg=grey0
     highlight DiffDelete guibg=grey0
  
     call cursor(1,1)
