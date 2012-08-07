@@ -13,19 +13,20 @@ alias grep='grep --color=auto'
 export EDITOR=/usr/bin/vim
 
 # IF Mac OSX
-if [[ "$OSTYPE" == "darwin10.0" ]]; then
-    export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.nvm/v0.6.18/bin/"
-    
-    alias vi=/usr/bin/vim
-    alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
-    alias ls='ls -G'
-    alias la='ls -la -G'
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-    alias ls='ls --color'
-    alias la='ls -la --color'
-else
-    exit 1
-fi
+case $OSTYPE in
+    darwin*)
+        export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.nvm/v0.6.18/bin"
+        
+        alias vi=/usr/bin/vim
+        alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
+        alias ls='ls -G'
+        alias la='ls -la -G'
+        ;;
+    linux-gnu)
+        alias ls='ls --color'
+        alias la='ls -la --color'
+        ;;
+esac
 
 
 # history
