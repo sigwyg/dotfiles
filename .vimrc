@@ -720,6 +720,7 @@ function! s:vimshell_settings()
     call vimshell#set_alias('gis', 'git status')
     call vimshell#set_alias('gid', 'git diff')
     call vimshell#set_alias('gic', 'git commit')
+    call vimshell#set_alias('gl', 'git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset" -10')
 
     " for Insert action on VimShell-history
     "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
