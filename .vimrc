@@ -96,8 +96,8 @@ filetype plugin indent on
 
 " Add $PATH for node (jslint/csslint)
 if has('vim_starting')
-    if isdirectory(expand('~/.nvm/v0.6.18/bin/'))
-        execute 'let $PATH="' . $PATH . ':' . $HOME .'/.nvm/v0.6.18/bin/"'
+    if isdirectory(expand('~/.nvm/v0.6.18/bin'))
+        execute 'let $PATH="' . $PATH . ':' . $HOME .'/.nvm/v0.6.18/bin"'
     endif
 endif
 
