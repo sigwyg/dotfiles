@@ -116,6 +116,10 @@ set wildmode=list:longest,full
 " syntax color
 "set t_Co=8
 syntax on
+set cursorline
+highlight CursorLine cterm=bold
+"set cursorcolumn
+"highlight CursorColumn ctermbg=0
 
 "colorscheme h2u_black
 colorscheme jellybeans
@@ -128,10 +132,6 @@ colorscheme jellybeans
 "colorscheme ron
 "highlight LineNr ctermfg=grey
 
-set cursorline
-highlight CursorLine   cterm=bold
-"set cursorcolumn
-"highlight CursorColumn ctermbg=0
 
 " search
 set ignorecase
