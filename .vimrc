@@ -241,7 +241,9 @@ onoremap <C-c> <Esc>
 inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 
 " killed
+nnoremap <F1> <Nop>
 nnoremap Q <Nop>
+nnoremap m <Nop>
 
 " help
 "nnoremap <C-h> :<C-u>help<Space>
