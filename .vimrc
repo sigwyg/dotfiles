@@ -211,9 +211,15 @@ nnoremap <F5> :<C-u>GundoToggle<CR>
 " --------------------
 
 " timeout
-set timeout
-set timeoutlen=3000
-set ttimeoutlen=100
+"set timeout
+"set timeoutlen=3000
+"set ttimeoutlen=100
+
+" effective keymap
+vnoremap y ygV
+vnoremap d dgV
+onoremap y ygV
+onoremap d dgV
 
 " practice
 noremap <Up> <Nop>
@@ -249,6 +255,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 nnoremap gh gT
+onoremap gh gT
 nnoremap gl gt
 nnoremap fe $
 vnoremap fe $<LEFT>
