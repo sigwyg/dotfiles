@@ -267,6 +267,8 @@ vnoremap <C-i> <C-i>
 
 " text-edit
 noremap <CR> i<CR><ESC>
+vnoremap <C-h> <
+vnoremap <C-l> >
 
 " brackets"
 inoremap {} {}<LEFT>
