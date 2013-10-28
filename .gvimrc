@@ -17,6 +17,8 @@ if has('gui_macvim')
     colorscheme jellybeans
     set antialias
     set guifont=Courier\ New\ for\ Powerline:h14
+    let g:Powerline_symbols = 'fancy'
+    let g:Powerline_stl_path_style = 'short'
     highlight CursorLine term=underline cterm=underline gui=underline guisp=#555566
     highlight CursorColumn guibg=#222233
 endif

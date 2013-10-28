@@ -1,25 +1,27 @@
 set nocompatible
 
-
 " -----------------------------------------------------------------------
 " NeoBundle.vim: {{{
 "  - https://github.com/Shougo/neobundle.vim
 " Vundle
 "  - https://github.com/vim-scripts/vundle
 "
+filetype off
+filetype plugin indent off
 
 if has('vim_starting')
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
+
 call neobundle#rc(expand('~/.vim/bundle'))
 
 "
 " Unite
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
-NeoBundle 'git://github.com/Shougo/vimproc.git'
+NeoBundle 'git://github.com/Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } }
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-    NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
+    NeoBundle 'git://github.com/Shougo/neosnippet.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
     NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
     NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
@@ -39,6 +41,7 @@ NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
 NeoBundle 'git://github.com/thinca/vim-template.git'
 NeoBundle 'git://github.com/tpope/vim-surround.git'
     NeoBundle 'git://github.com/tpope/vim-repeat.git'
+NeoBundle 'git://github.com/kana/vim-smartinput.git'
 NeoBundle 'git://github.com/kana/vim-textobj-user.git'
     NeoBundle 'git://github.com/kana/vim-textobj-indent.git'
 "NeoBundle 'git://github.com/sigwyg/htmlform.vim.git'
@@ -51,11 +54,11 @@ NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
 "
 " Syntax
-NeoBundle 'git://github.com/t9md/vim-quickhl.git'
 NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
+"NeoBundle 'git://github.com/t9md/vim-quickhl.git'
 "NeoBundle 'git://github.com/tpope/vim-markdown.git'
 "
 " Develop
@@ -122,7 +125,7 @@ highlight CursorLine cterm=bold
 "highlight CursorColumn ctermbg=0
 
 "colorscheme h2u_black
-colorscheme jellybeans
+"colorscheme jellybeans
 "highlight LineNr ctermfg=0
 
 "colorscheme slate
@@ -233,17 +236,14 @@ inoremap <Right> <Nop>
 "inoremap <Left> <Nop>
 
 " alter <Esc>
-noremap <C-c> <Esc>
-inoremap <C-c> <Esc>
-vnoremap <C-c> <Esc>
-onoremap <C-c> <Esc>
-"inoremap jj <Esc>
-inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
+"inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
+inoremap jj <Esc>
 
 " killed
 nnoremap <F1> <Nop>
 nnoremap Q <Nop>
 nnoremap m <Nop>
+nnoremap gh <Nop>
 
 " help
 "nnoremap <C-h> :<C-u>help<Space>
@@ -256,29 +256,33 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-nnoremap gh gT
-onoremap gh gT
-nnoremap gl gt
 nnoremap fe $
 vnoremap fe $<LEFT>
-" <Tab> or <C-i> is moving jumplist.
-nnoremap <tab> %
-vnoremap <tab> %
-nnoremap <C-i> <C-i>
-vnoremap <C-i> <C-i>
+nnoremap <Leader><Space> %
+vnoremap <Leader><Space> %
+
+" move Tab
+" - "gh" is often desabled (go select-mode)
+nnoremap gh gT
+onoremap gh gT
+nnoremap gt gT
+onoremap gt gT
+nnoremap gl gt
 
 " text-edit
 noremap <CR> i<CR><ESC>
 vnoremap <C-h> <
 vnoremap <C-l> >
+inoremap <C-l> <Right>
 
 " brackets"
-inoremap {} {}<LEFT>
-inoremap [] []<LEFT>
-inoremap () ()<LEFT>
-inoremap "" ""<LEFT>
-inoremap '' ''<LEFT>
-inoremap <> <><LEFT>
+" - use smart-input???
+"inoremap {} {}<LEFT>
+"inoremap [] []<LEFT>
+"inoremap () ()<LEFT>
+"inoremap "" ""<LEFT>
+"inoremap '' ''<LEFT>
+"inoremap <> <><LEFT>
 inoremap []5 [%  %]<LEFT><LEFT><LEFT>
 inoremap {}5 {%  %}<LEFT><LEFT><LEFT>
 
@@ -377,6 +381,7 @@ augroup MyAutoCmd
     
     " set less-syntax
     autocmd BufEnter *.less set filetype=scss
+    autocmd BufEnter *.scss set filetype=scss
 augroup END
 
 "inoremap <buffer> <LT>? <LT>/
@@ -580,6 +585,7 @@ let g:neocomplcache_min_syntax_length = 3
 "Quick Type, ignore neocomplcache.
 let g:NeoComplCache_SkipCompletionTime = '0.3'
 let g:NeoComplCache_SkipInputTime = '0.1'
+let g:neocomplcache_enable_auto_close_preview = 0
 
 " <CR> : delete popup and hold indent
 " <BS> : close popup and delete backword char.
@@ -606,10 +612,13 @@ inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<
 "  - https://github.com/Shougo/neocomplcache-snippets-complete
 "
 let g:neocomplcache_snippets_dir = '~/.vim/snippets'
-smap <TAB> <Plug>(neocomplcache_snippets_expand)
-smap <TAB> <Plug>(neocomplcache_snippets_expand)
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
-                        \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
+" \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " For snippet_complete marker.
 if has('conceal')
@@ -691,13 +700,20 @@ let g:unite_source_grep_default_opts = "-Hn"
 
 
 " -----------------------------------------------------------------------
+" unite-ssh: {{{
+"  - https://github.com/Shougo/unite-ssh
+"let g:unite_source_ssh_enable_debug = 1
+"}}}
+
+
+" -----------------------------------------------------------------------
 " VimFiler: {{{
 "  - https: //github.com/Shougo/vimfiler
 "
+let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_split_command = 'vertical rightbelow vsplit'
 let g:vimfiler_min_filename_width = 20
-"let g:vimfiler_max_filename_width = 50
-let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 
 " Overwrite settings.
 autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
@@ -744,28 +760,28 @@ endfunction
 " quickhl.vim: {{{
 "  - https://github.com/t9md/vim-quickhl
 "
-nmap <Space>m <Plug>(quickhl-toggle)
-xmap <Space>m <Plug>(quickhl-toggle)
-nmap <Space>M <Plug>(quickhl-reset)
-xmap <Space>M <Plug>(quickhl-reset)
-nmap <Space>j <Plug>(quickhl-match)
-let g:quickhl_keywords = [
-        \ {"pattern": '\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}', "regexp": 1 },
-        \ {"pattern": "NOTE"},
-        \ {"pattern": "MEMO"},
-        \ {"pattern": "aside"},
-        \ {"pattern": "　"},
-        \ {"pattern": '\(\S\)\@<=\s\+$', "regexp": 1 },
-        \ ]
-    
-"
-"  If "set nolist" (ex. :Unite file), delete highlight.
-"  - BufNewFile/BufRead not work.
-"  - BufEnter/WinEnter working only to return window.
-"
-"autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
-autocmd MyAutoCmd FileType unite call quickhl#lock()
-autocmd MyAutoCmd FileType vimfiler call quickhl#lock()
+"nmap <Space>m <Plug>(quickhl-toggle)
+"xmap <Space>m <Plug>(quickhl-toggle)
+"nmap <Space>M <Plug>(quickhl-reset)
+"xmap <Space>M <Plug>(quickhl-reset)
+"nmap <Space>j <Plug>(quickhl-match)
+"let g:quickhl_keywords = [
+"        \ {"pattern": '\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}', "regexp": 1 },
+"        \ {"pattern": "NOTE"},
+"        \ {"pattern": "MEMO"},
+"        \ {"pattern": "aside"},
+"        \ {"pattern": "　"},
+"        \ {"pattern": '\(\S\)\@<=\s\+$', "regexp": 1 },
+"        \ ]
+"    
+""
+""  If "set nolist" (ex. :Unite file), delete highlight.
+""  - BufNewFile/BufRead not work.
+""  - BufEnter/WinEnter working only to return window.
+""
+""autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
+"autocmd MyAutoCmd FileType unite call quickhl#lock()
+"autocmd MyAutoCmd FileType vimfiler call quickhl#lock()
 "}}}
 
 
@@ -840,7 +856,14 @@ let g:syntastic_check_on_open=0
 let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [''],
-                            \ 'passive_filetypes': ['css'] }
+                            \ 'passive_filetypes': ['html','xhtml'] }
+"}}}
+
+
+" -----------------------------------------------------------------------
+" smartinput: {{{
+"  - https://github.com/kana/vim-smartinput
+
 "}}}
 
 
