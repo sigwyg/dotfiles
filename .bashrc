@@ -50,3 +50,4 @@ if [[ -f ~/.nvm/nvm.sh ]]; then
     nvm use v0.6.1
 fi
 . ~/.nvm/nvm.sh
+source ~/perl5/perlbrew/etc/bashrc
