@@ -35,6 +35,9 @@ HISTFILESIZE=50000
 bind "\C-n":history-search-forward
 bind "\C-p":history-search-backward
 
+#ignorespace+ignoredups = ignoreboth
+export HISTCONTROL=ignoreboth
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
