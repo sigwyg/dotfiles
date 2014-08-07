@@ -1,4 +1,3 @@
-set nocompatible
 
 " -----------------------------------------------------------------------
 " NeoBundle.vim: {{{
@@ -10,24 +9,30 @@ filetype off
 filetype plugin indent off
 
 if has('vim_starting')
+    set nocompatible
     set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
 
 "
 " Unite
-NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } }
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-    NeoBundle 'git://github.com/Shougo/neosnippet.git'
+    NeoBundle 'Shougo/neosnippet'
+    NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
     NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
     NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
     NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
-    NeoBundle 'git://github.com/Shougo/unite-ssh.git'
+"    NeoBundle 'git://github.com/Shougo/unite-ssh.git'
+    NeoBundle 'git://github.com/Shougo/neossh.vim.git'
     NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
 "
 " Git
@@ -58,8 +63,6 @@ NeoBundle 'git://github.com/othree/html5.vim.git'
 NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
 NeoBundle 'git://github.com/hallison/vim-markdown.git'
-"NeoBundle 'git://github.com/t9md/vim-quickhl.git'
-"NeoBundle 'git://github.com/tpope/vim-markdown.git'
 "
 " Develop
 NeoBundle 'git://github.com/sjl/gundo.vim.git'
@@ -68,30 +71,24 @@ NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/scrooloose/syntastic.git'
 "NeoBundle 'git://github.com/basyura/jslint.vim.git'
 "
-" Browser
-NeoBundle 'git://github.com/yuratomo/w3m.vim.git'
-NeoBundle 'git://github.com/tsukkee/lingr-vim.git'
-NeoBundle 'git://github.com/basyura/TweetVim.git'
-    NeoBundle 'git://github.com/basyura/twibill.vim.git'
-    NeoBundle 'git://github.com/tyru/open-browser.vim.git'
-    NeoBundle 'git://github.com/mattn/webapi-vim.git'
-"NeoBundle 'git://github.com/vim-scripts/TwitVim.git'
-"
-" Presen
-NeoBundle 'https://github.com/sorah/presen.vim'
-NeoBundle 'git://github.com/pocket7878/presen-vim.git'
-    NeoBundle 'git://github.com/pocket7878/curses-vim.git'
-NeoBundle 'git://github.com/thinca/vim-showtime.git'
-"NeoBundle 'git://github.com/thinca/vim-fontzoom.git'
-"
 " Colorscheme
 NeoBundle 'git://github.com/nanotech/jellybeans.vim.git'
 NeoBundle 'git://gist.github.com/187578.git' " <- h2u_black
 
-" }}}
-
+call neobundle#end()
 
 filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+if !has('vim_starting')
+    " Call on_source hook when reloading .vimrc.
+    call neobundle#call_hook('on_source')
+endif
+
+" }}}
 
 " -----------------------------------------------------------------------
 " Basis:{{{
@@ -514,25 +511,6 @@ endfunction " MapHTMLKeys()
 
 
 " -----------------------------------------------------------------------
-" snipMate.vim: {{{
-"  - http://www.vim.org/scripts/script.php?script_id=2540
-"
-" below, Reload xxx.snippet. :call SnipMateReload()
-"  -> http://webtech-walker.com/archive/2009/10/26021358.html
-"
-"function! SnipMateReload()
-"    if &ft == 'snippet'
-"        let ft = substitute(expand('%'), '.snippets', '', '')
-"        if has_key(g:did_ft, ft)
-"            unlet g:did_ft[ft]
-"        endif
-"        silent! call GetSnippets(g:snippets_dir, ft)
-"    endif
-"endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
 " FontsToggle: {{{
 "  - inspired zoom.vim@hokaccha
 "  - http://gist.github.com/200505
@@ -561,13 +539,6 @@ function! FontToggle(trigger)
        set lines=40
    endif
 endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" fontzoom.vim: {{{
-"nmap <C-Up> <Plug>(fontzoom-larger)
-"nmap <C-Down> <Plug>(fontzoom-smaller)
 "}}}
 
 
@@ -648,26 +619,6 @@ endfor
 
 
 " -----------------------------------------------------------------------
-" smartchr: {{{
-"  - http://www.vim.org/scripts/script.php?script_id=2290
-"
-"inoremap <buffer><expr> + smartchr#one_of(' + ', '++', '+')
-"inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
-"
-"inoremap <buffer><expr> = smartchr#one_of('=', ' = ', ' == ')
-"inoremap <buffer><expr> - smartchr#one_of('-', ' - ', '--')
-"inoremap <buffer><expr> / smartchr#one_of('/', ' / ', '// ')
-""inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
-""inoremap <buffer><expr> : smartchr#one_of(': ', ':')
-"inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-"inoremap <buffer><expr> . smartchr#loop('.', ' -> ', '...')
-"
-"inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
-"inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-"}}}
-
-
-" -----------------------------------------------------------------------
 " unite.vim: {{{
 "  - https://github.com/Shougo/unite.vim
 "
@@ -696,13 +647,6 @@ endfunction"
 "  - https://github.com/Shougo/vimproc/tree/master
 let g:unite_source_grep_command = "grep"
 let g:unite_source_grep_default_opts = "-Hn"
-"}}}
-
-
-" -----------------------------------------------------------------------
-" unite-ssh: {{{
-"  - https://github.com/Shougo/unite-ssh
-"let g:unite_source_ssh_enable_debug = 1
 "}}}
 
 
@@ -757,56 +701,12 @@ endfunction
 
 
 " -----------------------------------------------------------------------
-" quickhl.vim: {{{
-"  - https://github.com/t9md/vim-quickhl
-"
-"nmap <Space>m <Plug>(quickhl-toggle)
-"xmap <Space>m <Plug>(quickhl-toggle)
-"nmap <Space>M <Plug>(quickhl-reset)
-"xmap <Space>M <Plug>(quickhl-reset)
-"nmap <Space>j <Plug>(quickhl-match)
-"let g:quickhl_keywords = [
-"        \ {"pattern": '\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}', "regexp": 1 },
-"        \ {"pattern": "NOTE"},
-"        \ {"pattern": "MEMO"},
-"        \ {"pattern": "aside"},
-"        \ {"pattern": "　"},
-"        \ {"pattern": '\(\S\)\@<=\s\+$', "regexp": 1 },
-"        \ ]
-"    
-""
-""  If "set nolist" (ex. :Unite file), delete highlight.
-""  - BufNewFile/BufRead not work.
-""  - BufEnter/WinEnter working only to return window.
-""
-""autocmd BufEnter unite if &list == "0" | call quickhl#lock() | endif
-"autocmd MyAutoCmd FileType unite call quickhl#lock()
-"autocmd MyAutoCmd FileType vimfiler call quickhl#lock()
-"}}}
-
-
-" -----------------------------------------------------------------------
 " html5.vim: {{{
 "  - https://github.com/othree/html5.vim
 let g:html5_event_handler_attributes_complete = 1
 let g:html5_rdfa_attributes_complete = 1
 let g:html5_microdata_attributes_complete = 1
 let g:html5_aria_attributes_complete = 1
-"}}}
-
-
-" -----------------------------------------------------------------------
-" jslint.vim: {{{
-"  - https://github.com/basyura/jslint.vim
-"  - :copen -> :cnext ...
-"autocmd MyAutoCmd FileType javascript call s:javascript_filetype_settings()
-"
-"function! s:javascript_filetype_settings()
-"  autocmd BufLeave     <buffer> call jslint#clear()
-"  autocmd BufWritePost <buffer> call jslint#check()
-"  autocmd CursorMoved  <buffer> call jslint#message()
-"endfunction
-
 "}}}
 
 
@@ -841,15 +741,6 @@ let g:Powerline_stl_path_style = 'short'
 
 
 " -----------------------------------------------------------------------
-" w3m.vim: {{{
-"  - https://github.com/yuratomo/w3m.vim
-"let g:w3m#homepage = "http://www.google.co.jp/"
-"let g:w3m#search_engine = 'http://www.google.co.jp/search?hl=ja&ie=' . &encoding . '&q='
-"    \ 'http://search.yahoo.co.jp/search?search.x=1&fr=top_ga1_sa_124&tid=top_ga1_sa_124&ei=' . &encoding . '&aq=&oq=&p='
-"}}}
-
-
-" -----------------------------------------------------------------------
 " syntastic: {{{
 "  - https://github.com/scrooloose/syntastic
 let g:syntastic_check_on_open=0
@@ -857,13 +748,6 @@ let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [''],
                             \ 'passive_filetypes': ['html','xhtml'] }
-"}}}
-
-
-" -----------------------------------------------------------------------
-" smartinput: {{{
-"  - https://github.com/kana/vim-smartinput
-
 "}}}
 
 
@@ -1005,4 +889,6 @@ function! Scouter(file, ...)
 endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+
+" }}}
 
