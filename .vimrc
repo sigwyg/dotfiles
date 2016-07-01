@@ -21,59 +21,59 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 "
 " Unite
-NeoBundle 'git://github.com/Shougo/vimfiler.git'
-NeoBundle 'git://github.com/Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } }
-NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } }
+NeoBundle 'Shougo/neocomplcache.git'
     NeoBundle 'Shougo/neosnippet'
     NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-    NeoBundle 'git://github.com/thinca/vim-qfreplace.git'
-    NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
-    NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
-NeoBundle 'git://github.com/Shougo/vimshell.git'
-"    NeoBundle 'git://github.com/Shougo/unite-ssh.git'
-    NeoBundle 'git://github.com/Shougo/neossh.vim.git'
-    NeoBundle 'git://github.com/ujihisa/vimshell-ssh.git'
+NeoBundle 'Shougo/unite.vim.git'
+    NeoBundle 'thinca/vim-qfreplace.git'
+    NeoBundle 't9md/vim-unite-ack.git'
+    NeoBundle 'h1mesuke/unite-outline.git'
+NeoBundle 'Shougo/vimshell.git'
+"    NeoBundle 'Shougo/unite-ssh.git'
+    NeoBundle 'Shougo/neossh.vim.git'
+    NeoBundle 'ujihisa/vimshell-ssh.git'
 "
 " Git
-NeoBundle 'git://github.com/tpope/vim-fugitive.git'
-NeoBundle 'git://github.com/Shougo/vim-vcs.git'
-    NeoBundle 'git://github.com/thinca/vim-openbuf.git'
+NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'Shougo/vim-vcs.git'
+    NeoBundle 'thinca/vim-openbuf.git'
 "NeoBundle 'https://github.com/motemen/git-vim'
 "
 " Text
-NeoBundle 'git://github.com/h1mesuke/vim-alignta.git'
-NeoBundle 'git://github.com/thinca/vim-template.git'
-NeoBundle 'git://github.com/tpope/vim-surround.git'
-    NeoBundle 'git://github.com/tpope/vim-repeat.git'
-NeoBundle 'git://github.com/kana/vim-smartinput.git'
-NeoBundle 'git://github.com/kana/vim-textobj-user.git'
-    NeoBundle 'git://github.com/kana/vim-textobj-indent.git'
-"NeoBundle 'git://github.com/sigwyg/htmlform.vim.git'
-"NeoBundle 'git://github.com/msanders/snipmate.vim.git'
-"NeoBundle 'git://github.com/t9md/vim-textmanip.git'
+NeoBundle 'h1mesuke/vim-alignta.git'
+NeoBundle 'thinca/vim-template.git'
+NeoBundle 'tpope/vim-surround.git'
+    NeoBundle 'tpope/vim-repeat.git'
+NeoBundle 'kana/vim-smartinput.git'
+NeoBundle 'kana/vim-textobj-user.git'
+    NeoBundle 'kana/vim-textobj-indent.git'
+"NeoBundle 'sigwyg/htmlform.vim.git'
+"NeoBundle 'msanders/snipmate.vim.git'
+"NeoBundle 't9md/vim-textmanip.git'
 "
 " Display
-NeoBundle 'git://github.com/nathanaelkane/vim-indent-guides.git'
-NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-NeoBundle 'git://github.com/Lokaltog/vim-easymotion.git'
+NeoBundle 'nathanaelkane/vim-indent-guides.git'
+NeoBundle 'Lokaltog/vim-powerline.git'
+NeoBundle 'Lokaltog/vim-easymotion.git'
 "
 " Syntax
-NeoBundle 'git://github.com/othree/html5.vim.git'
-NeoBundle 'git://github.com/cakebaker/scss-syntax.vim.git'
-NeoBundle 'git://github.com/hail2u/vim-css3-syntax.git'
-NeoBundle 'git://github.com/hallison/vim-markdown.git'
+NeoBundle 'othree/html5.vim.git'
+NeoBundle 'cakebaker/scss-syntax.vim.git'
+NeoBundle 'hail2u/vim-css3-syntax.git'
+NeoBundle 'hallison/vim-markdown.git'
 "
 " Develop
-NeoBundle 'git://github.com/sjl/gundo.vim.git'
-NeoBundle 'git://github.com/thinca/vim-quickrun.git'
-NeoBundle 'git://github.com/thinca/vim-ref.git'
-NeoBundle 'git://github.com/scrooloose/syntastic.git'
-"NeoBundle 'git://github.com/basyura/jslint.vim.git'
+NeoBundle 'sjl/gundo.vim.git'
+NeoBundle 'thinca/vim-quickrun.git'
+NeoBundle 'thinca/vim-ref.git'
+NeoBundle 'scrooloose/syntastic.git'
+"NeoBundle 'basyura/jslint.vim.git'
 "
 " Colorscheme
-NeoBundle 'git://github.com/nanotech/jellybeans.vim.git'
-NeoBundle 'git://gist.github.com/187578.git' " <- h2u_black
+NeoBundle 'nanotech/jellybeans.vim.git'
+NeoBundle 'https://gist.github.com/187578.git' " <- h2u_black
 
 call neobundle#end()
 
