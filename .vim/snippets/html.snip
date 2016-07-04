@@ -4,7 +4,7 @@
 #   - abbr      : description
 #   - prev_word '^' enabled only in line head
 #
-snippet html5
+snippet html
 	<!DOCTYPE html>
 	<html lang="ja">
 	<head>
@@ -37,38 +37,3 @@ snippet html5
 	<footer></footer>
 	</body>
 	</html>
-
-snippet xhtmls
-	<!DOCTYPE html 
-	    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-	
-	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
-	<head>
-	<title>${1}</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="${2:base.css}" media="screen, tv" />
-	<link rel="start" href="http://archiva.jp/" title="Home" />
-	<link rel="shortcut icon" href="/favicon.ico" />
-	<link rel="alternate" type="application/rss+xml" title="" href="/entries.rss" />
-	</head>
-	
-	<body id="" class="index"><div id="container">
-	
-	<!--: Start #contents -->
-	<div id="contents">
-	
-	${3}
-	
-	</div>
-	<!--: End #contents -->
-	
-	</div></body>
-	</html>
-
-snippet hgroup
-	<hgroup>
-	    <h1>${1}</h1>
-	    <h2>${2}</h2>
-	    <h3>${3}</h3>
-	</hgroup>
