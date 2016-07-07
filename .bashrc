@@ -7,7 +7,9 @@ umask 022
 # alias
 alias gis='git status'
 alias gid='git diff'
+alias gic='git commit -m'
 alias grep='grep --color=auto'
+alias ls='ls -la'
 
 # EDITOR
 export EDITOR=/usr/bin/vim
@@ -47,10 +49,10 @@ shopt -s histverify
 # color_prompt
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
-# node test
-if [[ -f ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh
-    nvm use v0.6.1
-fi
-. ~/.nvm/nvm.sh
-source ~/perl5/perlbrew/etc/bashrc
+# # node test
+# if [[ -f ~/.nvm/nvm.sh ]]; then
+#     source ~/.nvm/nvm.sh
+#     nvm use v0.6.1
+# fi
+# . ~/.nvm/nvm.sh
+# source ~/perl5/perlbrew/etc/bashrc
