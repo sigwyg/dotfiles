@@ -48,7 +48,15 @@ shopt -s histappend
 shopt -s histverify
 
 # color_prompt
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+function facePrompt {
+    if [ $? -eq 0 ]; then
+        printf '\e[32m=͟͟͞͞ (\( ⁰⊖⁰)/)\e[m';
+    else
+        printf '\e[31m=͟͟͞͞ (\( >⊖<)/)\e[m';
+    fi;
+}
+PS1='\[\033[01;34m\]\w\[\033[00m\]: $(facePrompt) \$ '
 
 # # node test
 # if [[ -f ~/.nvm/nvm.sh ]]; then
