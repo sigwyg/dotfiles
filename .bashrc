@@ -10,7 +10,6 @@ alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
 alias grep='grep --color=auto'
-alias ls='ls -la'
 
 # EDITOR
 export EDITOR=/usr/bin/vim
@@ -18,10 +17,8 @@ export EDITOR=/usr/bin/vim
 # IF Mac OSX
 case $OSTYPE in
     darwin*)
-        export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.nvm/v0.6.18/bin"
-        
         alias vi=/usr/bin/vim
-        alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim "$@"'
+        alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
         alias ls='ls -G'
         alias la='ls -la -G'
         ;;
@@ -57,11 +54,3 @@ function facePrompt {
     fi;
 }
 PS1='\[\033[01;34m\]\w\[\033[00m\]: $(facePrompt) \$ '
-
-# # node test
-# if [[ -f ~/.nvm/nvm.sh ]]; then
-#     source ~/.nvm/nvm.sh
-#     nvm use v0.6.1
-# fi
-. ~/.nvm/nvm.sh
-# source ~/perl5/perlbrew/etc/bashrc
