@@ -1,4 +1,3 @@
-
 umask 022
 
 # If not running interactively, don't do anything
@@ -12,12 +11,12 @@ alias gib='git branch'
 alias grep='grep --color=auto'
 
 # EDITOR
-export EDITOR=/usr/bin/vim
+export EDITOR='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 # IF Mac OSX
 case $OSTYPE in
     darwin*)
-        alias vi=/usr/bin/vim
+        alias vi='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
         alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
         alias ls='ls -G'
         alias la='ls -la -G'
@@ -54,3 +53,8 @@ function facePrompt {
     fi;
 }
 PS1='\[\033[01;34m\]\w\[\033[00m\]: $(facePrompt) \$ '
+
+# node test
+if [[ -f ~/.nvm/nvm.sh ]]; then
+    source ~/.nvm/nvm.sh
+fi
