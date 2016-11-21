@@ -256,6 +256,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 nnoremap fs ^
+vnoremap fs ^
 nnoremap fe $
 vnoremap fe $<LEFT>
 nnoremap <Leader><Space> %
