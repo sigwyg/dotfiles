@@ -364,7 +364,7 @@ augroup MyAutoCmd
     "autocmd WinEnter,BufEnter * setlocal cursorcolumn
     "autocmd WinLeave * setlocal nocursorline
     "autocmd WinLeave * setlocal nocursorcolumn
-    
+
     " closetag
     "autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
     "autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
@@ -376,26 +376,22 @@ augroup MyAutoCmd
     " format
     autocmd FileType markdown setlocal wrap
     autocmd FileType text setlocal textwidth=0
-    
+
     " Custom folding
     "autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
-    
+
     " set less-syntax
     autocmd BufEnter *.less set filetype=scss
     autocmd BufEnter *.scss set filetype=scss
 augroup END
 
-"inoremap <buffer> <LT>? <LT>/
-"inoremap <buffer> ?> />
-
-" if type 'set filetype=xxxxx', reset key-binding
-"if !exists('b:undo_ftplugin')
-"    let b:undo_ftplugin = ''
-"endif
-"let b:undo_ftplugin .= '
-"\   | execute "iunmap <buffer> <LT>?"
-"\   | execute "iunmap <buffer> ?>"
-"\'
+" delete last-line, if only blank text
+autocmd MyAutoCmd BufWritePre * call s:remove_line_in_last_line()
+function! s:remove_line_in_last_line()
+  if getline('$') == ""
+     $delete _
+  endif
+endfunction
 
 "}}}
 
@@ -902,4 +898,3 @@ command! -bar -bang -nargs=? -complete=file Scouter
 \        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 
 " }}}
-
