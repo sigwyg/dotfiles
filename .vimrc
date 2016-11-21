@@ -57,12 +57,14 @@ NeoBundle 'kana/vim-textobj-user.git'
 NeoBundle 'nathanaelkane/vim-indent-guides.git'
 NeoBundle 'Lokaltog/vim-powerline.git'
 NeoBundle 'Lokaltog/vim-easymotion.git'
+NeoBundle 'editorconfig/editorconfig-vim'
 "
 " Syntax
 NeoBundle 'othree/html5.vim.git'
 NeoBundle 'cakebaker/scss-syntax.vim.git'
 NeoBundle 'hail2u/vim-css3-syntax.git'
 NeoBundle 'hallison/vim-markdown.git'
+NeoBundle "slim-template/vim-slim"
 "
 " Develop
 NeoBundle 'sjl/gundo.vim.git'
