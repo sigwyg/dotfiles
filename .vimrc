@@ -751,6 +751,8 @@ let g:Powerline_stl_path_style = 'short'
 " syntastic: {{{
 "  - https://github.com/scrooloose/syntastic
 let g:syntastic_check_on_open=0
+let g:syntastic_css_checkers = ['stylelint']
+let g:syntastic_scss_checkers = ['stylelint']
 let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': [''],
