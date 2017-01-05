@@ -67,6 +67,7 @@ NeoBundle 'hallison/vim-markdown.git'
 NeoBundle "slim-template/vim-slim"
 "
 " Develop
+NeoBundle 'airblade/vim-rooter.git'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'thinca/vim-ref.git'
@@ -750,12 +751,13 @@ let g:Powerline_stl_path_style = 'short'
 " -----------------------------------------------------------------------
 " syntastic: {{{
 "  - https://github.com/scrooloose/syntastic
-let g:syntastic_check_on_open=0
+let g:syntastic_check_on_open=1
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_scss_checkers = ['stylelint']
+let g:syntastic_sass_checkers = ['stylelint']
 let g:syntastic_javascript_checker = 'jshint'
 let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': [''],
+                            \ 'active_filetypes': ['scss'],
                             \ 'passive_filetypes': ['html','xhtml'] }
 "}}}
 
@@ -778,6 +780,16 @@ function! s:ChangeCurrentDir(directory, bang)
     endif
 endfunction
 "}}}
+
+
+" -----------------------------------------------------------------------
+" vim-rooter: {{{
+"  - Rooter changes the working directory to the project root when you open a file or directory.
+"  - https://github.com/airblade/vim-rooter
+"
+let g:rooter_targets = '/,*.scss,*.sass,*.js,*.jsx'
+let g:rooter_patterns = ['.git/','.stylelintrc','.stylelintrc.json','.eslintrc']
+" }}}
 
 
 " -----------------------------------------------------------------------
