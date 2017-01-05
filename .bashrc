@@ -29,13 +29,13 @@ esac
 
 
 # history
-HISTSIZE=50000
-HISTFILESIZE=50000
+export HHISTSIZE=50000
+export HHISTFILESIZE=50000
+export HISTTIMEFORMAT='%Y/%m/%d %H:%M '
+export HISTCONTROL=ignoreboth:erasedups       # ignoredups + ignorespace
+export HISTIGNORE=la:ls:history:exit:?:??:??? # ignore ls, la, history, exit, 1-3 char command
 bind "\C-n":history-search-forward
 bind "\C-p":history-search-backward
-
-#ignorespace+ignoredups = ignoreboth
-export HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
 shopt -s histappend
