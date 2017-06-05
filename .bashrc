@@ -13,6 +13,10 @@ alias grep='grep --color=auto'
 # EDITOR
 export EDITOR='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
+# neovim
+export XDG_CONFIG_HOME=$HOME/.config
+alias vim=nvim
+
 # IF Mac OSX
 case $OSTYPE in
     darwin*)
