@@ -1,101 +1,82 @@
-"set termguicolors
+set runtimepath+=~/.config/nvim
+runtime! userautoload/*.vim
 
 " -----------------------------------------------------------------------
-" NeoBundle.vim: {{{
-"  - https://github.com/Shougo/neobundle.vim
-" Vundle
-"  - https://github.com/vim-scripts/vundle
-"
-filetype off
-filetype plugin indent off
 
-if has('vim_starting')
-    set nocompatible
-    set runtimepath+=~/.vim/bundle/neobundle.vim
+" Dein.vim: {{{
+"  - https://github.com/Shougo/dein.vim
+"
+if &compatible
+  set nocompatible
 endif
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+  call dein#add('Shougo/dein.vim')
+  call dein#add('Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } })
+  call dein#add('Shougo/neocomplete.vim')
+  call dein#add('Shougo/vimfiler.git')
 
+  call dein#add('Shougo/neocomplcache.git')
+  call dein#add('Shougo/neosnippet')
+  call dein#add('Shougo/neosnippet-snippets')
+  call dein#add('Shougo/unite.vim.git')
+  call dein#add('Shougo/vimshell.git')
+  call dein#add('Shougo/vim-vcs.git')
+  call dein#add('thinca/vim-openbuf.git')
+  call dein#add('Shougo/neossh.vim.git')
 
-"
-" Unite
-NeoBundle 'Shougo/vimfiler.git'
-NeoBundle 'Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } }
-NeoBundle 'Shougo/neocomplcache.git'
-    NeoBundle 'Shougo/neosnippet'
-    NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim.git'
-    NeoBundle 'thinca/vim-qfreplace.git'
-    NeoBundle 't9md/vim-unite-ack.git'
-    NeoBundle 'h1mesuke/unite-outline.git'
-NeoBundle 'Shougo/vimshell.git'
-"    NeoBundle 'Shougo/unite-ssh.git'
-    NeoBundle 'Shougo/neossh.vim.git'
-    NeoBundle 'ujihisa/vimshell-ssh.git'
-"
-" Git
-NeoBundle 'tpope/vim-fugitive.git'
-NeoBundle 'Shougo/vim-vcs.git'
-    NeoBundle 'thinca/vim-openbuf.git'
-"NeoBundle 'https://github.com/motemen/git-vim'
-"
-" Text
-NeoBundle 'h1mesuke/vim-alignta.git'
-NeoBundle 'thinca/vim-template.git'
-NeoBundle 'tpope/vim-surround.git'
-    NeoBundle 'tpope/vim-repeat.git'
-NeoBundle 'kana/vim-smartinput.git'
-NeoBundle 'kana/vim-textobj-user.git'
-    NeoBundle 'kana/vim-textobj-indent.git'
-"NeoBundle 'sigwyg/htmlform.vim.git'
-"NeoBundle 'msanders/snipmate.vim.git'
-"NeoBundle 't9md/vim-textmanip.git'
-"
-" Display
-NeoBundle 'nathanaelkane/vim-indent-guides.git'
-NeoBundle 'Lokaltog/vim-powerline.git'
-NeoBundle 'Lokaltog/vim-easymotion.git'
-NeoBundle 'editorconfig/editorconfig-vim'
-"
-" Syntax
-NeoBundle 'othree/html5.vim.git'
-NeoBundle 'cakebaker/scss-syntax.vim.git'
-NeoBundle 'hail2u/vim-css3-syntax.git'
-NeoBundle 'hallison/vim-markdown.git'
-NeoBundle 'slim-template/vim-slim'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'kchmck/vim-coffee-script'
-"
-" Develop
-NeoBundle 'sjl/gundo.vim.git'
-NeoBundle 'thinca/vim-quickrun.git'
-NeoBundle 'thinca/vim-ref.git'
-NeoBundle 'scrooloose/syntastic.git'
-NeoBundle 'mtscout6/syntastic-local-eslint.vim'
-NeoBundle 'airblade/vim-rooter.git'
-NeoBundle 'jaawerth/nrun.vim.git'
-"NeoBundle 'basyura/jslint.vim.git'
-"
-" Colorscheme
-NeoBundle 'nanotech/jellybeans.vim.git'
-NeoBundle 'https://gist.github.com/187578.git' " <- h2u_black
+  " Grep
+  call dein#add('thinca/vim-qfreplace.git')
+  call dein#add('t9md/vim-unite-ack.git')
+  call dein#add('h1mesuke/unite-outline.git')
 
-call neobundle#end()
+  " Text
+  call dein#add('h1mesuke/vim-alignta.git')
+  call dein#add('thinca/vim-template.git')
+  call dein#add('tpope/vim-surround.git')
+  call dein#add('tpope/vim-repeat.git')
+  call dein#add('kana/vim-smartinput.git')
+  call dein#add('kana/vim-textobj-user.git')
+  call dein#add('kana/vim-textobj-indent.git')
+
+  " Display
+  call dein#add('nathanaelkane/vim-indent-guides.git')
+  call dein#add('vim-airline/vim-airline')
+  "call dein#add('Lokaltog/vim-powerline.git')
+  call dein#add('Lokaltog/vim-easymotion.git')
+  call dein#add('editorconfig/editorconfig-vim')
+
+  " Syntax
+  call dein#add('othree/html5.vim.git')
+  call dein#add('cakebaker/scss-syntax.vim.git')
+  call dein#add('hail2u/vim-css3-syntax.git')
+  call dein#add('hallison/vim-markdown.git')
+  call dein#add('slim-template/vim-slim')
+  call dein#add('mxw/vim-jsx')
+  call dein#add('kchmck/vim-coffee-script')
+  
+  " Develop
+  call dein#add('sjl/gundo.vim.git')
+  call dein#add('thinca/vim-quickrun.git')
+  call dein#add('thinca/vim-ref.git')
+  call dein#add('scrooloose/syntastic.git')
+  call dein#add('mtscout6/syntastic-local-eslint.vim')
+  call dein#add('airblade/vim-rooter.git')
+  call dein#add('jaawerth/nrun.vim.git')
+
+  " Colorscheme
+  call dein#add('nanotech/jellybeans.vim.git')
+  call dein#add('https://gist.github.com/187578.git') "<- h2u_black
+
+  call dein#end()
+  call dein#save_state()
+endif
 
 filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-
-if !has('vim_starting')
-    " Call on_source hook when reloading .vimrc.
-    call neobundle#call_hook('on_source')
-endif
-
+syntax enable
 " }}}
 
 " -----------------------------------------------------------------------
