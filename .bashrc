@@ -53,8 +53,3 @@ function facePrompt {
     fi;
 }
 PS1='\[\033[01;34m\]\w\[\033[00m\]: $(facePrompt) \$ '
-
-# node test
-if [[ -f ~/.nvm/nvm.sh ]]; then
-    source ~/.nvm/nvm.sh
-fi
