@@ -64,14 +64,18 @@ NeoBundle 'othree/html5.vim.git'
 NeoBundle 'cakebaker/scss-syntax.vim.git'
 NeoBundle 'hail2u/vim-css3-syntax.git'
 NeoBundle 'hallison/vim-markdown.git'
-NeoBundle "slim-template/vim-slim"
+NeoBundle 'slim-template/vim-slim'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'kchmck/vim-coffee-script'
 "
 " Develop
-NeoBundle 'airblade/vim-rooter.git'
 NeoBundle 'sjl/gundo.vim.git'
 NeoBundle 'thinca/vim-quickrun.git'
 NeoBundle 'thinca/vim-ref.git'
 NeoBundle 'scrooloose/syntastic.git'
+NeoBundle 'mtscout6/syntastic-local-eslint.vim'
+NeoBundle 'airblade/vim-rooter.git'
+NeoBundle 'jaawerth/nrun.vim.git'
 "NeoBundle 'basyura/jslint.vim.git'
 "
 " Colorscheme
@@ -122,10 +126,10 @@ syntax on
 set cursorline
 highlight CursorLine cterm=bold
 "set cursorcolumn
-"highlight CursorColumn ctermbg=0
+"highlight CursorColumn cterm=bold ctermbg=0
 
 "colorscheme h2u_black
-"colorscheme jellybeans
+colorscheme jellybeans
 "highlight LineNr ctermfg=0
 
 "colorscheme slate
@@ -384,6 +388,10 @@ augroup MyAutoCmd
     " set less-syntax
     autocmd BufEnter *.less set filetype=scss
     autocmd BufEnter *.scss set filetype=scss
+
+    " syntastic
+    "autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = nrun#Which('stylelint')
+    autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = '/Users/sigwyg/Project/chai_front/node_modules/.bin/stylelint'
 augroup END
 
 " delete last-line, if only blank text
@@ -730,7 +738,7 @@ let g:indent_guides_space_guides = 1
 
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_color_change_percent = 20
-  
+
 augroup indentGuide
     autocmd! indentGuide
     autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
@@ -751,13 +759,16 @@ let g:Powerline_stl_path_style = 'short'
 " -----------------------------------------------------------------------
 " syntastic: {{{
 "  - https://github.com/scrooloose/syntastic
-let g:syntastic_check_on_open=1
+let g:syntastic_enable_sign = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
 let g:syntastic_css_checkers = ['stylelint']
 let g:syntastic_scss_checkers = ['stylelint']
-let g:syntastic_sass_checkers = ['stylelint']
-let g:syntastic_javascript_checker = 'jshint'
+let g:syntastic_javascript_checker = 'eslint'
 let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['scss'],
+                            \ 'active_filetypes': ['scss', 'js', 'jsx'],
                             \ 'passive_filetypes': ['html','xhtml'] }
 "}}}
 
