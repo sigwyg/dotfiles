@@ -9,19 +9,19 @@ alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
 alias grep='grep --color=auto'
+alias vi=nvim
+alias vim=nvim
 
 # EDITOR
-export EDITOR='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+export EDITOR=nvim
+#export EDITOR='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 # neovim
 export XDG_CONFIG_HOME=$HOME/.config
-alias vim=nvim
 
 # IF Mac OSX
 case $OSTYPE in
     darwin*)
-        alias vi='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-        alias vim='env LANG=ja_JP.UTF-8 TERM=xterm-color TERMINFO=/usr/share/terminfo /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
         alias ls='ls -G'
         alias la='ls -la -G'
         ;;
