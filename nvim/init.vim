@@ -65,6 +65,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('mtscout6/syntastic-local-eslint.vim')
   call dein#add('airblade/vim-rooter.git')
   call dein#add('jaawerth/nrun.vim.git')
+  call dein#add('lambdalisue/gina.vim')
 
   " Colorscheme
   call dein#add('nanotech/jellybeans.vim.git')
