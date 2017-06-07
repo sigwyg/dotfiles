@@ -44,7 +44,7 @@ if dein#load_state('~/.cache/dein')
   " Display
   call dein#add('nathanaelkane/vim-indent-guides.git')
   call dein#add('vim-airline/vim-airline')
-  "call dein#add('Lokaltog/vim-powerline.git')
+  call dein#add('vim-airline/vim-airline-themes')
   call dein#add('Lokaltog/vim-easymotion.git')
   call dein#add('editorconfig/editorconfig-vim')
 
@@ -56,7 +56,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('slim-template/vim-slim')
   call dein#add('mxw/vim-jsx')
   call dein#add('kchmck/vim-coffee-script')
-  
+
   " Develop
   call dein#add('sjl/gundo.vim.git')
   call dein#add('thinca/vim-quickrun.git')
@@ -77,6 +77,7 @@ endif
 filetype plugin indent on
 syntax enable
 " }}}
+
 
 " -----------------------------------------------------------------------
 " Basis:{{{
@@ -102,23 +103,14 @@ set wildmenu
 set wildmode=list:longest,full
 
 " syntax color
-"set t_Co=8
 syntax on
 set cursorline
 highlight CursorLine cterm=bold
+colorscheme jellybeans
+"colorscheme h2u_black
 "set cursorcolumn
 "highlight CursorColumn cterm=bold ctermbg=0
-
-"colorscheme h2u_black
-colorscheme jellybeans
 "highlight LineNr ctermfg=0
-
-"colorscheme slate
-"highlight Normal guibg=grey5
-"highlight NonText guibg=grey5
-
-"colorscheme ron
-"highlight LineNr ctermfg=grey
 
 
 " search
@@ -704,10 +696,15 @@ augroup END
 
 
 " -----------------------------------------------------------------------
-" vim-powerline: {{{
-"  - https://github.com/Lokaltog/vim-powerline
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_stl_path_style = 'short'
+" vim-airline: {{{
+"  - https://github.com/vim-airline/vim-airline
+let g:airline_theme = 'base16'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_skip_empty_sections = 1
 "}}}
 
 
@@ -811,7 +808,7 @@ function! DisplayMarkdown()
     highlight DiffAdd    guibg=grey0
     highlight DiffText   gui=NONE guibg=grey0
     highlight DiffDelete guibg=grey0
- 
+
     call cursor(1,1)
 "    %diffput
 "    wincmd c
