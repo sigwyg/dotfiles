@@ -18,8 +18,7 @@ if dein#load_state('~/.cache/dein')
   call dein#add('Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } })
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/vimfiler.git')
-
-  call dein#add('Shougo/neocomplcache.git')
+  call dein#add('Shougo/deoplete.nvim')
   call dein#add('Shougo/neosnippet')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/unite.vim.git')
@@ -534,37 +533,11 @@ endfunction
 
 
 " -----------------------------------------------------------------------
-" neocomplcache: {{{
-"  - https://github.com/Shougo/neocomplcache
-"  - https://github.com/Shougo/neocomplcache/blob/998764e1072fa5b183c3da4705b8187658fa0b41/presen/neocomplcache.txt
+" deoplete: {{{
+"  - https://github.com/Shougo/deoplete.nvim
 "
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_min_syntax_length = 3
-"Quick Type, ignore neocomplcache.
-let g:NeoComplCache_SkipCompletionTime = '0.3'
-let g:NeoComplCache_SkipInputTime = '0.1'
-let g:neocomplcache_enable_auto_close_preview = 0
-
-" <CR> : delete popup and hold indent
-" <BS> : close popup and delete backword char.
-" <C-h>: close popup and delete backword char.
-" <C-y>: close popup and delete backword char.
-" <C-e>: close popup and delete backword char.
-" <C-n>: manual-start neocomplcache.
-" <C-p>: Vim native-keyword complement.
-" <C-j>: Vim native-Omni completion.
-inoremap <expr><CR> pumvisible() ? "\<C-y>\<CR>X\<BS>" : "\<CR>X\<BS>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y> neocomplcache#smart_close_popup()."\<C-y>"
-inoremap <expr><C-e> neocomplcache#smart_close_popup()."\<C-e>"
-inoremap <expr><C-n> pumvisible() ? "\<C-n>" : "\<C-x>\<C-u>\<C-p>"
-inoremap <expr><C-p> pumvisible() ? "\<C-p>" : "\<C-p>\<C-n>"
-inoremap <expr><C-j> &filetype == 'vim' ? "\<C-x>\<C-v>\<C-p>" : "\<C-x>\<C-o>\<C-p>"
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 "}}}
 
