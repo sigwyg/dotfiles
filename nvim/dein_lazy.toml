@@ -1,0 +1,260 @@
+# vimproc
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+  if dein#util#_is_windows()
+    let cmd = 'tools\\update-dll-mingw'
+  elseif dein#util#_is_mac()
+    let cmd = 'make -f make_mac.mak'
+  elseif dein#util#_is_cygwin()
+    let cmd = 'make -f make_cygwin.mak'
+  elseif executable('gmake')
+    let cmd = 'gmake'
+  else
+    let cmd = 'make'
+  endif
+  let g:dein#plugin.build = cmd
+'''
+
+
+[[plugins]]
+repo = 'Shougo/vimfiler.git'
+hook_post_source = '''
+    let g:vimfiler_as_default_explorer = 1
+    let g:vimfiler_split_command = 'vertical rightbelow vsplit'
+    let g:vimfiler_min_filename_width = 20
+    let g:vimfiler_safe_mode_by_default = 0
+
+    " Overwrite settings.
+    autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
+    function! s:vimfiler_my_settings()"
+        nmap <buffer> <C-l> <C-w>l
+        nmap <buffer> <C-j> <C-w>j
+        nmap <buffer> R <Plug>(vimfiler_redraw_screen)
+    endfunction"
+'''
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_post_source = '''
+    let g:deoplete#enable_at_startup = 1
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_post_source = '''
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#snippets_directory='~/.vim/snippets'
+
+    " Plugin key-mappings.
+    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab like snippets behavior.
+    "imap <expr><TAB>
+    " \ pumvisible() ? "\<C-n>" :
+    " \ neosnippet#expandable_or_jumpable() ?
+    " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+    " For conceal markers.
+    if has('conceal')
+    set conceallevel=2 concealcursor=niv
+    endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/unite.vim.git'
+hook_post_source = '''
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_history_yank_limit = 100
+
+    " The prefix key.
+    nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
+    nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
+    nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
+    nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
+    nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
+    nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
+
+    autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()"
+        " Overwrite settings.
+        imap <buffer> <C-g> <Plug>(unite_input_directory)
+    endfunction"
+'''
+
+[[plugins]]
+repo = 'Shougo/vimshell.git'
+hook_post_source = '''
+    let g:vimshell_prompt = $USER."% "
+    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+    let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]%p", "(%s)-[%b|%a]%p")'
+    let g:vimshell_split_command = 'split'
+    let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim  --servername=VIM --remote-tab-wait-silent'
+
+    autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
+    function! s:vimshell_settings()
+        "imap <buffer><BS>  <Plug>(vimshell_another_delete_backward_char)
+        "imap <buffer><C-h>  <Plug>(vimshell_another_delete_backward_char)
+
+        call vimshell#altercmd#define('i', 'iexe')
+        call vimshell#altercmd#define('is', 'iexe ssh')
+        call vimshell#altercmd#define('gim', 'git commit -m')
+        call vimshell#set_alias('la', 'ls -la')
+        call vimshell#set_alias('gis', 'git status')
+        call vimshell#set_alias('gid', 'git diff')
+        call vimshell#set_alias('gic', 'git commit')
+        call vimshell#set_alias('gl', 'git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset" -10')
+
+        " for Insert action on VimShell-history
+        "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
+        call unite#custom_default_action('vimshell/history' , 'insert')
+    endfunction
+'''
+
+[[plugins]]
+repo = 'Shougo/vim-vcs.git'
+
+[[plugins]]
+repo = 'thinca/vim-openbuf.git'
+
+[[plugins]]
+repo = 'Shougo/neossh.vim.git'
+
+
+# Text
+[[plugins]]
+repo = 'h1mesuke/vim-alignta.git'
+
+[[plugins]]
+repo = 'thinca/vim-template.git'
+
+[[plugins]]
+repo = 'tpope/vim-surround.git'
+
+[[plugins]]
+repo = 'tpope/vim-repeat.git'
+
+[[plugins]]
+repo = 'kana/vim-smartinput.git'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user.git'
+
+[[plugins]]
+repo = 'kana/vim-textobj-indent.git'
+
+
+# Display
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides.git'
+hook_post_source = '''
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_indent_levels = 30
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_space_guides = 1
+
+    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_color_change_percent = 20
+
+    augroup indentGuide
+        autocmd! indentGuide
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
+    augroup END
+'''
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion.git'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+
+
+# Grep
+[[plugins]]
+repo = 'thinca/vim-qfreplace.git'
+
+[[plugins]]
+repo = 't9md/vim-unite-ack.git'
+
+[[plugins]]
+repo = 'h1mesuke/unite-outline.git'
+
+
+# Syntax
+[[plugins]]
+repo = 'othree/html5.vim.git'
+
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim.git'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax.git'
+
+[[plugins]]
+repo = 'hallison/vim-markdown.git'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+
+[[plugins]]
+repo = 'mxw/vim-jsx'
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+
+
+# Develop
+[[plugins]]
+repo = 'sjl/gundo.vim.git'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun.git'
+hook_post_source = '''
+    let g:quickrun_config = {}
+    let g:quickrun_config.haskell = {'command' : 'runhugs'}
+
+    " Set shortcut keys.
+    " \   '<Leader>w' : '>',
+    for [key, com] in items({
+    \   '<Leader>x' : '>:',
+    \   '<Leader>p' : '>!',
+    \   '<Leader>q' : '>>',
+    \ })
+        execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
+        execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
+    endfor
+'''
+
+[[plugins]]
+repo = 'thinca/vim-ref.git'
+
+[[plugins]]
+repo = 'scrooloose/syntastic.git'
+hook_post_source = '''
+    let g:syntastic_enable_sign = 1
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 0
+    let g:syntastic_check_on_wq = 0
+    let g:syntastic_css_checkers = ['stylelint']
+    let g:syntastic_scss_checkers = ['stylelint']
+    let g:syntastic_javascript_checker = 'eslint'
+    let g:syntastic_mode_map = { 'mode': 'active',
+                                \ 'active_filetypes': ['scss', 'js', 'jsx'],
+                                \ 'passive_filetypes': ['html','xhtml'] }
+'''
+
+[[plugins]]
+repo = 'mtscout6/syntastic-local-eslint.vim'
+
+[[plugins]]
+repo = 'jaawerth/nrun.vim.git'
