@@ -136,7 +136,7 @@ set autoindent
 set cindent
 set showmatch
 set backspace=indent,eol,start
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set pastetoggle=<F12>
 set guioptions+=a
 command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
