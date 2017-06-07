@@ -699,7 +699,7 @@ augroup END
 " vim-airline: {{{
 "  - https://github.com/vim-airline/vim-airline
 let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
