@@ -1,85 +1,3 @@
-set runtimepath+=~/.config/nvim
-runtime! userautoload/*.vim
-
-" -----------------------------------------------------------------------
-
-" Dein.vim: {{{
-"  - https://github.com/Shougo/dein.vim
-"
-if &compatible
-  set nocompatible
-endif
-set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-if dein#load_state('~/.cache/dein')
-  call dein#begin('~/.cache/dein')
-
-  call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/vimproc.git', {'build' : {'mac' : 'make -f make_mac.mak' } })
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/vimfiler.git')
-  call dein#add('Shougo/deoplete.nvim')
-  call dein#add('Shougo/neosnippet')
-  call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/unite.vim.git')
-  call dein#add('Shougo/vimshell.git')
-  call dein#add('Shougo/vim-vcs.git')
-  call dein#add('thinca/vim-openbuf.git')
-  call dein#add('Shougo/neossh.vim.git')
-
-  " Grep
-  call dein#add('thinca/vim-qfreplace.git')
-  call dein#add('t9md/vim-unite-ack.git')
-  call dein#add('h1mesuke/unite-outline.git')
-
-  " Text
-  call dein#add('h1mesuke/vim-alignta.git')
-  call dein#add('thinca/vim-template.git')
-  call dein#add('tpope/vim-surround.git')
-  call dein#add('tpope/vim-repeat.git')
-  call dein#add('kana/vim-smartinput.git')
-  call dein#add('kana/vim-textobj-user.git')
-  call dein#add('kana/vim-textobj-indent.git')
-
-  " Display
-  call dein#add('nathanaelkane/vim-indent-guides.git')
-  call dein#add('vim-airline/vim-airline')
-  call dein#add('vim-airline/vim-airline-themes')
-  call dein#add('Lokaltog/vim-easymotion.git')
-  call dein#add('editorconfig/editorconfig-vim')
-
-  " Syntax
-  call dein#add('othree/html5.vim.git')
-  call dein#add('cakebaker/scss-syntax.vim.git')
-  call dein#add('hail2u/vim-css3-syntax.git')
-  call dein#add('hallison/vim-markdown.git')
-  call dein#add('slim-template/vim-slim')
-  call dein#add('mxw/vim-jsx')
-  call dein#add('kchmck/vim-coffee-script')
-
-  " Develop
-  call dein#add('sjl/gundo.vim.git')
-  call dein#add('thinca/vim-quickrun.git')
-  call dein#add('thinca/vim-ref.git')
-  call dein#add('scrooloose/syntastic.git')
-  call dein#add('mtscout6/syntastic-local-eslint.vim')
-  call dein#add('airblade/vim-rooter.git')
-  call dein#add('jaawerth/nrun.vim.git')
-  call dein#add('lambdalisue/gina.vim')
-
-  " Colorscheme
-  call dein#add('nanotech/jellybeans.vim.git')
-  call dein#add('https://gist.github.com/187578.git') "<- h2u_black
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-filetype plugin indent on
-syntax enable
-" }}}
-
-
 " -----------------------------------------------------------------------
 " Basis:{{{
 "
@@ -107,7 +25,7 @@ set wildmode=list:longest,full
 syntax on
 set cursorline
 highlight CursorLine cterm=bold
-colorscheme jellybeans
+"colorscheme jellybeans
 "colorscheme h2u_black
 "set cursorcolumn
 "highlight CursorColumn cterm=bold ctermbg=0
@@ -334,6 +252,10 @@ augroup MyAutoCmd
     " reset autocmd-list
     autocmd!
 
+    " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
+    " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+    au MyAutoCmd VimEnter * nested colorscheme jellybeans
+ 
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
 
@@ -494,269 +416,6 @@ endfunction " MapHTMLKeys()
 
 
 " -----------------------------------------------------------------------
-" FontsToggle: {{{
-"  - inspired zoom.vim@hokaccha
-"  - http://gist.github.com/200505
-"
-nnoremap <Leader>f :<C-u>call FontToggle('f')<CR>
-"nnoremap <C-b> :<C-u>call FontToggle('b')<CR>
-function! FontToggle(trigger)
-    if &guifont == "Courier\ New:h14"
-        if a:trigger  == 'b'
-            set guifont=Courier\ New:h36
-            set columns=51
-            set lines=16
-        elseif a:trigger == 'f'
-            set guifont=nanahoshi-beta:h18
-            set guifontwide=nanahoshi-beta:h18
-            "execute 'set guifont=Inconsolata:h15'
-            "execute 'set guifontwide=Inconsolata:h15'
-            set columns=124
-            set lines=36
-        endif
-
-   else
-       set guifont=Courier\ New:h14
-       set guifontwide=
-       set columns=140
-       set lines=40
-   endif
-endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" deoplete: {{{
-"  - https://github.com/Shougo/deoplete.nvim
-"
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-"}}}
-
-
-" -----------------------------------------------------------------------
-" neosnippet: {{{
-"  - https://github.com/Shougo/neosnippet.vim
-"
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/snippets'
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For conceal markers.
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-"}}}
-
-
-" -----------------------------------------------------------------------
-" quickrun: {{{
-"  - https://github.com/thinca/vim-quickrun/
-"
-let g:quickrun_config = {}
-let g:quickrun_config.haskell = {'command' : 'runhugs'}
-
-" Set shortcut keys.
-" \   '<Leader>w' : '>',
-for [key, com] in items({
-\   '<Leader>x' : '>:',
-\   '<Leader>p' : '>!',
-\   '<Leader>q' : '>>',
-\ })
-    execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
-    execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
-endfor
-"}}}
-
-
-" -----------------------------------------------------------------------
-" unite.vim: {{{
-"  - https://github.com/Shougo/unite.vim
-"
-let g:unite_winheight = 10
-let g:unite_source_history_yank_enable = 1
-let g:unite_source_history_yank_limit = 100
-
-" The prefix key.
-nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
-nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
-nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
-nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
-nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
-nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
-
-autocmd MyAutoCmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"
-    " Overwrite settings.
-    imap <buffer> <C-g> <Plug>(unite_input_directory)
-endfunction"
-"}}}
-
-
-" -----------------------------------------------------------------------
-" unite-grep: {{{
-"  - https://github.com/Shougo/vimproc/tree/master
-let g:unite_source_grep_command = "grep"
-let g:unite_source_grep_default_opts = "-Hn"
-"}}}
-
-
-" -----------------------------------------------------------------------
-" VimFiler: {{{
-"  - https: //github.com/Shougo/vimfiler
-"
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_split_command = 'vertical rightbelow vsplit'
-let g:vimfiler_min_filename_width = 20
-let g:vimfiler_safe_mode_by_default = 0
-
-" Overwrite settings.
-autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
-function! s:vimfiler_my_settings()"
-    nmap <buffer> <C-l> <C-w>l
-    nmap <buffer> <C-j> <C-w>j
-    nmap <buffer> R <Plug>(vimfiler_redraw_screen)
-endfunction"
-"}}}
-
-
-" -----------------------------------------------------------------------
-" VimShell: {{{
-"  - https: //github.com/Shougo/vimshell
-"
-let g:vimshell_prompt = $USER."% "
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]%p", "(%s)-[%b|%a]%p")'
-let g:vimshell_split_command = 'split'
-let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim  --servername=VIM --remote-tab-wait-silent'
-
-autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
-function! s:vimshell_settings()
-    "imap <buffer><BS>  <Plug>(vimshell_another_delete_backward_char)
-    "imap <buffer><C-h>  <Plug>(vimshell_another_delete_backward_char)
-
-    call vimshell#altercmd#define('i', 'iexe')
-    call vimshell#altercmd#define('is', 'iexe ssh')
-    call vimshell#altercmd#define('gim', 'git commit -m')
-    call vimshell#set_alias('la', 'ls -la')
-    call vimshell#set_alias('gis', 'git status')
-    call vimshell#set_alias('gid', 'git diff')
-    call vimshell#set_alias('gic', 'git commit')
-    call vimshell#set_alias('gl', 'git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset" -10')
-
-    " for Insert action on VimShell-history
-    "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
-    call unite#custom_default_action('vimshell/history' , 'insert')
-endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" html5.vim: {{{
-"  - https://github.com/othree/html5.vim
-let g:html5_event_handler_attributes_complete = 1
-let g:html5_rdfa_attributes_complete = 1
-let g:html5_microdata_attributes_complete = 1
-let g:html5_aria_attributes_complete = 1
-"}}}
-
-
-" -----------------------------------------------------------------------
-" indent-guides: {{{
-"  - https://github.com/nathanaelkane/vim-indent-guides
-"  - :IndentGuidesToggle
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_indent_levels = 30
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-let g:indent_guides_space_guides = 1
-
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_color_change_percent = 20
-
-augroup indentGuide
-    autocmd! indentGuide
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
-    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
-augroup END
-
-"}}}
-
-
-" -----------------------------------------------------------------------
-" vim-airline: {{{
-"  - https://github.com/vim-airline/vim-airline
-let g:airline_theme = 'base16'
-let g:airline_powerline_fonts = 0
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-let g:airline_skip_empty_sections = 1
-"}}}
-
-
-" -----------------------------------------------------------------------
-" syntastic: {{{
-"  - https://github.com/scrooloose/syntastic
-let g:syntastic_enable_sign = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_css_checkers = ['stylelint']
-let g:syntastic_scss_checkers = ['stylelint']
-let g:syntastic_javascript_checker = 'eslint'
-let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['scss', 'js', 'jsx'],
-                            \ 'passive_filetypes': ['html','xhtml'] }
-"}}}
-
-
-" -----------------------------------------------------------------------
-" Like :CdCurrent {{{
-"  - :CdCurrent is KaoriYa-Command
-"  - Usage: ":Cd"
-"
-command! -nargs=? -complete=dir -bang Cd call s:ChangeCurrentDir(<q-args>, <q-bang>)
-function! s:ChangeCurrentDir(directory, bang)
-    if a:directory == ''
-        lcd %:p:h
-    else
-        execute 'lcd' . a:directory
-    endif
-
-    if a:bang == ''
-        pwd
-    endif
-endfunction
-"}}}
-
-
-" -----------------------------------------------------------------------
-" vim-rooter: {{{
-"  - Rooter changes the working directory to the project root when you open a file or directory.
-"  - https://github.com/airblade/vim-rooter
-"
-let g:rooter_targets = '/,*.scss,*.sass,*.js,*.jsx'
-let g:rooter_patterns = ['.git/','.stylelintrc','.stylelintrc.json','.eslintrc']
-" }}}
-
-
-" -----------------------------------------------------------------------
 " htmlform.vim: {{{
 "  - https://github.com/sigwyg/htmlform.vim
 "  - http://archiva.jp/web/sugamo_css/sugamo_vim_01.html
@@ -798,81 +457,45 @@ endfunction
 " }}}
 
 
-" -----------------------------------------------------------------------
-" for markdown: {{{
-"  - http://archiva.jp/web/tool/vim2mkd.html
-nnoremap \m :call DisplayMarkdown()<CR>
-function! DisplayMarkdown()
-    !perl ~/dotfiles/Markdown.pl --html4tags "%" > /tmp/__markdown.html;
-    vert diffsplit /tmp/__markdown.html
-    highlight DiffChange guibg=grey0
-    highlight DiffAdd    guibg=grey0
-    highlight DiffText   gui=NONE guibg=grey0
-    highlight DiffDelete guibg=grey0
-
-    call cursor(1,1)
-"    %diffput
-"    wincmd c
-"    set ft=html
-"    diffoff<CR>
-endfunction
-" }}}
-
-
-" -----------------------------------------------------------------------
-" CSS3PropertyDuplicate(): {{{
-"  - Origin: https://gist.github.com/972806
-"  - Forked: https://gist.github.com/1901182
+" Dein.vim: {{{
+"  - https://github.com/Shougo/dein.vim
 "
-function! CSS3PropertyDuplicate()
-    let l:css3   = getline(".")
-    let l:line   = line(".")
-    let l:ind    = matchlist(css3, '\v(\s*)(.*)')
-    let l:webkit = ind[1] . "-webkit-" . ind[2]
-    let l:moz    = ind[1] . "-moz-"    . ind[2]
-    let l:ms     = ind[1] . "-ms-"     . ind[2]
-    let l:o      = ind[1] . "-o-"      . ind[2]
-    call append(line -1, [webkit, moz, ms, o])
-    call cursor(line, 1)
-endfunction
-nnoremap <silent> ,3 :<C-u>call CSS3PropertyDuplicate()<CR>
-" }}}
+if &compatible
+  set nocompatible
+endif
 
+" set path
+"  - '~/.cache/dein'
+"  - '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" -----------------------------------------------------------------------
-" Open junk file: {{{
-"  - Origin: http://vim-users.jp/2010/11/hack181/
-"  - Usage: ":JunkFile"
-"
-command! -nargs=0 JunkFile call s:open_junk_file()
-function! s:open_junk_file()
-  let junk_dir = $HOME . '/.vim_junk'
-  if !isdirectory(junk_dir)
-    call mkdir(junk_dir, 'p')
-  endif
+" auto-install for dein.vim
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
-  let filename = input('Junk Code: ', junk_dir.strftime('/%Y-%m-%d-%H%M%S.'))
-  if filename != ''
-    execute 'edit ' . filename
-  endif
-endfunction
-" }}}
+" Load plugins & Make cache
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  " load toml
+  let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
+  let s:toml = s:toml_dir . '/dein.toml'
+  let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
+  " required
+  call dein#end()
+  call dein#save_state()
+endif
 
+" auto install for plugins of lacked
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
 
-" -----------------------------------------------------------------------
-" Scouter: {{{
-"  - Origin: http://d.hatena.ne.jp/thinca/20091031/1257001194
-"  - Usage: ":Scouter" or ":Scouter!"
-"
-function! Scouter(file, ...)
-  let pat = '^\s*$\|^\s*"'
-  let lines = readfile(a:file)
-  if !a:0 || !a:1
-    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
-  endif
-  return len(filter(lines,'v:val !~ pat'))
-endfunction
-command! -bar -bang -nargs=? -complete=file Scouter
-\        echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
-
+filetype plugin indent on
+syntax enable
 " }}}

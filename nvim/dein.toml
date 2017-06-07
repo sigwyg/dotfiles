@@ -1,0 +1,25 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# Colorscheme
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+# airline
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_post_source = '''
+    let g:airline_theme = 'base16'
+    let g:airline_powerline_fonts = 0
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+    let g:airline_symbols.space = "\ua0"
+    let g:airline_skip_empty_sections = 1
+'''
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
