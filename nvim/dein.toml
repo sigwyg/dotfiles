@@ -23,3 +23,10 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]] 
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']

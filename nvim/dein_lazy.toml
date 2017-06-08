@@ -35,37 +35,40 @@ hook_post_source = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
-hook_post_source = '''
+depends = 'context_filetype.vim'
+on_i = 1
+hook_source = '''
     let g:deoplete#enable_at_startup = 1
+    inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 '''
 
 [[plugins]]
 repo = 'Shougo/neosnippet'
-hook_post_source = '''
-    let g:neosnippet#enable_snipmate_compatibility = 1
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_event = 'InsertCharPre'
+on_ft = 'snippet'
+on_i = 1
+hook_source = '''
     let g:neosnippet#snippets_directory='~/.vim/snippets'
-
+    let g:neosnippet#enable_snipmate_compatibility = 1
+    let g:neosnippet#enable_completed_snippet = 1
+    let g:neosnippet#expand_word_boundary = 1
     " Plugin key-mappings.
-    imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-    " SuperTab like snippets behavior.
-    "imap <expr><TAB>
-    " \ pumvisible() ? "\<C-n>" :
-    " \ neosnippet#expandable_or_jumpable() ?
-    " \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    imap <C-k>  <Plug>(neosnippet_expand_or_jump)
+    smap <C-k>  <Plug>(neosnippet_expand_or_jump)
+    xmap <C-k>  <Plug>(neosnippet_expand_target)
 
     " For conceal markers.
     if has('conceal')
-    set conceallevel=2 concealcursor=niv
+        set conceallevel=2 concealcursor=niv
     endif
 '''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/unite.vim.git'
@@ -210,6 +213,10 @@ repo = 'mxw/vim-jsx'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
+
+[[plugins]] # toml syntax
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
 
 
 # Develop
