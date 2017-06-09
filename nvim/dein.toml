@@ -11,6 +11,7 @@ repo = 'vim-airline/vim-airline-themes'
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
+depends = ['fugitive']
 hook_post_source = '''
     let g:airline_theme = 'base16'
     let g:airline_powerline_fonts = 0
