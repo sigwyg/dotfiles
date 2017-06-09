@@ -1,48 +1,4 @@
 " -----------------------------------------------------------------------
-" Dein.vim: {{{
-"  - https://github.com/Shougo/dein.vim
-"
-if &compatible
-  set nocompatible
-endif
-
-" set path
-"  - '~/.cache/dein'
-"  - '~/.cache/dein/repos/github.com/Shougo/dein.vim'
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" auto-install for dein.vim
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-let &runtimepath = s:dein_repo_dir .",". &runtimepath
-
-" Load plugins & Make cache
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-  " load toml
-  let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
-  let s:toml = s:toml_dir . '/dein.toml'
-  let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:toml_lazy, {'lazy': 1})
-  " required
-  call dein#end()
-  call dein#save_state()
-endif
-
-" auto install for plugins of lacked
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
-
-filetype plugin indent on
-syntax enable
-" }}}
-
-
 " Basis:{{{
 "
 
@@ -90,7 +46,7 @@ set autoindent
 set cindent
 set showmatch
 set backspace=indent,eol,start
-set clipboard+=unnamedplus
+"set clipboard+=unnamedplus
 set pastetoggle=<F12>
 set guioptions+=a
 command! -nargs=1 -bang -bar -complete=file Rename sav<bang> <args> | call delete(expand('#:p'))
@@ -412,4 +368,48 @@ function! ChangeTable() range
     call append(a:lastline, '</table>')
     call append(a:firstline - 1, '<table>')
 endfunction
+" }}}
+
+
+" Dein.vim: {{{
+"  - https://github.com/Shougo/dein.vim
+"
+if &compatible
+  set nocompatible
+endif
+
+" set path
+"  - '~/.cache/dein'
+"  - '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" auto-install for dein.vim
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+" Load plugins & Make cache
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  " load toml
+  let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
+  let s:toml = s:toml_dir . '/dein.toml'
+  let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
+  " required
+  call dein#end()
+  call dein#save_state()
+endif
+
+" auto install for plugins of lacked
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+
+filetype plugin indent on
+syntax enable
 " }}}
