@@ -1,4 +1,48 @@
 " -----------------------------------------------------------------------
+" Dein.vim: {{{
+"  - https://github.com/Shougo/dein.vim
+"
+if &compatible
+  set nocompatible
+endif
+
+" set path
+"  - '~/.cache/dein'
+"  - '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+" auto-install for dein.vim
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+" Load plugins & Make cache
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  " load toml
+  let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
+  let s:toml = s:toml_dir . '/dein.toml'
+  let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:toml_lazy, {'lazy': 1})
+  " required
+  call dein#end()
+  call dein#save_state()
+endif
+
+" auto install for plugins of lacked
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+
+filetype plugin indent on
+syntax enable
+" }}}
+
+
 " Basis:{{{
 "
 
@@ -120,17 +164,6 @@ vnoremap d dgV
 onoremap y ygV
 onoremap d dgV
 
-" practice
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Right> <Nop>
-" below, cause error on MacVim-KaoriYa
-"inoremap <Left> <Nop>
-
 " alter <Esc>
 "inoremap <expr> j getline('.')[col('.') - 2] ==# 'j' ? "\<BS>\<ESC>" : 'j'
 inoremap jj <Esc>
@@ -175,12 +208,12 @@ inoremap <C-l> <Right>
 
 " brackets"
 " - use smart-input???
-"inoremap {} {}<LEFT>
-"inoremap [] []<LEFT>
-"inoremap () ()<LEFT>
-"inoremap "" ""<LEFT>
-"inoremap '' ''<LEFT>
-"inoremap <> <><LEFT>
+inoremap { {}<LEFT>
+inoremap [ []<LEFT>
+inoremap ( ()<LEFT>
+inoremap " ""<LEFT>
+inoremap ' ''<LEFT>
+inoremap < <><LEFT>
 inoremap []5 [%  %]<LEFT><LEFT><LEFT>
 inoremap {}5 {%  %}<LEFT><LEFT><LEFT>
 
@@ -252,24 +285,11 @@ augroup MyAutoCmd
     " reset autocmd-list
     autocmd!
 
-    " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-    " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
+    " enable colorscheme
     au MyAutoCmd VimEnter * nested colorscheme jellybeans
  
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
-
-    " cursor-line highlight
-    "  - when .vimrc reloaded, VimShell-ssh corrupting
-    "autocmd WinEnter,BufEnter * setlocal cursorline
-    "autocmd WinEnter,BufEnter * setlocal cursorcolumn
-    "autocmd WinLeave * setlocal nocursorline
-    "autocmd WinLeave * setlocal nocursorcolumn
-
-    " closetag
-    "autocmd Filetype xml inoremap <buffer> <LT>? <LT>/<C-x><C-o>
-    "autocmd Filetype html inoremap <buffer> ?<LT> /<LT>
-    "autocmd Filetype html inoremap <buffer> <LT>? <LT>/<C-x><C-o>
 
     " go to file!
     autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
@@ -277,9 +297,6 @@ augroup MyAutoCmd
     " format
     autocmd FileType markdown setlocal wrap
     autocmd FileType text setlocal textwidth=0
-
-    " Custom folding
-    "autocmd BufEnter * if &filetype == "javascript" | set foldmarker={,} | set foldlevel=3 | set foldcolumn=7 | endif
 
     " set less-syntax
     autocmd BufEnter *.less set filetype=scss
@@ -298,65 +315,6 @@ function! s:remove_line_in_last_line()
   endif
 endfunction
 
-"}}}
-
-
-" -----------------------------------------------------------------------
-" encoding: {{{
-"  - http://www.kawaz.jp/pukiwiki/?vim
-"
-
-if !has('gui_macvim') && !has('kaoriya')
-    set encoding=utf8
-    set fileencodings=iso-2022-jp,sjis,utf8
-
-    if has('iconv')
-    let s:enc_euc = 'euc-jp'
-    let s:enc_jis = 'iso-2022-jp'
-    if iconv("\x87\x64\x87\x6a", 'cp932', 'eucjp-ms') ==# "\xad\xc5\xad\xcb"
-        let s:enc_euc = 'eucjp-ms'
-        let s:enc_jis = 'iso-2022-jp-3'
-    elseif iconv("\x87\x64\x87\x6a", 'cp932', 'euc-jisx0213') ==# "\xad\xc5\xad\xcb"
-        let s:enc_euc = 'euc-jisx0213'
-        let s:enc_jis = 'iso-2022-jp-3'
-    endif
-    if &encoding ==# 'utf-8'
-        let s:fileencodings_default = &fileencodings
-        let &fileencodings = s:enc_jis .','. s:enc_euc .',cp932'
-        let &fileencodings = &fileencodings .','. s:fileencodings_default
-        unlet s:fileencodings_default
-    else
-        let &fileencodings = &fileencodings .','. s:enc_jis
-        set fileencodings+=utf-8,ucs-2le,ucs-2
-        if &encoding =~# '^\(euc-jp\|euc-jisx0213\|eucjp-ms\)$'
-        set fileencodings+=cp932
-        set fileencodings-=euc-jp
-        set fileencodings-=euc-jisx0213
-        set fileencodings-=eucjp-ms
-        let &encoding = s:enc_euc
-        let &fileencoding = s:enc_euc
-        else
-        let &fileencodings = &fileencodings .','. s:enc_euc
-        endif
-    endif
-    unlet s:enc_euc
-    unlet s:enc_jis
-    endif
-
-    if has('autocmd')
-        function! AU_ReCheck_FENC()
-            if &fileencoding =~# 'iso-2022-jp' && search("[^\x01-\x7e]", 'n') == 0
-            let &fileencoding=&encoding
-            endif
-        endfunction
-        autocmd! BufReadPost * call AU_ReCheck_FENC()
-    endif
-
-    set fileformats=unix,dos,mac
-    if exists('&ambiwidth')
-    set ambiwidth=double
-    endif
-endif
 "}}}
 
 
@@ -454,48 +412,4 @@ function! ChangeTable() range
     call append(a:lastline, '</table>')
     call append(a:firstline - 1, '<table>')
 endfunction
-" }}}
-
-
-" Dein.vim: {{{
-"  - https://github.com/Shougo/dein.vim
-"
-if &compatible
-  set nocompatible
-endif
-
-" set path
-"  - '~/.cache/dein'
-"  - '~/.cache/dein/repos/github.com/Shougo/dein.vim'
-let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
-let s:dein_dir = s:cache_home . '/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-" auto-install for dein.vim
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-let &runtimepath = s:dein_repo_dir .",". &runtimepath
-
-" Load plugins & Make cache
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-  " load toml
-  let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
-  let s:toml = s:toml_dir . '/dein.toml'
-  let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:toml_lazy, {'lazy': 1})
-  " required
-  call dein#end()
-  call dein#save_state()
-endif
-
-" auto install for plugins of lacked
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
-
-filetype plugin indent on
-syntax enable
 " }}}
