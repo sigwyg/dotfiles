@@ -16,6 +16,8 @@ hook_post_update = '''
   let g:dein#plugin.build = cmd
 '''
 
+[[plugins]]
+repo = 'https://github.com/tpope/vim-fugitive.git'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.git'
