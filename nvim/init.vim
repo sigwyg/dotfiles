@@ -183,10 +183,10 @@ nnoremap g# g#zz
 cnoremap <expr> / getcmdtype() == '/' ? '\/' : '/'
 
 " Change window-size
-nnoremap <silent> <S-Left>  :<C-u>5wincmd <<CR>
-nnoremap <silent> <S-Down>  :<C-u>5wincmd +<CR>
-nnoremap <silent> <S-Up>    :<C-u>5wincmd -<CR>
-nnoremap <silent> <S-Right> :<C-u>5wincmd ><CR>
+nnoremap <silent> <Left>  :<C-u>5wincmd <<CR>
+nnoremap <silent> <Right> :<C-u>5wincmd ><CR>
+nnoremap <silent> <Down>  :<C-u>resize -3<CR>
+nnoremap <silent> <Up>    :<C-u>resize +3<CR>
 
 " move window
 nnoremap <C-h> <C-w>h
@@ -215,6 +215,10 @@ nnoremap <Space>. :<C-u>edit $MYGVIMRC<CR>
 command! -bang -nargs=? Utf8 edit<bang> ++enc=utf-8 <args>
 command! -bang -nargs=? Sjis edit<bang> ++enc=sjis <args>
 command! -bang -nargs=? Euc edit<bang> ++enc=euc-jp <args>
+
+" Terminal-mode
+tnoremap <silent> <ESC> <C-\><C-n>
+tnoremap <silent> jj <C-\><C-n>
 
 " Other Hacks
 noremap ; :
