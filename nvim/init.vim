@@ -218,7 +218,6 @@ command! -bang -nargs=? Euc edit<bang> ++enc=euc-jp <args>
 
 " Terminal-mode
 tnoremap <silent> <ESC> <C-\><C-n>
-tnoremap <silent> jj <C-\><C-n>
 
 " Other Hacks
 noremap ; :
@@ -262,9 +261,6 @@ augroup MyAutoCmd
     autocmd BufEnter *.less set filetype=scss
     autocmd BufEnter *.scss set filetype=scss
 
-    " syntastic
-    "autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = nrun#Which('stylelint')
-    autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = '/Users/sigwyg/Project/chai_front/node_modules/.bin/stylelint'
 augroup END
 
 " delete last-line, if only blank text
