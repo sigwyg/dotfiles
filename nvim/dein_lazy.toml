@@ -17,6 +17,54 @@ hook_post_update = '''
 '''
 
 [[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = 'Denite'
+hook_post_source = '''
+    call denite#custom#option('default', 'prompt', '>')
+
+    " denite/insert モードのときは，C- で移動できるようにする
+    call denite#custom#map('insert', "<C-n>", '<denite:move_to_next_line>')
+    call denite#custom#map('insert', "<C-p>", '<denite:move_to_previous_line>')
+
+    " tabopen や vsplit のキーバインドを割り当て
+    call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+    call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+    call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
+
+    " jj で denite/insert を抜けるようにする
+    call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
+
+    " customize ignore globs
+    call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy','matcher_ignore_globs'])
+    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs', [
+        \ '.git/', 'node_modules/',
+        \ 'images/', 'img/', 'fonts/', 'font/'
+        \ ])
+'''
+
+[[plugins]]
+repo = 'Shougo/unite.vim.git'
+hook_post_source = '''
+    let g:unite_winheight = 10
+    let g:unite_source_history_yank_enable = 1
+    let g:unite_source_history_yank_limit = 100
+
+    " The prefix key.
+    nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
+    nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
+    nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
+    nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
+    nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
+    nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
+
+    autocmd MyAutoCmd FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()"
+        " Overwrite settings.
+        imap <buffer> <C-g> <Plug>(unite_input_directory)
+    endfunction"
+'''
+
+[[plugins]]
 repo = 'Shougo/vimfiler.git'
 hook_post_source = '''
     let g:vimfiler_as_default_explorer = 1
@@ -70,65 +118,7 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/unite.vim.git'
-hook_post_source = '''
-    let g:unite_winheight = 10
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_limit = 100
-
-    " The prefix key.
-    nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
-    nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
-    nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
-    nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
-    nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
-    nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
-
-    autocmd MyAutoCmd FileType unite call s:unite_my_settings()
-    function! s:unite_my_settings()"
-        " Overwrite settings.
-        imap <buffer> <C-g> <Plug>(unite_input_directory)
-    endfunction"
-'''
-
-[[plugins]]
-repo = 'Shougo/vimshell.git'
-hook_post_source = '''
-    let g:vimshell_prompt = $USER."% "
-    let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-    let g:vimshell_right_prompt = 'vcs#info("(%s)-[%b]%p", "(%s)-[%b|%a]%p")'
-    let g:vimshell_split_command = 'split'
-    let g:vimshell_editor_command = '/Applications/local/MacVim-kaoriya.app/Contents/MacOS/Vim  --servername=VIM --remote-tab-wait-silent'
-
-    autocmd MyAutoCmd FileType vimshell call s:vimshell_settings()
-    function! s:vimshell_settings()
-        "imap <buffer><BS>  <Plug>(vimshell_another_delete_backward_char)
-        "imap <buffer><C-h>  <Plug>(vimshell_another_delete_backward_char)
-
-        call vimshell#altercmd#define('i', 'iexe')
-        call vimshell#altercmd#define('is', 'iexe ssh')
-        call vimshell#altercmd#define('gim', 'git commit -m')
-        call vimshell#set_alias('la', 'ls -la')
-        call vimshell#set_alias('gis', 'git status')
-        call vimshell#set_alias('gid', 'git diff')
-        call vimshell#set_alias('gic', 'git commit')
-        call vimshell#set_alias('gl', 'git log --graph --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(black bold)%an, %ar%Creset" -10')
-
-        " for Insert action on VimShell-history
-        "call unite#custom_default_action('source/vimshell/history/completion' , 'insert')
-        call unite#custom_default_action('vimshell/history' , 'insert')
-    endfunction
-'''
-
-[[plugins]]
-repo = 'Shougo/vim-vcs.git'
-
-[[plugins]]
 repo = 'thinca/vim-openbuf.git'
-
-[[plugins]]
-repo = 'Shougo/neossh.vim.git'
-
 
 # Text
 [[plugins]]
@@ -180,13 +170,9 @@ repo = 'Lokaltog/vim-easymotion.git'
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 
-
 # Grep
 [[plugins]]
 repo = 'thinca/vim-qfreplace.git'
-
-[[plugins]]
-repo = 't9md/vim-unite-ack.git'
 
 [[plugins]]
 repo = 'h1mesuke/unite-outline.git'
@@ -258,6 +244,8 @@ hook_post_source = '''
     let g:syntastic_mode_map = { 'mode': 'active',
                                 \ 'active_filetypes': ['scss', 'js', 'jsx'],
                                 \ 'passive_filetypes': ['html','xhtml'] }
+
+    autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = nrun#Which('stylelint')
 '''
 
 [[plugins]]
