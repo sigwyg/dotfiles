@@ -169,6 +169,7 @@ repo = 'Lokaltog/vim-easymotion.git'
 
 [[plugins]]
 repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
 
 # Grep
 [[plugins]]
