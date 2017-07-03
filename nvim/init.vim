@@ -9,6 +9,10 @@ if has('vim_starting')
     endif
 endif
 
+" for Python
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " display
 set number
 set ruler
