@@ -181,24 +181,34 @@ repo = 'h1mesuke/unite-outline.git'
 # Syntax
 [[plugins]]
 repo = 'othree/html5.vim.git'
+on_ft = 'html'
 
 [[plugins]]
 repo = 'cakebaker/scss-syntax.vim.git'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax.git'
+on_ft = 'css'
 
 [[plugins]]
 repo = 'hallison/vim-markdown.git'
+on_ft = 'markdown'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
+on_ft = 'slim'
 
 [[plugins]]
 repo = 'mxw/vim-jsx'
+on_ft = 'jsx'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
 
 [[plugins]] # toml syntax
 repo = 'cespare/vim-toml'
@@ -211,21 +221,6 @@ repo = 'sjl/gundo.vim.git'
 
 [[plugins]]
 repo = 'thinca/vim-quickrun.git'
-hook_post_source = '''
-    let g:quickrun_config = {}
-    let g:quickrun_config.haskell = {'command' : 'runhugs'}
-
-    " Set shortcut keys.
-    " \   '<Leader>w' : '>',
-    for [key, com] in items({
-    \   '<Leader>x' : '>:',
-    \   '<Leader>p' : '>!',
-    \   '<Leader>q' : '>>',
-    \ })
-        execute 'nnoremap <silent>' key ':QuickRun' com '-mode n<CR>'
-        execute 'vnoremap <silent>' key ':QuickRun' com '-mode v<CR>'
-    endfor
-'''
 
 [[plugins]]
 repo = 'thinca/vim-ref.git'
