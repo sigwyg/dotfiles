@@ -210,7 +210,7 @@ on_ft = 'coffee'
 repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 
-[[plugins]] # toml syntax
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
@@ -239,7 +239,6 @@ hook_post_source = '''
     let g:syntastic_mode_map = { 'mode': 'active',
                                 \ 'active_filetypes': ['scss', 'js', 'jsx'],
                                 \ 'passive_filetypes': ['html','xhtml'] }
-
     autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = nrun#Which('stylelint')
 '''
 
