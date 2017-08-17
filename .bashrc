@@ -9,7 +9,7 @@ alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
 alias grep='grep --color=auto'
-alias vi=nvim
+alias vi='vim -u NONE'
 alias vim=nvim
 
 # EDITOR
