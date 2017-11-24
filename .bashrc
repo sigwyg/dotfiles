@@ -11,6 +11,7 @@ alias gib='git branch'
 alias grep='grep --color=auto'
 alias vi='vim -u NONE'
 alias vim=nvim
+alias vtop="vtop --theme brew"
 
 # EDITOR
 export EDITOR=nvim
