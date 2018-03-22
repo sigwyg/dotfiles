@@ -38,7 +38,6 @@ hook_post_source = '''
 [[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
-    let g:neoterm_position = 'horizontal'
     nnoremap <silent> ,th :call neoterm#close()<cr>
     nnoremap <silent> ,tl :call neoterm#clear()<cr>
     nnoremap <silent> ,tc :call neoterm#kill()<cr>
