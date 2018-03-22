@@ -219,6 +219,10 @@ on_ft = 'typescript'
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+on_ft = 'pug'
+
 
 # Develop
 [[plugins]]
