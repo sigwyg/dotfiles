@@ -1,6 +1,20 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+# Git
+[[plugins]]
+repo = 'https://github.com/tpope/vim-fugitive.git'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
+
 # Colorscheme
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
@@ -8,19 +22,6 @@ repo = 'nanotech/jellybeans.vim'
 # airline
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
-
-[[plugins]]
-repo = 'https://github.com/tpope/vim-fugitive.git'
-
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]] 
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
@@ -44,4 +45,17 @@ hook_add = '''
     nnoremap <silent> ,rc :TREPLSendFile<cr>
     nnoremap <silent> ,rl :TREPLSendLine<cr>
     vnoremap <silent> ,rl :TREPLSendSelection<cr>
+'''
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+    let g:ale_fixers = {
+    \    'javascript': ['prettier-eslint'],
+    \    'css': ['stylelint'],
+    \    'scss': ['stylelint'],
+    \}
+
+    " if you want to fix files automatically on save.
+    let g:ale_fix_on_save = 1
 '''
