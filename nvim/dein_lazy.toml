@@ -235,24 +235,4 @@ repo = 'thinca/vim-quickrun.git'
 repo = 'thinca/vim-ref.git'
 
 [[plugins]]
-repo = 'scrooloose/syntastic.git'
-hook_post_source = '''
-    let g:syntastic_enable_sign = 1
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_css_checkers = ['stylelint']
-    let g:syntastic_scss_checkers = ['stylelint']
-    let g:syntastic_javascript_checker = 'eslint'
-    let g:syntastic_mode_map = { 'mode': 'active',
-                                \ 'active_filetypes': ['scss', 'js', 'jsx'],
-                                \ 'passive_filetypes': ['html','xhtml'] }
-    autocmd BufEnter *.scss let b:syntastic_scss_stylelint_exec = nrun#Which('stylelint')
-'''
-
-[[plugins]]
-repo = 'mtscout6/syntastic-local-eslint.vim'
-
-[[plugins]]
 repo = 'jaawerth/nrun.vim.git'
