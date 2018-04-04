@@ -51,7 +51,7 @@ hook_add = '''
 repo = 'w0rp/ale'
 hook_add = '''
     let g:ale_fixers = {
-    \    'javascript': ['prettier-eslint'],
+    \    'javascript': ['eslint'],
     \    'css': ['stylelint'],
     \    'scss': ['stylelint'],
     \}
