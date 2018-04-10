@@ -250,7 +250,7 @@ augroup MyAutoCmd
 
     " enable colorscheme
     au MyAutoCmd VimEnter * nested colorscheme jellybeans
- 
+
     " If open new-buffer, set expandtab
     autocmd BufNewFile,BufRead * set expandtab
 
@@ -334,14 +334,30 @@ endfunction " MapHTMLKeys()
 
 
 " -----------------------------------------------------------------------
+" NoTrailingSpaces: {{{
+"
+function! NoTrailingSpaces() range
+    let l:count = a:firstline
+
+    while l:count <= a:lastline
+        let l:str = getline(l:count)
+        let l:out = substitute(l:str, '\s\+$', '', '')
+        call setline(l:count, l:out)
+        let l:count = l:count + 1
+    endwhile
+endfunction
+vnoremap \n :call NoTrailingSpaces()<CR>
+" }}}
+
+
+" -----------------------------------------------------------------------
 " htmlform.vim: {{{
 "  - https://github.com/sigwyg/htmlform.vim
 "  - http://archiva.jp/web/sugamo_css/sugamo_vim_01.html
 "
-vnoremap \u :call ChangeUL()<CR>
-vnoremap \t :call ChangeTable()<CR>
 
 " ChangeUL
+vnoremap \u :call ChangeUL()<CR>
 function! ChangeUL() range
     let l:count = a:firstline
 
@@ -358,6 +374,7 @@ function! ChangeUL() range
 endfunction
 
 " ChangeTable
+vnoremap \t :call ChangeTable()<CR>
 function! ChangeTable() range
     let l:count = a:firstline
 
