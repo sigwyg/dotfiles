@@ -212,7 +212,7 @@ repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
 
 [[plugins]]
-repo = 'leafgarland/typescript-vim'
+repo = 'HerringtonDarkholme/yats.vim'
 on_ft = 'typescript'
 
 [[plugins]]
