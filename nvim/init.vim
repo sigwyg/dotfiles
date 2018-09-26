@@ -1,17 +1,10 @@
-" -----------------------------------------------------------------------
-" Basis:{{{
-"
-
-" Add $PATH for node (jslint/csslint)
-if has('vim_starting')
-    if isdirectory(expand('~/.nvm/v0.6.18/bin'))
-        execute 'let $PATH="' . $PATH . ':' . $HOME .'/.nvm/v0.6.18/bin"'
-    endif
-endif
-
 " for Python
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
+
+" -----------------------------------------------------------------------
+" Basis:{{{
+"
 
 " display
 set number
