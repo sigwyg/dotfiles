@@ -131,23 +131,6 @@ repo = 'h1mesuke/vim-alignta.git'
 [[plugins]]
 repo = 'thinca/vim-template.git'
 
-[[plugins]]
-repo = 'tpope/vim-repeat.git'
-
-[[plugins]]
-repo = 'https://github.com/kana/vim-operator-user.git'
-
-[[plugins]]
-repo = 'rhysd/vim-operator-surround'
-depends = 'vim-operator-user'
-on_map = {n = '<Plug>'}
-hook_add = '''
-  nmap <silent>sa <Plug>(operator-surround-append)a
-  nmap <silent>sd <Plug>(operator-surround-delete)a
-  nmap <silent>sr <Plug>(operator-surround-replace)a
-  nmap <silent>sc <Plug>(operator-surround-replace)a
-'''
-
 # Display
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides.git'
