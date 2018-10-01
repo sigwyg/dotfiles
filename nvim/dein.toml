@@ -60,3 +60,10 @@ hook_add = '''
     " if you want to fix files automatically on save.
     let g:ale_fix_on_save = 1
 '''
+
+# Operator
+[[plugins]]
+repo = 'tpope/vim-repeat.git'
+
+[[plugins]]
+repo = 'tpope/vim-surround.git'
