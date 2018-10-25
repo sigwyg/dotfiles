@@ -36,6 +36,15 @@ hook_post_source = '''
     let g:airline_skip_empty_sections = 1
 '''
 
+# tags
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim.git'
+hook_source = '''
+    let g:gen_tags#ctags_auto_gen = 1
+    let g:gen_tags#gtags_auto_gen = 1
+'''
+
+# terminal
 [[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
