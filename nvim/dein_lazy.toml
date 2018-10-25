@@ -219,3 +219,6 @@ repo = 'thinca/vim-ref.git'
 
 [[plugins]]
 repo = 'jaawerth/nrun.vim.git'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter.git'
