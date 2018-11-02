@@ -1,6 +1,7 @@
 " for Python
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+" pyenv + pyenv-virtualenv
+let g:python_host_prog = $PYENV_ROOT.'/versions/neovim2/bin/python'
+let g:python3_host_prog = $PYENV_ROOT.'/versions/neovim3/bin/python'
 
 " -----------------------------------------------------------------------
 " Basis:{{{
