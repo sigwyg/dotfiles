@@ -206,6 +206,7 @@ on_ft = 'pug'
 
 [[plugins]]
 repo = 'HerringtonDarkholme/yats.vim'
+on_ft = 'typescript'
 
 [[plugins]]
 kepo = 'kchmck/vim-coffee-script'
