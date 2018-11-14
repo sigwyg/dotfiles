@@ -1,12 +1,12 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# Colorscheme
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
-repo = 'osyo-manga/vim-precious'
-depends = ['context_filetype.vim']
+repo = 'Shougo/neosnippet-snippets'
 
 # Git
 [[plugins]]
@@ -14,10 +14,6 @@ repo = 'https://github.com/tpope/vim-fugitive.git'
 
 [[plugins]]
 repo = 'lambdalisue/gina.vim'
-
-# Colorscheme
-[[plugins]]
-repo = 'nanotech/jellybeans.vim'
 
 # airline
 [[plugins]]
@@ -59,15 +55,22 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
+    let g:ale_fix_on_save = 1
+    let g:ale_sign_column_always = 1
     let g:ale_fixers = {
-    \    'typescript': ['tslint'],
+    \    'typescript': ['tslint', 'tsserver'],
     \    'javascript': ['eslint'],
     \    'css': ['stylelint'],
     \    'scss': ['stylelint'],
     \}
 
-    " if you want to fix files automatically on save.
-    let g:ale_fix_on_save = 1
+    " for jsx
+    augroup FiletypeGroup
+        autocmd!
+        au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+    augroup END
+    let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+    let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
 '''
 
 # Operator
