@@ -1,157 +1,9 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-hook_post_update = '''
-  if dein#util#_is_windows()
-    let cmd = 'tools\\update-dll-mingw'
-  elseif dein#util#_is_mac()
-    let cmd = 'make -f make_mac.mak'
-  elseif dein#util#_is_cygwin()
-    let cmd = 'make -f make_cygwin.mak'
-  elseif executable('gmake')
-    let cmd = 'gmake'
-  else
-    let cmd = 'make'
-  endif
-  let g:dein#plugin.build = cmd
-'''
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_event = 'BufEnter'
-hook_source = '''
-    nnoremap [denite] <Nop>
-    nmap <C-i> [denite]
-
-    nnoremap <silent> [denite]f :<C-u>Denite file/rec<CR>
-    nnoremap <silent> [denite]b :<C-u>Denite buffer<CR>
-    nnoremap <silent> [denite]l :<C-u>Denite line<CR>
-    nnoremap <silent> [denite]r :<C-u>Denite -resume<CR>
-    nnoremap <silent> [denite], :<C-u>DeniteCursorWord grep<CR>
-
-    " denite/insert モードのときは，C- で移動できるようにする
-    call denite#custom#map('insert', "<C-n>", '<denite:move_to_next_line>', 'noremap')
-    call denite#custom#map('insert', "<C-p>", '<denite:move_to_previous_line>', 'noremap')
-    call denite#custom#map('normal', "<C-n>", '<denite:move_to_next_line>', 'noremap')
-    call denite#custom#map('normal', "<C-p>", '<denite:move_to_previous_line>', 'noremap')
-
-    " split
-    call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>')
-    " vsplit
-    call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>')
-
-    " jj で denite/insert を抜けるようにする
-    call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
-
-    " For ripgrep
-    call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git', ''])
-
-    " Ripgrep command on grep source
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
-
-    " customize ignore globs
-    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-        \ [ '.git/', 'node_modules/', 'images/', 'img/', 'fonts/', 'font/' ])
-
-    " Change default prompt
-    call denite#custom#option('default', 'prompt', '>')
-'''
-
-[[plugins]]
-repo = 'Shougo/unite.vim.git'
-hook_post_source = '''
-    let g:unite_winheight = 10
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_source_history_yank_limit = 100
-
-    " The prefix key.
-    nnoremap ff :<C-u>Unite file            -buffer-name=files -no-quit<CR>
-    nnoremap fu :<C-u>Unite buffer file_mru -buffer-name=mru -no-quit<CR>
-    nnoremap fb :<C-u>Unite bookmark        -buffer-name=bookmark<CR>
-    nnoremap fl :<C-u>Unite line            -buffer-name=line<CR>
-    nnoremap fg :<C-u>Unite grep            -buffer-name=grep -no-quit -auto-preview<CR>
-    nnoremap f1 :<C-u>Unite file            -buffer-name=files -input=/Users/sigwyg/Dropbox/memo/<CR>
-
-    autocmd MyAutoCmd FileType unite call s:unite_my_settings()
-    function! s:unite_my_settings()"
-        " Overwrite settings.
-        imap <buffer> <C-g> <Plug>(unite_input_directory)
-    endfunction"
-'''
-
-[[plugins]]
-repo = 'Shougo/vimfiler.git'
-hook_post_source = '''
-    let g:vimfiler_as_default_explorer = 1
-    let g:vimfiler_split_command = 'vertical rightbelow vsplit'
-    let g:vimfiler_min_filename_width = 20
-    let g:vimfiler_safe_mode_by_default = 0
-
-    " Overwrite settings.
-    autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
-    function! s:vimfiler_my_settings()"
-        nmap <buffer> <C-l> <C-w>l
-        nmap <buffer> <C-j> <C-w>j
-        nmap <buffer> R <Plug>(vimfiler_redraw_screen)
-    endfunction"
-'''
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
-on_i = 1
-hook_source = '''
-    let g:deoplete#enable_at_startup = 1
-    inoremap <expr><tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-depends = ['neosnippet-snippets', 'context_filetype.vim']
-on_event = 'InsertCharPre'
-on_ft = 'snippet'
-on_i = 1
-hook_source = '''
-    let g:neosnippet#snippets_directory='~/.vim/snippets'
-    let g:neosnippet#enable_snipmate_compatibility = 1
-    let g:neosnippet#enable_completed_snippet = 1
-    let g:neosnippet#expand_word_boundary = 1
-    " Plugin key-mappings.
-    imap <C-k>  <Plug>(neosnippet_expand_or_jump)
-    smap <C-k>  <Plug>(neosnippet_expand_or_jump)
-    xmap <C-k>  <Plug>(neosnippet_expand_target)
-
-    " For conceal markers.
-    if has('conceal')
-        set conceallevel=2 concealcursor=niv
-    endif
-'''
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
 # Colorscheme
 [[plugins]]
 repo = 'nanotech/jellybeans.vim'
-
-# Git
-[[plugins]]
-repo = 'https://github.com/tpope/vim-fugitive.git'
-
-[[plugins]]
-repo = 'lambdalisue/gina.vim'
 
 # airline
 [[plugins]]
@@ -169,6 +21,13 @@ hook_post_source = '''
     let g:airline_symbols.space = "\ua0"
     let g:airline_skip_empty_sections = 1
 '''
+
+# Git
+[[plugins]]
+repo = 'https://github.com/tpope/vim-fugitive.git'
+
+[[plugins]]
+repo = 'lambdalisue/gina.vim'
 
 # terminal
 [[plugins]]
@@ -188,3 +47,89 @@ repo = 'tpope/vim-repeat.git'
 
 [[plugins]]
 repo = 'tpope/vim-surround.git'
+
+# tags
+[[plugins]]
+repo = 'jsfaint/gen_tags.vim.git'
+hook_source = '''
+    let g:gen_tags#ctags_auto_gen = 1
+    let g:gen_tags#gtags_auto_gen = 1
+'''
+
+# Develop
+[[plugins]]
+repo = 'sjl/gundo.vim.git'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun.git'
+
+[[plugins]]
+repo = 'thinca/vim-ref.git'
+
+[[plugins]]
+repo = 'jaawerth/nrun.vim.git'
+
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion.git'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
+
+# Syntax Change
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['context_filetype.vim']
+
+# Syntax
+[[plugins]]
+repo = 'othree/html5.vim.git'
+
+[[plugins]]
+repo = 'cakebaker/scss-syntax.vim.git'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax.git'
+
+[[plugins]]
+repo = 'hallison/vim-markdown.git'
+
+[[plugins]]
+repo = 'slim-template/vim-slim'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'digitaltoad/vim-pug'
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+
+[[plugins]]
+kepo = 'kchmck/vim-coffee-script'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = '''
+    let g:ale_lint_on_enter = 0
+    let g:ale_lint_on_text_changed = 0
+    let g:ale_lint_on_filetype_changed = 0
+    let g:ale_fix_on_save = 1
+    let g:ale_sign_column_always = 1
+    let g:ale_fixers = {
+    \    'typescript': ['tslint', 'tsserver'],
+    \    'javascript': ['eslint'],
+    \    'css': ['stylelint'],
+    \    'scss': ['stylelint'],
+    \}
+
+    " for jsx
+    augroup FiletypeGroup
+        autocmd!
+        au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+    augroup END
+    let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+    let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+'''
