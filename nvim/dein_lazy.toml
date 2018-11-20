@@ -43,7 +43,7 @@ repo = 'Shougo/neosnippet-snippets'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
-hook_add = '''
+hook_source = '''
     nnoremap <silent> <C-i>f :<C-u>Denite file/rec<CR>
     nnoremap <silent> <C-i>b :<C-u>Denite buffer<CR>
     nnoremap <silent> <C-i>l :<C-u>Denite line<CR>
@@ -65,19 +65,22 @@ hook_add = '''
     call denite#custom#map('insert', 'jj', '<denite:enter_mode:normal>')
 
     " For ripgrep
-    call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git', ''])
+    if executable('rg')
+        call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!{.git,node_modules,vendor}/**', ''])
 
-    " Ripgrep command on grep source
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
+        " Ripgrep command on grep source
+        call denite#custom#var('grep', 'command', ['rg'])
+        call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+        call denite#custom#var('grep', 'recursive_opts', [])
+        call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+        call denite#custom#var('grep', 'separator', ['--'])
+        call denite#custom#var('grep', 'final_opts', [])
+    endif
 
     " customize ignore globs
-    call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-        \ [ '.git/', 'node_modules/', 'images/', 'img/', 'fonts/', 'font/' ])
+    call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+      \ [ '.git/', 'node_modules/', '__pycache__/',
+      \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'font/'])
 
     " Change default prompt
     call denite#custom#option('default', 'prompt', '>')
