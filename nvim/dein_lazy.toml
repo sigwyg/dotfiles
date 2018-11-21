@@ -37,13 +37,9 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-on_path = '.*'
-
-[[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_source = '''
+on_add = 'Denite'
+hook_add = '''
     nnoremap <silent> <C-i>f :<C-u>Denite file/rec<CR>
     nnoremap <silent> <C-i>b :<C-u>Denite buffer<CR>
     nnoremap <silent> <C-i>l :<C-u>Denite line<CR>
@@ -89,3 +85,7 @@ hook_source = '''
 [[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
