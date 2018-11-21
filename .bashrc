@@ -9,9 +9,9 @@ alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
 alias grep='grep --color=auto'
+alias vtop="vtop --theme brew"
 alias vi='vim -u NONE'
 alias vim=nvim
-alias vtop="vtop --theme brew"
 
 # EDITOR
 export EDITOR=nvim
