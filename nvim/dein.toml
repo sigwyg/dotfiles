@@ -2,10 +2,7 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim.git'
+repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.git'
@@ -29,6 +26,30 @@ repo = 'h1mesuke/vim-alignta.git'
 
 [[plugins]]
 repo = 'thinca/vim-template.git'
+
+# Display
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides.git'
+hook_post_source = '''
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_indent_levels = 30
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_space_guides = 1
+
+    let g:indent_guides_auto_colors = 0
+    let g:indent_guides_color_change_percent = 20
+
+    augroup indentGuide
+        autocmd! indentGuide
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
+    augroup END
+'''
+
+# Grep
+[[plugins]]
+repo = 'thinca/vim-qfreplace.git'
 
 # Display
 [[plugins]]
@@ -125,14 +146,14 @@ repo = 'jaawerth/nrun.vim.git'
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion.git'
 
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-on_path = '.*'
-
 # Syntax Change
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+
+# Text
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
 
 # Syntax
 [[plugins]]
@@ -149,10 +170,6 @@ repo = 'hallison/vim-markdown.git'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
 
 [[plugins]]
 repo = 'digitaltoad/vim-pug'

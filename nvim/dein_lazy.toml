@@ -25,7 +25,6 @@ hook_source = '''
     endif
 '''
 
-# Text
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
@@ -38,7 +37,8 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'editorconfig/editorconfig-vim'
+on_path = '.*'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
@@ -87,54 +87,5 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/context_filetype.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim.git'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.git'
-hook_post_source = '''
-    let g:vimfiler_as_default_explorer = 1
-    let g:vimfiler_split_command = 'vertical rightbelow vsplit'
-    let g:vimfiler_min_filename_width = 20
-    let g:vimfiler_safe_mode_by_default = 0
-
-    " Overwrite settings.
-    autocmd MyAutoCmd FileType vimfiler call s:vimfiler_my_settings()
-    function! s:vimfiler_my_settings()"
-        nmap <buffer> <C-l> <C-w>l
-        nmap <buffer> <C-j> <C-w>j
-        nmap <buffer> R <Plug>(vimfiler_redraw_screen)
-    endfunction"
-'''
-
-[[plugins]]
-repo = 'h1mesuke/vim-alignta.git'
-
-[[plugins]]
-repo = 'thinca/vim-template.git'
-
-# Display
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides.git'
-hook_post_source = '''
-    let g:indent_guides_enable_on_vim_startup = 1
-    let g:indent_guides_indent_levels = 30
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-    let g:indent_guides_space_guides = 1
-
-    let g:indent_guides_auto_colors = 0
-    let g:indent_guides_color_change_percent = 20
-
-    augroup indentGuide
-        autocmd! indentGuide
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=#191919 ctermbg=6
-        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=#303030 ctermbg=0*
-    augroup END
-'''
-
-# Grep
-[[plugins]]
-repo = 'thinca/vim-qfreplace.git'
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
