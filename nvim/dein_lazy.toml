@@ -26,8 +26,14 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'roxma/nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
-depends = 'context_filetype.vim'
+depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 on_i = 1
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
