@@ -58,3 +58,9 @@ function facePrompt {
     fi;
 }
 PS1='\[\033[01;34m\]\w\[\033[00m\]: $(facePrompt) \$ '
+
+# for phpbrew
+[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
+
+# direnv
+eval "$(direnv hook bash)"
