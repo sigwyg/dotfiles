@@ -172,6 +172,9 @@ hook_add = '''
     \    'scss': ['stylelint'],
     \}
 
+    " for typescript
+    let g:ale_linters = {'typescript': ['tsserver']}
+
     " for jsx
     augroup FiletypeGroup
         autocmd!
@@ -179,4 +182,5 @@ hook_add = '''
     augroup END
     let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
     let g:ale_linters = {'jsx': ['stylelint', 'eslint']}
+    let g:ale_jsx_stylelint_options = '--config=.stylelintrc-jsx.json'
 '''
