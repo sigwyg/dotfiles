@@ -18,7 +18,10 @@ export NVM_DIR="$HOME/.nvm"
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # brew install pyenv pipenv
+export PIPENV_VENV_IN_PROJECT=true
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-export PIPENV_VENV_IN_PROJECT=true
+eval "$(pyenv virtualenv-init -)"
+alias brew="env PATH=${PATH/\/Users\/sigwyg\/\.pyenv\/shims:/} brew"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
