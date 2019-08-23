@@ -29,7 +29,6 @@ highlight CursorLine cterm=bold
 "highlight CursorColumn cterm=bold ctermbg=0
 "highlight LineNr ctermfg=0
 
-
 " search
 set ignorecase
 set smartcase
@@ -259,6 +258,8 @@ augroup MyAutoCmd
     autocmd BufEnter *.less set filetype=scss
     autocmd BufEnter *.scss set filetype=scss
 
+    " set ejs-syntax
+    au BufNewFile,BufRead *.ejs set filetype=html
 augroup END
 
 " delete last-line, if only blank text
