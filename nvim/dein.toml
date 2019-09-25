@@ -130,35 +130,63 @@ repo = 'Lokaltog/vim-easymotion.git'
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 hook_source = '''
+   " let g:precious_enable_switchers = {
+   " \   "vue-template" : { "setfiletype" : 0 },
+   " \}
 '''
 
 # Text
 [[plugins]]
 repo = 'Shougo/context_filetype.vim'
-hook_source = '''
+hook_add = '''
+    " refer: https://github.com/osyo-manga/vim-precious/issues/17
     let g:context_filetype#filetypes = {
     \   "vue" : [
     \       {
+    \           'start': '<template\%( [^>]*\)\? \%(lang="\%(\(\h\w*\)\)"\)\%( [^>]*\)\?>',
+    \           'end': '</template>',
+    \           'filetype': '\1',
+    \       },
+    \       {
+    \           'start': '<template\%( [^>]*\)\?>',
+    \           'end': '</template>',
     \           'filetype': 'vue',
-    \           'start': '<template>',
-    \           'end': '</template>'
     \       },
     \       {
+    \           'start': '<script\%( [^>]*\)\? \%(ts\|lang="\%(ts\|typescript\)"\)\%( [^>]*\)\?>',
+    \           'end': '</script>',
+    \           'filetype': 'typescript',
+    \       },
+    \       {
+    \           'start': '<script\%( [^>]*\)\? \%(lang="\%(\(\h\w*\)\)"\)\%( [^>]*\)\?>',
+    \           'end': '</script>',
+    \           'filetype': '\1',
+    \       },
+    \       {
+    \           'start': '<script\%( [^>]*\)\?>',
+    \           'end': '</script>',
     \           'filetype': 'javascript',
-    \           'start': '<script>',
-    \           'end': '</script>'
     \       },
     \       {
+    \           'start': '<style\%( [^>]*\)\? \%(lang="\%(\(\h\w*\)\)"\)\%( [^>]*\)\?>',
+    \           'end': '</style>',
+    \           'filetype': '\1',
+    \       },
+    \       {
+    \           'start': '<style\%( [^>]*\)\?>',
+    \           'end': '</style>',
     \           'filetype': 'css',
-    \           'filetype': 'scss',
-    \           'start': '<style\{-}>',
-    \           'end': '</style>'
     \       },
     \       {
-    \           'filetype': 'scss',
-    \           'start': '<style lang=.scss.\{-}>',
-    \           'end': '</style>'
-    \       }
+    \           'start': '<\(\h\w*\)>',
+    \           'end': '</\1>',
+    \           'filetype': 'vue',
+    \       },
+    \       {
+    \           'start': '<\(\h\w*\) \%(lang="\%(\(\h\w*\)\)"\)\%( [^>]*\)\?>',
+    \           'end': '</\1>',
+    \           'filetype': 'vue',
+    \       },
     \   ]
     \}
 '''
