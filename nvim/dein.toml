@@ -129,6 +129,11 @@ repo = 'Lokaltog/vim-easymotion.git'
 [[plugins]]
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
+hook_source = '''
+    let g:precious_enable_switchers = {
+    \   "vue" : { "setfiletype" : 0 },
+    \}
+'''
 
 # Text
 [[plugins]]
