@@ -232,10 +232,10 @@ hook_add = '''
     "nmap <silent> [c <Plug>(ale_previous_wrap)
     "nmap <silent> ]c <Plug>(ale_next_wrap)
     let g:ale_fixers = {
-    \    'typescript': ['tslint'],
-    \    'javascript': ['eslint'],
-    \    'css': ['stylelint'],
-    \    'scss': ['stylelint'],
+    \    'typescript': ['prettier', 'tslint'],
+    \    'javascript': ['prettier', 'eslint'],
+    \    'css': ['prettier', 'stylelint'],
+    \    'scss': ['prettier', 'stylelint'],
     \    '*': ['remove_trailing_lines', 'trim_whitespace']
     \}
 
