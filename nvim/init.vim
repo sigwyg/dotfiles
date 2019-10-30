@@ -262,7 +262,7 @@ augroup MyAutoCmd
     au BufNewFile,BufRead *.ejs set filetype=html
 
     " for vue-syntax
-    autocmd FileType vue syntax sync fromstart
+    "autocmd FileType vue syntax sync fromstart
 augroup END
 
 " delete last-line, if only blank text
