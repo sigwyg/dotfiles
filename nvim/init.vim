@@ -419,8 +419,6 @@ if dein#load_state(s:dein_dir)
   let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
-  " for lsp
-  call dein#add('neoclide/coc.nvim', {'merge':0, 'build': './install.sh nightly'})
   " required
   call dein#end()
   call dein#save_state()
