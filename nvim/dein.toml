@@ -222,17 +222,21 @@ repo = 'kchmck/vim-coffee-script'
 
 # Auto Linter&Fixer
 [[plugins]]
-repo = 'w0rp/ale'
+repo = 'dense-analysis/ale'
 hook_add = '''
     let g:ale_fix_on_save = 1
+    let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_sign_column_always = 1
-    let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+    let g:ale_echo_msg_format = 'ALE:[%linter%] %code: %%s'
     let g:ale_sign_error = '💣'
     let g:ale_sign_warning = '🚩'
-    let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_linters_explicit = 1 " 必要なlinterのみ有効化したいため
-    "nmap <silent> [c <Plug>(ale_previous_wrap)
-    "nmap <silent> ]c <Plug>(ale_next_wrap)
+
+    " mapping
+    nmap <silent> [, <Plug>(ale_previous_wrap)
+    nmap <silent> ]. <Plug>(ale_next_wrap)
+
+    " format
     let g:ale_fixers = {
     \    'typescript': ['prettier', 'tslint'],
     \    'javascript': ['prettier', 'eslint'],
