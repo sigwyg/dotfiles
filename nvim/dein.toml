@@ -224,6 +224,7 @@ repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
+    let g:ale_disable_lsp = 1
     let g:ale_fix_on_save = 1
     let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_sign_column_always = 1
@@ -265,3 +266,7 @@ hook_add = '''
     augroup END
     "let g:ale_jsx_stylelint_options = '--config=.stylelintrc-jsx.json'
 '''
+
+[[plugins]]
+repo = 'tbodt/deoplete-tabnine'
+build = './install.sh'
