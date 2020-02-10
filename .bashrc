@@ -8,6 +8,7 @@ alias gis='git status'
 alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
+alias gim='git commit -m'
 alias grep='grep --color=auto'
 alias vtop="vtop --theme brew"
 alias vi='vim -u NONE'
