@@ -25,3 +25,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 alias brew="env PATH=${PATH/\/Users\/sigwyg\/\.pyenv\/shims:/} brew"
 export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+
+# for nvim
+export $(cat ~/dotfiles/.env | grep -v ^# | xargs)

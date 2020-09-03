@@ -224,7 +224,7 @@ repo = 'kchmck/vim-coffee-script'
 [[plugins]]
 repo = 'dense-analysis/ale'
 hook_add = '''
-    let g:ale_disable_lsp = 1
+    let g:ale_disable_lsp = 0
     let g:ale_fix_on_save = 1
     let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_sign_column_always = 1
@@ -237,21 +237,22 @@ hook_add = '''
     nmap <silent> [, <Plug>(ale_previous_wrap)
     nmap <silent> ]. <Plug>(ale_next_wrap)
 
-    " format
-    let g:ale_fixers = {
-    \    'typescript': ['prettier', 'tslint'],
-    \    'javascript': ['prettier', 'eslint'],
-    \    'css': ['prettier', 'stylelint'],
-    \    'scss': ['prettier', 'stylelint'],
-    \    '*': ['remove_trailing_lines', 'trim_whitespace']
-    \}
-
     "有効なLinterを設定
     " - .vue(javascript)でtsserverが動いちゃうのでシンプルにしておく
     let g:ale_linters = {
-    \    'typescript': ['eslint'],
+    \    'typescript': ['tsserver'],
     \    'javascript': ['eslint'],
-    \    'css': ['stylelint']
+    \    'css': ['stylelint'],
+    \    'vue': ['eslint']
+    \}
+
+    " format
+    let g:ale_fixers = {
+    \    'javascript': ['prettier', 'eslint'],
+    \    'typescript': ['prettier'],
+    \    'css': ['prettier', 'stylelint'],
+    \    'scss': ['prettier', 'stylelint'],
+    \    '*': ['remove_trailing_lines', 'trim_whitespace']
     \}
 
     let g:ale_linter_aliases = {
