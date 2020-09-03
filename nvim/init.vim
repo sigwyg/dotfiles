@@ -3,6 +3,10 @@
 let g:python_host_prog = $PYENV_ROOT.'/shims/python'
 let g:python3_host_prog = $PYENV_ROOT.'/shims/python3'
 
+" for dein.vim
+" - use :call dein#check_update(v:true)
+let g:dein#install_github_api_token = $DEIN_GITHUB_API_TOKEN
+
 " -----------------------------------------------------------------------
 " Basis:{{{
 "
@@ -263,6 +267,9 @@ augroup MyAutoCmd
 
     " for vue-syntax
     autocmd FileType vue syntax sync fromstart
+
+    " set typescript
+    "autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 augroup END
 
 " delete last-line, if only blank text

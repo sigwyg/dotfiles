@@ -1,4 +1,4 @@
-
+.env
 /.vim/swap/*
 /.vim/backup/*
 /.vim/undo/*
