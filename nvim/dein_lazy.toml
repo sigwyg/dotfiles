@@ -91,7 +91,7 @@ hook_source = '''
     "        \ ] + map(deepcopy(s:ignore_globs), { key, value -> '--glob !' . value . '/**'}) + [
     "        \ [ 'rg', '--files', '--glob', '!.node_modules', '' ])
     if executable('rg')
-        call denite#custom#var('file_rec', 'command',
+        call denite#custom#var('file/rec', 'command',
             \ [ 'rg', '--files', '--glob', '!{.git,node_modules}/**', '' ])
 
         " Ripgrep command on grep source
