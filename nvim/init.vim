@@ -3,10 +3,6 @@
 let g:python_host_prog = $PYENV_ROOT.'/shims/python'
 let g:python3_host_prog = $PYENV_ROOT.'/shims/python3'
 
-" for dein.vim
-" - use :call dein#check_update(v:true)
-let g:dein#install_github_api_token = $DEIN_GITHUB_API_TOKEN
-
 " -----------------------------------------------------------------------
 " Basis:{{{
 "
@@ -24,7 +20,7 @@ set wildmenu
 set wildmode=list:longest,full
 
 " syntax color
-syntax on
+syntax enable
 set cursorline
 highlight CursorLine cterm=bold
 "colorscheme jellybeans
@@ -410,32 +406,37 @@ endif
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+" for dein.vim
+" - use :call dein#check_update(v:true)
+let g:dein#install_github_api_token = $DEIN_GITHUB_API_TOKEN
 
 " auto-install for dein.vim
 if !isdirectory(s:dein_repo_dir)
   call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
-let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
 " Load plugins & Make cache
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
+  call dein#add(s:dein_repo_dir)
+  if !has('nvim')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+  endif
+
   " load toml
   let s:toml_dir = fnamemodify(expand('<sfile>'), ':h')
   let s:toml = s:toml_dir . '/dein.toml'
   let s:toml_lazy = s:toml_dir . '/dein_lazy.toml'
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:toml_lazy, {'lazy': 1})
+
   " required
   call dein#end()
   call dein#save_state()
 endif
 
-" auto install for plugins of lacked
-if has('vim_starting') && dein#check_install()
-  call dein#install()
-endif
-
 filetype plugin indent on
-syntax enable
 " }}}
