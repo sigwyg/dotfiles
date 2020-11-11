@@ -26,12 +26,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'roxma/nvim-yarp'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = ['nvim-yarp', 'vim-hug-neovim-rpc']
 on_i = 1
