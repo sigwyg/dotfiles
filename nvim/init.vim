@@ -440,3 +440,21 @@ endif
 
 filetype plugin indent on
 " }}}
+
+
+" nvim-treesitter: {{{
+" - tomlを有効にすると、dein.tomlのvim-preciousが残念になる
+"
+call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true, -- false will disable the whole extension
+    disable = {    -- list of language that will be disabled
+        "toml", "c"
+    },
+  },
+}
+EOF
+" }}}
