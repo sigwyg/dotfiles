@@ -217,6 +217,10 @@ repo = 'HerringtonDarkholme/yats.vim'
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
 
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
 # Auto Linter&Fixer
 [[plugins]]
 repo = 'dense-analysis/ale'

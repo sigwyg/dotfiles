@@ -105,9 +105,5 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]]
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
