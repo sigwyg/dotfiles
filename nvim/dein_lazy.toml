@@ -82,14 +82,13 @@ hook_source = '''
     let s:ignore_globs = [ '.git', 'node_modules', '__pycache__', 'venv', 'images', '*.min.*', 'img', 'fonts', 'font']
 
     " For ripgrep
-    "        \ ] + map(deepcopy(s:ignore_globs), { key, value -> '--glob !' . value . '/**'}) + [
-    "        \ [ 'rg', '--files', '--glob', '!.node_modules', '' ])
     if executable('rg')
-        call denite#custom#var('file/rec', 'command',
-            \ [ 'rg', '--files', '--glob', '!{.git,node_modules}/**', '' ])
-
-        " Ripgrep command on grep source
-        call denite#custom#var('grep', 'command', ['rg'])
+        call denite#custom#var('file/rec', 'command', ['rg', '--files',
+                \ '--glob', '!{.git,node_modules,plugged}/**'
+            \ ])
+        call denite#custom#var('grep', 'command', ['rg',
+                \ '--glob', '!{*.sql}', '--glob', '!{node_modules}/**'
+            \ ])
         call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
         call denite#custom#var('grep', 'recursive_opts', [])
         call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
