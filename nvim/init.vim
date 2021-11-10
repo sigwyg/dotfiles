@@ -410,6 +410,7 @@ let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
 " for dein.vim
 " - use :call dein#check_update(v:true)
+" - from .env
 let g:dein#install_github_api_token = $DEIN_GITHUB_API_TOKEN
 
 " auto-install for dein.vim
@@ -446,6 +447,7 @@ filetype plugin indent on
 " - tomlを有効にすると、dein.tomlのvim-preciousが残念になる
 "
 call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
+call dein#add('nvim-treesitter/nvim-treesitter-angular', {'do': ':TSUpdate'})
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
