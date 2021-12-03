@@ -74,11 +74,11 @@ set splitright
 set visualbell
 set previewheight=30
 
-" backup
-set backup
-set swapfile
-set backupdir=~/.vim/backup
-set directory=~/.vim/swap
+" Don't create backup.
+set nowritebackup
+set nobackup
+set noswapfile
+set backupdir-=.
 
 if has('persistent_undo')
     set undofile
