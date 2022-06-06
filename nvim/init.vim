@@ -1,7 +1,7 @@
 " for Python
 " pyenv + pyenv-virtualenv
-let g:python_host_prog = $PYENV_ROOT.'/shims/python'
-let g:python3_host_prog = $PYENV_ROOT.'/shims/python3'
+"let g:python_host_prog = $PYENV_ROOT.'/shims/python'
+let g:python3_host_prog = system('echo -n $(which python3)')
 
 " -----------------------------------------------------------------------
 " Basis:{{{
