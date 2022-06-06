@@ -447,10 +447,9 @@ filetype plugin indent on
 " - tomlを有効にすると、dein.tomlのvim-preciousが残念になる
 "
 call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
-call dein#add('nvim-treesitter/nvim-treesitter-angular', {'do': ':TSUpdate'})
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = {"bash","css","javascript","json","json5","php","pug","python","ruby","scss","tsx","typescript","vim","vue","yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   highlight = {
     enable = true, -- false will disable the whole extension
     disable = {    -- list of language that will be disabled
