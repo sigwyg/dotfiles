@@ -89,3 +89,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# for rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
