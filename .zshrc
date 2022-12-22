@@ -93,3 +93,10 @@ setopt correct
 
 # EDITOR
 export EDITOR=nvim
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+# compsys
+autoload -U compinit && compinit
