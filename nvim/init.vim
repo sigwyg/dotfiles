@@ -91,13 +91,9 @@ endif
 " -----------------------------------------------------------------------
 " QuickStart: {{{
 "  - gundo.vim (https://github.com/sjl/gundo.vim)
-"  - jslint.vim(https://github.com/basyura/jslint.vim)
-"  - VimFiler  (https: //github.com/Shougo/vimfiler)
 "
 nnoremap <F1> <Nop>
 nnoremap <F2> :<C-u>IndentGuidesToggle<CR>
-nnoremap <F3> :<C-u>VimFiler<CR>
-nnoremap <F4> :<C-u>SyntasticToggleMode<CR>
 nnoremap <F5> :<C-u>GundoToggle<CR>
 "}}}
 
@@ -440,22 +436,4 @@ if dein#load_state(s:dein_dir)
 endif
 
 filetype plugin indent on
-" }}}
-
-
-" nvim-treesitter: {{{
-" - tomlを有効にすると、dein.tomlのvim-preciousが残念になる
-"
-call dein#add('nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'})
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"bash","css","javascript","json","json5","php","pug","python","ruby","scss","tsx","typescript","vim","vue","yaml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true, -- false will disable the whole extension
-    disable = {    -- list of language that will be disabled
-        "toml", "c"
-    },
-  },
-}
-EOF
 " }}}

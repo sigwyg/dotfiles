@@ -1,6 +1,0 @@
-[[plugins]]
-repo = 'Shougo/unite.vim.git'
-
-[[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-on_path = '.*'
