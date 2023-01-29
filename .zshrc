@@ -48,6 +48,7 @@ alias grep='grep --color=auto'
 alias vtop="vtop --theme brew"
 alias vi='vim -u NONE'
 alias vim=nvim
+alias lvim='~/.local/bin/lvim'
 
 # history
 HISTFILE=~/.zsh_history
