@@ -46,6 +46,7 @@ lvim.keys.normal_mode["<S-l>"] = ":vertical resize +2<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":vertical resize -2<CR>"
 
 lvim.keys.normal_mode["gv"] = "`[v`]"
+lvim.keys.normal_mode["gt"] = "<cmd>TroubleToggle<cr>"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
@@ -76,15 +77,16 @@ lvim.keys.normal_mode["gv"] = "`[v`]"
 
 -- Use which-key to add extra bindings with the leader-key prefix
 -- lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
--- lvim.builtin.which_key.mappings["t"] = {
---   name = "+Trouble",
---   r = { "<cmd>Trouble lsp_references<cr>", "References" },
---   f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
---   d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
---   q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
---   l = { "<cmd>Trouble loclist<cr>", "LocationList" },
---   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
--- }
+lvim.builtin.which_key.mappings["t"] = {
+  name = "+Trouble",
+  t = { "<cmd>TroubleToggle<CR>", "trouble" },
+  r = { "<cmd>TroubleToggle lsp_references<cr>", "References" },
+  f = { "<cmd>TroubleToggle lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>TroubleToggle quickfix<cr>", "QuickFix" },
+  l = { "<cmd>TroubleToggle loclist<cr>", "LocationList" },
+  w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Workspace Diagnostics" },
+}
 
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
@@ -190,6 +192,7 @@ lvim.plugins = {
   { "bluz71/vim-moonfly-colors", branch = 'cterm-compat' },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
+  { "folke/trouble.nvim", cmd = "TroubleToggle" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
