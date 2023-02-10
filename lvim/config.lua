@@ -45,7 +45,7 @@ lvim.keys.normal_mode["<S-j>"] = ":resize -2<CR>"
 lvim.keys.normal_mode["<S-l>"] = ":vertical resize +2<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":vertical resize -2<CR>"
 
-lvim.keys.normal_mode["gc"] = "`[v`]"
+lvim.keys.normal_mode["gv"] = "`[v`]"
 -- lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
