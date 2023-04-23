@@ -118,10 +118,12 @@ lvim.builtin.treesitter.highlight.enable = true
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
-lvim.lsp.installer.setup.ensure_installed = {
-  "eslint",
-  "angularls",
-}
+-- lvim.lsp.installer.setup.ensure_installed = {
+--   "eslint",
+--   "prettier",
+--   "tsserver",
+--   "angularls",
+-- }
 -- -- change UI setting of `LspInstallInfo`
 -- -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false
@@ -139,6 +141,9 @@ lvim.lsp.installer.setup.ensure_installed = {
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- local opts = {} -- check the lspconfig documentation for a list of all possible options
 -- require("lvim.lsp.manager").setup("pyright", opts)
+
+--require("lvim.lsp.manager").setup("angularls", {})
+--require 'lspconfig'.angularls.setup {}
 
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skipped for the current filetype
@@ -160,39 +165,54 @@ lvim.lsp.installer.setup.ensure_installed = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
-    --     -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+    -- each formatter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
     exe = "prettier",
-    filetypes = { "typescript", "typescriptreact", "json", "markdown", "javascript", "javascriptreact" },
+    filetypes = {
+      "css", "scss", "less",
+      "typescript", "typescriptreact",
+      "json",
+      "markdown",
+      "javascript", "javascriptreact"
+    },
   },
 }
 
 -- -- set additional linters
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  {
-    exe = "eslint",
-    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.eslint.with({
+      prefer_local = "node_modules/.bin",
+    }),
   },
-  --   {
-  --     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
-  --     command = "shellcheck",
-  --     ---@usage arguments to pass to the formatter
-  --     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
-  --     extra_args = { "--severity", "warning" },
-  --   },
-  --   {
-  --     command = "codespell",
-  --     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
-  --     filetypes = { "javascript", "python" },
-  --   },
-}
+})
+
+local linters = require "lvim.lsp.null-ls.linters"
+--linters.setup {
+--  {
+--    command = "eslint",
+--    filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "vue" },
+--  },
+--   {
+--     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
+--     command = "shellcheck",
+--     ---@usage arguments to pass to the formatter
+--     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
+--     extra_args = { "--severity", "warning" },
+--   },
+--   {
+--     command = "codespell",
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "javascript", "python" },
+--   },
+--}
 
 -- Additional Plugins
 lvim.plugins = {
   { "bluz71/vim-moonfly-colors", branch = 'cterm-compat' },
   { "tpope/vim-repeat" },
   { "tpope/vim-surround" },
-  { "folke/trouble.nvim", cmd = "TroubleToggle" },
+  { "folke/trouble.nvim",        cmd = "TroubleToggle" },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
