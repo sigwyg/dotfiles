@@ -44,6 +44,8 @@ alias gis='git status'
 alias gid='git diff'
 alias gic='git checkout'
 alias gib='git branch'
+alias gip='git remote prune origin'
+alias gibd="git branch --merged|egrep -v '\*|develop|master|main'|xargs git branch -d"
 alias grep='grep --color=auto'
 alias vtop="vtop --theme brew"
 alias vi='vim -u NONE'
@@ -101,3 +103,10 @@ source <(ng completion script)
 
 # compsys
 autoload -U compinit && compinit
+export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
+export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
+
+# for PHP
+export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
+
