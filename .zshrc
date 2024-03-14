@@ -5,31 +5,8 @@ eval "$(direnv hook zsh)"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init - zsh)"
 
-# for nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# for mise
+eval "$(~/.local/bin/mise activate zsh)"
 
 # prompt
 # %~: 現在のディレクトリ（省略形）
@@ -97,10 +74,6 @@ setopt correct
 # EDITOR
 export EDITOR=nvim
 
-
-# Load Angular CLI autocompletion.
-source <(ng completion script)
-
 # compsys
 autoload -U compinit && compinit
 export PATH="/opt/homebrew/opt/php@8.1/bin:$PATH"
@@ -110,3 +83,5 @@ export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
 
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
