@@ -18,8 +18,9 @@ PS1='%F{cyan}%~:%f %# '
 
 # alias
 alias gis='git status'
+alias gis='git status'
 alias gid='git diff'
-alias gic='git checkout'
+alias gic='git switch -c'
 alias gib='git branch'
 alias gip='git remote prune origin'
 alias gibd="git branch --merged|egrep -v '\*|develop|master|main'|xargs git branch -d"
@@ -28,6 +29,13 @@ alias vtop="vtop --theme brew"
 alias vi='vim -u NONE'
 alias vim=nvim
 alias lvim='~/.local/bin/lvim'
+
+#alias docker-compose='docker compose'
+# ↑ではwp-cliの問題は解決しないのでsymlink貼った方が良い
+# > As a workaround, you can create the following symlink:
+# > sudo ln -sf /Applications/Docker.app/Contents/Resources/cli-plugins/docker-compose /usr/local/bin/docker-compose
+# > https://docs.docker.com/desktop/release-notes/#4320
+
 
 # history
 HISTFILE=~/.zsh_history
