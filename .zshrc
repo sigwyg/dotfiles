@@ -91,5 +91,3 @@ export PATH="/opt/homebrew/opt/php@8.1/sbin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/php@8.1/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/php@8.1/include"
 
-
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
